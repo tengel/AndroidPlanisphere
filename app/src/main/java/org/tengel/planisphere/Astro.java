@@ -118,7 +118,7 @@ class Astro
      */
     static double julian_date(Calendar c)
     {
-        return julian_date(c.get(Calendar.YEAR), c.get(Calendar.MONTH),
+        return julian_date(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
                            c.get(Calendar.DAY_OF_MONTH),
                            (c.get(Calendar.HOUR_OF_DAY) +
                             (c.get(Calendar.MINUTE) / 60.0) +
@@ -134,7 +134,7 @@ class Astro
     }
 
     /**
-     * Return the mean sideral time of Greenwich in hours.
+     * Return the mean sidereal time of Greenwich in hours.
      *
      * :param int sY: Year
      * :param int sM: Month
@@ -142,7 +142,7 @@ class Astro
      * :param float sUT: Hours in Universal Time
      * :rtype: float
      */
-    static double sideral_time(int sY, int sM, int sD, double sUT)
+    static double sidereal_time(int sY, int sM, int sD, double sUT)
     {
         double jd0 = julian_date(sY, sM, sD);
         double theta = (6.664520 + 0.0657098244 * (jd0 - 2451544.5) +
