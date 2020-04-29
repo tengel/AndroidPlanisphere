@@ -1,4 +1,7 @@
 <resources>
     <declare-styleable name="DrawArea">
+        <attr name="gridAz" format="reference"/>
+        <attr name="gridAzText" format="reference"/>
+        <attr name="star" format="reference"/>
     </declare-styleable>
 </resources>

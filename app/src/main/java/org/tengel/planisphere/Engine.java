@@ -1,28 +1,25 @@
 package org.tengel.planisphere;
 
 import android.app.Activity;
-import android.util.Log;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Vector;
 
 public class Engine {
     private Catalog mCatalog;
-    private boolean isEnabledAzGrid = true;
-    private boolean isEnabledEqGrid = true;
-    private boolean isEnabledEcl = true;
     private Vector<ChartObject> mObjects = new Vector<ChartObject>();
     private Activity mActivity;
+    private Settings mSettings;
     private double mLatitude;
     private double mLongitude;
     private Calendar mTime;
-    private double mMaxMagnitude = 11;
     private double mLocalSiderealTime;
 
 
-    public Engine(Activity activity) throws IOException
+    public Engine(Activity activity, Settings settings) throws IOException
     {
         mActivity = activity;
+        mSettings = settings;
         mCatalog = new Catalog(mActivity.getResources().openRawResource(R.raw.bs_catalog));
     }
 
@@ -54,18 +51,24 @@ public class Engine {
                                                   mTime.get(Calendar.DAY_OF_MONTH), utcHour);
         mLocalSiderealTime = siderealTime + (mLongitude / 15.0); // in h
         mObjects.clear();
-        if (isEnabledAzGrid)
+        int maxMagnitude = Settings.instance().getMaxMagnitude();
+
+        if (mSettings.isStarsEnabled())
+        {
+            for (Catalog.Entry e : mCatalog.get())
+            {
+                if (e.apparentMagnitude > maxMagnitude)
+                {
+                    continue;
+                }
+                mObjects.add(new Star(this, e));
+            }
+        }
+        if (mSettings.isAzGridEnabled())
         {
             mObjects.add(new AzGrid(this));
         }
-        for (Catalog.Entry e : mCatalog.get())
-        {
-            if (e.apparentMagnitude > mMaxMagnitude)
-            {
-                continue;
-            }
-            mObjects.add(new Star(this, e));
-        }
+
     }
 
     public Vector<ChartObject> getObjects()

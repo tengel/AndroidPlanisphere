@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themes">
+        <item>Light</item>
+        <item>Dark</item>>
+        <item>Night</item>>
+    </string-array>
+    <string-array name="display_options">
+        <item>Horizon</item>
+        <item>Equator</item>>
+        <item>Ecliptic</item>>
+        <item>Azimuthal grid</item>
+        <item>Equatorial grid</item>
+        <item>Constellation lines</item>
+        <item>Constellation boundaries</item>
+        <item>Constellation names</item>
+        <item>Solar system</item>
+        <item>Solar system names</item>>
+        <item>Stars</item>
+    </string-array>
+</resources>

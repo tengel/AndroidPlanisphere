@@ -1,10 +1,7 @@
 package org.tengel.planisphere;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
-import android.util.Log;
-import android.util.Pair;
 
 interface ChartObjectInterface
 {
@@ -15,6 +12,7 @@ interface ChartObjectInterface
 abstract class ChartObject implements ChartObjectInterface
 {
     protected Paint mPaint = new Paint();
+    protected Paint mPaintText = new Paint();
     protected Engine mEngine;
 
     ChartObject(Engine e)
@@ -26,11 +24,15 @@ abstract class ChartObject implements ChartObjectInterface
 
 class AzGrid extends ChartObject
 {
+    public static int sColor;
+    public static int sTextColor;
+
     AzGrid(Engine e)
     {
         super(e);
-        mPaint.setColor(Color.BLACK);
+        mPaint.setColor(sColor);
         mPaint.setStyle(Paint.Style.STROKE);
+        mPaintText.setColor(sTextColor);
     }
 
     @Override
@@ -50,13 +52,13 @@ class AzGrid extends ChartObject
         canvas.drawCircle(center[0], center[1], (south[1] - center[1]), mPaint);
         canvas.drawCircle(center[0], center[1], (l60deg[1] - center[1]), mPaint);
         canvas.drawCircle(center[0], center[1], (l30deg[1] - center[1]), mPaint);
-        canvas.drawText("S", south[0] - sp2, south[1] + sp1, mPaint);
-        canvas.drawText("W", west[0] + sp2, west[1] + sp2, mPaint);
-        canvas.drawText("N", north[0] - sp2, north[1] - sp2, mPaint);
-        canvas.drawText("E", east[0] - sp1, east[1] + sp2, mPaint);
-        canvas.drawText("0°", south[0] + sp2, south[1] - sp2, mPaint);
-        canvas.drawText("30°", l30deg[0] + sp2, l30deg[1] - sp2, mPaint);
-        canvas.drawText("60°", l60deg[0] + sp2, l60deg[1] - sp2, mPaint);
+        canvas.drawText("S", south[0] - sp2, south[1] + sp1, mPaintText);
+        canvas.drawText("W", west[0] + sp2, west[1] + sp2, mPaintText);
+        canvas.drawText("N", north[0] - sp2, north[1] - sp2, mPaintText);
+        canvas.drawText("E", east[0] - sp1, east[1] + sp2, mPaintText);
+        canvas.drawText("0°", south[0] + sp2, south[1] - sp2, mPaintText);
+        canvas.drawText("30°", l30deg[0] + sp2, l30deg[1] - sp2, mPaintText);
+        canvas.drawText("60°", l60deg[0] + sp2, l60deg[1] - sp2, mPaintText);
     }
 }
 
@@ -64,13 +66,14 @@ class Star extends ChartObject
 {
     private double[] mAzEle;
     private Catalog.Entry mEntry;
+    public static int sColor;
 
     public Star(Engine engine, Catalog.Entry ce)
     {
         super(engine);
         mEntry = ce;
         mAzEle = mEngine.equatorial2horizontal(ce.rightAscension, ce.declination);
-        mPaint.setColor(Color.BLACK);
+        mPaint.setColor(sColor);
     }
 
     @Override

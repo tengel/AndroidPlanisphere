@@ -2,9 +2,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="org.tengel.planisphere.MainActivity">
-    <item
-        android:id="@+id/action_settings"
+    <item android:id="@+id/action_display_options"
+          android:orderInCategory="100"
+          android:title="@string/display_options"
+          app:showAsAction="never" />
+    <item android:id="@+id/action_time"
+          android:orderInCategory="100"
+          android:title="@string/action_time"
+          app:showAsAction="never" />
+    <item android:id="@+id/action_magnitude"
+          android:orderInCategory="100"
+          android:title="@string/action_magnitude"
+          app:showAsAction="never" />
+    <item android:id="@+id/action_location"
+          android:orderInCategory="100"
+          android:title="@string/action_location"
+          app:showAsAction="never" />
+    <item android:id="@+id/action_theme"
+          android:orderInCategory="100"
+          android:title="@string/action_theme"
+          app:showAsAction="never" />
+    <item android:id="@+id/action_about"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="@string/action_about"
         app:showAsAction="never" />
 </menu>
