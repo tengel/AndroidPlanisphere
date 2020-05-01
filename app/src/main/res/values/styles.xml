@@ -4,26 +4,35 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="gridAz">@color/colorGray</item>
-        <item name="gridAzText">@color/colorBlack</item>
         <item name="star">@color/colorBlack</item>
+        <item name="gridEq">@color/colorOrange</item>
+        <item name="horizon">@color/colorDarkGreen</item>
+        <item name="equator">@color/colorBlue</item>
+        <item name="ecliptic">@color/colorRed</item>
     </style>
 
-    <style name="AppThemeDark" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="gridAz">@color/colorLightBlue</item>
-        <item name="gridAzText">@color/colorLightBlue</item>
-        <item name="android:windowBackground">@color/colorDarkBlue</item>
         <item name="star">@color/colorYellow</item>
+        <item name="gridEq">@color/colorOrange</item>
+        <item name="horizon">@color/colorGreen</item>
+        <item name="equator">@color/colorCyan</item>
+        <item name="ecliptic">@color/colorRed</item>
+        <item name="android:windowBackground">@color/colorDarkBlue</item>
     </style>
 
-    <style name="AppThemeNight" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+    <style name="AppThemeNight" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="gridAz">@color/colorRed</item>
-        <item name="gridAzText">@color/colorRed</item>
-        <item name="android:windowBackground">@color/colorBlack</item>
+        <item name="gridAz">@color/colorLightRed</item>
         <item name="star">@color/colorRed</item>
+        <item name="gridEq">@color/colorDarkRed</item>
+        <item name="horizon">@color/colorLightRed</item>
+        <item name="equator">@color/colorDarkRed</item>
+        <item name="ecliptic">@color/colorDarkRed</item>
+        <item name="android:windowBackground">@color/colorBlack</item>
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />

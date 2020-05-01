@@ -37,7 +37,7 @@ public class Engine {
     /**
      * Return azimut, elevation
      */
-    public double[] equatorial2horizontal(double rightAscension, double declination)
+    public Double[] equatorial2horizontal(double rightAscension, double declination)
     {
         double hourAngle = (mLocalSiderealTime - rightAscension) * 15.0;
         return Astro.geoEqua2geoHori(hourAngle, mLatitude, declination);
@@ -68,12 +68,33 @@ public class Engine {
         {
             mObjects.add(new AzGrid(this));
         }
+        if (mSettings.isEqGridEnabled())
+        {
+            mObjects.add(new EqGrid(this));
+        }
+        if (mSettings.isHorizonEnabled())
+        {
+            mObjects.add(new Horizon(this));
+        }
+        if (mSettings.isEquatorEnabled())
+        {
+            mObjects.add(new Equator(this));
+        }
+        if (mSettings.isEclipticEnabled())
+        {
+            mObjects.add(new Ecliptic(this));
+        }
 
     }
 
     public Vector<ChartObject> getObjects()
     {
         return mObjects;
+    }
+
+    public Activity getActivity()
+    {
+        return mActivity;
     }
 
 }

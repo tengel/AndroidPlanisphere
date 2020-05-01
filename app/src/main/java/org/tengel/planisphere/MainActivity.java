@@ -7,7 +7,6 @@ import androidx.appcompat.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
-
 import org.tengel.planisphere.dialog.DisplayOptionsDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
 import org.tengel.planisphere.dialog.SetThemeDialog;
@@ -49,10 +48,16 @@ public class MainActivity extends AppCompatActivity
         Resources.Theme theme = mDrawArea.getContext().getTheme();
         theme.resolveAttribute(R.attr.gridAz, typedValue, true);
         AzGrid.sColor = typedValue.data;
-        theme.resolveAttribute(R.attr.gridAzText, typedValue, true);
-        AzGrid.sTextColor = typedValue.data;
         theme.resolveAttribute(R.attr.star, typedValue, true);
         Star.sColor = typedValue.data;
+        theme.resolveAttribute(R.attr.gridEq, typedValue, true);
+        EqGrid.sColor = typedValue.data;
+        theme.resolveAttribute(R.attr.horizon, typedValue, true);
+        Horizon.sColor = typedValue.data;
+        theme.resolveAttribute(R.attr.equator, typedValue, true);
+        Equator.sColor = typedValue.data;
+        theme.resolveAttribute(R.attr.ecliptic, typedValue, true);
+        Ecliptic.sColor = typedValue.data;
 
         update();
     }

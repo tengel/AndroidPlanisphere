@@ -88,6 +88,11 @@ public class DrawArea extends View
         return rc;
     }
 
+    public int[] horizontal2area(Double[] azEle)
+    {
+        return horizontal2area(azEle[0], azEle[1]);
+    }
+
     public int size()
     {
         return mSize;
