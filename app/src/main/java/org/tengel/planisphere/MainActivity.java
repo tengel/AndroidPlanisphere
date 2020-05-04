@@ -11,11 +11,13 @@ import android.view.MenuItem;
 import org.tengel.planisphere.dialog.DisplayOptionsDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
 import org.tengel.planisphere.dialog.SetThemeDialog;
+import org.tengel.planisphere.dialog.SetTimeListener;
+import org.tengel.planisphere.dialog.TimeDialog;
 import org.tengel.planisphere.dialog.UpdateListener;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity
-                          implements UpdateListener
+                          implements UpdateListener, SetTimeListener
 {
     private Engine mEngine;
     private DrawArea mDrawArea;
@@ -105,6 +107,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.action_time)
         {
+            TimeDialog d = new TimeDialog(mEngine.getTime());
+            d.show(getSupportFragmentManager(), "TimeDialog");
             return true;
         }
         else if (id == R.id.action_magnitude)
@@ -129,5 +133,12 @@ public class MainActivity extends AppCompatActivity
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setTime(GregorianCalendar cal)
+    {
+        mEngine.setTime(cal);
+        update();
     }
 }

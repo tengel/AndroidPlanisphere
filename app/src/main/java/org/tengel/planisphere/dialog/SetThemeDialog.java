@@ -5,10 +5,8 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
 import org.tengel.planisphere.R;
 import org.tengel.planisphere.Settings;
-
 import androidx.fragment.app.DialogFragment;
 
 public class SetThemeDialog extends DialogFragment

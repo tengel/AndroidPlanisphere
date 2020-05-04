@@ -8,7 +8,7 @@ import java.util.Iterator;
 
 interface ChartObjectInterface
 {
-    public void draw(DrawArea da, Canvas canvas);
+    void draw(DrawArea da, Canvas canvas);
 }
 
 abstract class ChartObject implements ChartObjectInterface

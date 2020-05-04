@@ -1,10 +1,8 @@
 package org.tengel.planisphere;
 
 import android.app.Activity;
-import android.content.res.Resources;
-
-import java.io.IOException;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Vector;
 
 public class Engine {
@@ -14,7 +12,7 @@ public class Engine {
     private Settings mSettings;
     private double mLatitude;
     private double mLongitude;
-    private Calendar mTime;
+    private GregorianCalendar mTime;
     private double mLocalSiderealTime;
     private ConstellationDb mConstDb;
 
@@ -34,9 +32,14 @@ public class Engine {
         mLongitude = lon;
     }
 
-    public void setTime(Calendar c)
+    public void setTime(GregorianCalendar c)
     {
         mTime = c;
+    }
+
+    public GregorianCalendar getTime()
+    {
+        return mTime;
     }
 
     /**

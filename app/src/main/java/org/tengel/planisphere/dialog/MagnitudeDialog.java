@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.FrameLayout;
 import android.widget.NumberPicker;
-
 import org.tengel.planisphere.R;
 import org.tengel.planisphere.Settings;
 
@@ -28,7 +27,7 @@ public class MagnitudeDialog extends DialogFragment
         } catch (ClassCastException e)
         {
             throw new ClassCastException(context.toString()
-                    + " must implement NoticeDialogListener");
+                    + " must implement UpdateListener");
         }
     }
 
