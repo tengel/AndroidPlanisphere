@@ -1,6 +1,8 @@
 package org.tengel.planisphere;
 
 import android.app.Activity;
+import android.content.res.Resources;
+
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Vector;
@@ -14,13 +16,16 @@ public class Engine {
     private double mLongitude;
     private Calendar mTime;
     private double mLocalSiderealTime;
+    private ConstellationDb mConstDb;
 
 
-    public Engine(Activity activity, Settings settings) throws IOException
+    public Engine(Activity activity, Settings settings, Catalog catalog,
+                  ConstellationDb constDb)
     {
         mActivity = activity;
         mSettings = settings;
-        mCatalog = new Catalog(mActivity.getResources().openRawResource(R.raw.bs_catalog));
+        mCatalog = catalog;
+        mConstDb = constDb;
     }
 
     public void setLocation(double lat, double lon)
@@ -53,6 +58,13 @@ public class Engine {
         mObjects.clear();
         int maxMagnitude = Settings.instance().getMaxMagnitude();
 
+        if (mSettings.isConstLinesEnabled() || mSettings.isConstNamesEnabled() ||
+            mSettings.isConstBoundEnabled())
+        {
+            mObjects.add(new ConstLines(this, mConstDb, mSettings.isConstLinesEnabled(),
+                                        mSettings.isConstNamesEnabled(),
+                                        mSettings.isConstBoundEnabled()));
+        }
         if (mSettings.isStarsEnabled())
         {
             for (Catalog.Entry e : mCatalog.get())

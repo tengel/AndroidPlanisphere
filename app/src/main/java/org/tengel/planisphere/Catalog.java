@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.Vector;
+import java.util.Collection;
+import java.util.HashMap;
 
 class Catalog
 {
@@ -143,9 +144,31 @@ class Catalog
         }
     }
 
-    Vector<Entry> mEntires = new Vector<Entry>();
+    private HashMap<Integer, Entry> mEntires = new HashMap<>();
+    private static Catalog sInstance = null;
 
-    public Catalog(InputStream catalogStream) throws IOException
+    public static Catalog instance() throws NullPointerException
+    {
+        if (sInstance == null)
+        {
+            throw new NullPointerException("run init() before instance()");
+        }
+        return sInstance;
+    }
+
+    public synchronized static void init(InputStream catalogStream) throws IOException
+    {
+        if (catalogStream == null)
+        {
+            throw new NullPointerException("stream must not be null");
+        }
+        else if (sInstance == null)
+        {
+            sInstance = new Catalog(catalogStream);
+        }
+    }
+
+    private Catalog(InputStream catalogStream) throws IOException
     {
         BufferedReader catalogReader = new BufferedReader(new InputStreamReader(catalogStream));
         while (true)
@@ -155,12 +178,18 @@ class Catalog
             {
                 break;
             }
-            mEntires.add(new Entry(line));
+            Entry e = new Entry(line);
+            mEntires.put(e.hr, e);
         }
     }
 
-    public final Vector<Entry> get()
+    public final Collection<Entry> get()
     {
-        return mEntires;
+        return mEntires.values();
+    }
+
+    public Entry get(int id)
+    {
+        return mEntires.get(id);
     }
 }

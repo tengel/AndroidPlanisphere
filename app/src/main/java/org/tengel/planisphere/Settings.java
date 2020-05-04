@@ -1,13 +1,12 @@
 package org.tengel.planisphere;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 public class Settings
 {
     private static Settings sInstance = null;
-    private Activity mActivity;
+    private Context mContext;
     private SharedPreferences mPref;
     private int mStyle;
     private boolean mHorizonEnabled;
@@ -23,32 +22,31 @@ public class Settings
     private boolean mStarsEnabled;
     private int mMaxMagnitude;
 
-    public static Settings instance()
+    public static Settings instance() throws NullPointerException
     {
         if (sInstance == null)
         {
-            //throw new Exception("create() did not run");
+            throw new NullPointerException("run init() before instance()");
         }
         return sInstance;
     }
 
-    public static Settings create(Activity activity)
+    public synchronized static void init(Context context)
     {
-        if (sInstance == null)
+        if (context == null)
         {
-            sInstance = new Settings(activity);
+            throw new NullPointerException("context must not be null");
         }
-        return sInstance;
+        else if (sInstance == null)
+        {
+            sInstance = new Settings(context);
+        }
     }
 
-    private Settings()
+    private Settings(Context context)
     {
-    }
-
-    private Settings (Activity activity)
-    {
-        mActivity = activity;
-        mPref = mActivity.getPreferences(Context.MODE_PRIVATE);
+        mContext = context;
+        mPref = mContext.getSharedPreferences("settings", Context.MODE_PRIVATE);
         mStyle = mPref.getInt("style", R.style.AppThemeLight);
         mHorizonEnabled = mPref.getBoolean("horizon-enabled", true);
         mEquatorEnabled = mPref.getBoolean("equator-enabled", true);

@@ -7,5 +7,6 @@
         <attr name="horizon" format="reference"/>
         <attr name="equator" format="reference"/>
         <attr name="ecliptic" format="reference"/>
+        <attr name="const_lines" format="reference"/>
     </declare-styleable>
 </resources>

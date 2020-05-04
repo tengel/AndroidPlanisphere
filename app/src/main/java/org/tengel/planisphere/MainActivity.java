@@ -1,5 +1,6 @@
 package org.tengel.planisphere;
 
+import android.app.AlertDialog;
 import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,7 +12,6 @@ import org.tengel.planisphere.dialog.DisplayOptionsDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
 import org.tengel.planisphere.dialog.SetThemeDialog;
 import org.tengel.planisphere.dialog.UpdateListener;
-import java.io.IOException;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity
@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity
     private Engine mEngine;
     private DrawArea mDrawArea;
     private Settings mSettings;
+    private ConstellationDb mConstDb;
+    private Catalog mCatalog;
     public static String LOG_TAG = "Planisphere";
 
     @Override
@@ -27,39 +29,54 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         try
         {
-            mSettings = Settings.create(this);
+            Settings.init(getApplicationContext());
+            mSettings = Settings.instance();
+
+            Catalog.init(getResources().openRawResource(R.raw.bs_catalog));
+            mCatalog = Catalog.instance();;
+
+            ConstellationDb.init(getResources().openRawResource(R.raw.constellation_lines),
+                                 getResources().openRawResource(R.raw.constellation_names),
+                                 mCatalog);
+            mConstDb = ConstellationDb.instance();
+
             setTheme(mSettings.getStyle());
-            mEngine = new Engine(this, mSettings);
+            mEngine = new Engine(this, mSettings, mCatalog, mConstDb);
             mEngine.setLocation(53.14, 8.19);
             mEngine.setTime(new GregorianCalendar());
 
-        } catch (IOException e)
+            setContentView(R.layout.activity_main);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            mDrawArea = findViewById(R.id.drawArea);
+
+            TypedValue typedValue = new TypedValue();
+            Resources.Theme theme = mDrawArea.getContext().getTheme();
+            theme.resolveAttribute(R.attr.gridAz, typedValue, true);
+            AzGrid.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.star, typedValue, true);
+            Star.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.gridEq, typedValue, true);
+            EqGrid.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.horizon, typedValue, true);
+            Horizon.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.equator, typedValue, true);
+            Equator.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.ecliptic, typedValue, true);
+            Ecliptic.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.const_lines, typedValue, true);
+            ConstLines.sColor = typedValue.data;
+
+            update();
+
+        } catch (Exception e)
         {
-            // TODO: handle exception
-            e.printStackTrace();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setMessage("Exception in onCreate(): " + e.toString() +
+                               e.getStackTrace()[0].toString());
+            builder.create().show();
         }
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        mDrawArea = findViewById(R.id.drawArea);
-
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = mDrawArea.getContext().getTheme();
-        theme.resolveAttribute(R.attr.gridAz, typedValue, true);
-        AzGrid.sColor = typedValue.data;
-        theme.resolveAttribute(R.attr.star, typedValue, true);
-        Star.sColor = typedValue.data;
-        theme.resolveAttribute(R.attr.gridEq, typedValue, true);
-        EqGrid.sColor = typedValue.data;
-        theme.resolveAttribute(R.attr.horizon, typedValue, true);
-        Horizon.sColor = typedValue.data;
-        theme.resolveAttribute(R.attr.equator, typedValue, true);
-        Equator.sColor = typedValue.data;
-        theme.resolveAttribute(R.attr.ecliptic, typedValue, true);
-        Ecliptic.sColor = typedValue.data;
-
-        update();
     }
 
     public void update()

@@ -1,0 +1,88 @@
+And	Andromeda	Chained Maiden	Andromeda
+Ant	Antlia	Air Pump	Luftpumpe
+Aps	Apus	Bird of Paradise	Paradiesvogel
+Aql	Aquila	Eagle	Adler
+Aqr	Aquarius	Water Bearer	Wassermann
+Ara	Ara	Altar	Altar
+Ari	Aries	Ram	Widder
+Aur	Auriga	Charioteer	Fuhrmann
+Boo	Boötes	Herdsman	Bärenhüter
+Cae	Caelum	Engraving Tool	Grabstichel
+Cam	Camelopardalis	Giraffe	Giraffe
+Cap	Capricornus	Sea Goat	Steinbock
+Car	Carina	Keel	Kiel des Schiffs
+Cas	Cassiopeia	Seated Queen	Kassiopeia
+Cen	Centaurus	Centaur	Zentaur
+Cep	Cepheus	King	Kepheus
+Cet	Cetus	Sea Monster	Walfisch
+Cha	Chamaeleon	Chameleon	Chamäleon
+Cir	Circinus	Compass	Zirkel
+CMa	Canis Major	Great Dog	Großer Hund
+CMi	Canis Minor	Lesser Dog	Kleiner Hund
+Cnc	Cancer	Crab	Krebs
+Col	Columba	Dove	Taube
+Com	Coma Berenices	Bernice's Hair	Haar der Berenike
+CrA	Corona Australis	Southern Crown	Südliche Krone
+CrB	Corona Borealis	Northern Crown	Nördliche Krone
+Crt	Crater	Cup	Becher
+Cru	Crux	Southern Cross	Kreuz des Südens
+Crv	Corvus	Crow	Rabe
+CVn	Canes Venatici	Hunting Dogs	Jagdhunde
+Cyg	Cygnus	Swan	Schwan
+Del	Delphinus	Dolphin	Delphin
+Dor	Dorado	Swordfish	Schwertfisch
+Dra	Draco	Dragon	Drache
+Equ	Equuleus	Little Horse	Füllen
+Eri	Eridanus	River	Eridanus
+For	Fornax	Furnace	Chemischer Ofen
+Gem	Gemini	Twins	Zwillinge
+Gru	Grus	Crane	Kranich
+Her	Hercules	Hercules	Herkules
+Hor	Horologium	Clock	Pendeluhr
+Hya	Hydra	Female Water Snake	Wasserschlange
+Hyi	Hydrus	Male Water Snake	Kleine Wasserschlange
+Ind	Indus	Indian	Indianer
+Lac	Lacerta	Lizard	Eidechse
+Leo	Leo	Lion	Löwe
+Lep	Lepus	Hare	Hase
+Lib	Libra	Scales	Waage
+LMi	Leo Minor	Lesser Lion	Kleiner Löwe
+Lup	Lupus	Wolf	Wolf
+Lyn	Lynx	Lynx	Luchs
+Lyr	Lyra	Lyre	Leier
+Men	Mensa	Table Mountain	Tafelberg
+Mic	Microscopium	Microscope	Mikroskop
+Mon	Monoceros	Unicorn	Einhorn
+Mus	Musca	Fly	Fliege
+Nor	Norma	Carpenter's Square	Winkelmaß
+Oct	Octans	Octant	Oktant
+Oph	Ophiuchus	Serpent Bearer	Schlangenträger
+Ori	Orion	Hunter	Orion
+Pav	Pavo	Peacock	Pfau
+Peg	Pegasus	Winged Horse	Pegasus
+Per	Perseus	Hero	Perseus
+Phe	Phoenix	Phoenix	Phönix
+Pic	Pictor	Painter's Easel	Maler
+PsA	Piscis Austrinus	Southern Fish	Südlicher Fisch
+Psc	Pisces	Fishes	Fische
+Pup	Puppis	Stern	Achterdeck des Schiffs
+Pyx	Pyxis	Compass	Kompass
+Ret	Reticulum	Reticle	Netz
+Scl	Sculptor	Sculptor	Bildhauer
+Sco	Scorpius	Scorpion	Skorpion
+Sct	Scutum	Shield	Schild
+Ser	Serpens	Serpent	Schlange
+Sex	Sextans	Sextant	Sextant
+Sge	Sagitta	Arrow	Pfeil
+Sgr	Sagittarius	Archer	Schütze
+Tau	Taurus	Bull	Stier
+Tel	Telescopium	Telescope	Teleskop
+TrA	Triangulum Australe	Southern Triangle	Südliches Dreieck
+Tri	Triangulum	Triangle	Dreieck
+Tuc	Tucana	Toucan	Tukan
+UMa	Ursa Major	Great Bear	Großer Bär
+UMi	Ursa Minor	Little Bear	Kleiner Bär
+Vel	Vela	Sails	Segel des Schiffs
+Vir	Virgo	Maiden	Jungfrau
+Vol	Volans	Flying Fish	Fliegender Fisch
+Vul	Vulpecula	Fox	Fuchs
