@@ -3,6 +3,7 @@ package org.tengel.planisphere;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 
@@ -301,8 +302,8 @@ class ConstLines extends LineObject
 {
     public static int sColor;
 
-    public ConstLines(Engine e, ConstellationDb db, boolean isLinesEnabled,
-                      boolean isNamesEnabled, boolean isBoundEnabled)
+    public ConstLines(Engine e, ConstellationDb db, ConstBoundaries boundaries,
+                      boolean isLinesEnabled, boolean isNamesEnabled)
     {
         super(e);
         mPaint.setColor(sColor);
@@ -312,32 +313,72 @@ class ConstLines extends LineObject
         boolean isVisible;
         for (ConstellationDb.Constellation constellation : db.get())
         {
+            if (!boundaries.isVisible(constellation.mName))
+            {
+                continue;
+            }
             ArrayList<Double[]> constLine = new ArrayList<>();
-            isVisible = false;
             for (Catalog.Entry ce : constellation.mLine)
             {
-                azEle = mEngine.equatorial2horizontal(ce.rightAscension, ce.declination);
-                constLine.add(azEle);
-                if (azEle[1] > -10)
-                {
-                    isVisible = true;
-                }
+                constLine.add(mEngine.equatorial2horizontal(ce.rightAscension, ce.declination));
             }
-            if (isVisible)
+            if (isLinesEnabled)
             {
-                if (isLinesEnabled)
-                {
-                    mLines.add(constLine);
-                }
-                if (isNamesEnabled)
-                {
-                    mTextCoords.add(constLine.get(1));
-                    mTexts.add(db.getName(constellation.mName));
-                }
+                mLines.add(constLine);
+            }
+            if (isNamesEnabled)
+            {
+                mTextCoords.add(constLine.get(1));
+                mTexts.add(db.getName(constellation.mName));
             }
         }
     }
 }
 
 //-----------------------------------------------------------------------------
+
+class ConstBoundaries extends LineObject
+{
+    public static int sColor;
+    private HashMap<String, Boolean> mVisibility = new HashMap<>();
+
+    public ConstBoundaries(Engine e, ConstellationDb db, boolean isBoundEnabled)
+    {
+        super(e);
+        mPaint.setColor(sColor);
+        Double[] azEle;
+        Double[] azEleFirst = null;
+        boolean isVisible;
+        for (ConstellationDb.Constellation constellation : db.get())
+        {
+            ArrayList<Double[]> boundLine = new ArrayList<>();
+            isVisible = false;
+            azEleFirst = null;
+            for (Double[] raDec : db.getBoundary(constellation.mName))
+            {
+                azEle = mEngine.equatorial2horizontal(raDec[0], raDec[1]);
+                boundLine.add(azEle);
+                if (azEleFirst == null)
+                {
+                    azEleFirst = azEle;
+                }
+                if (azEle[1] > 0)
+                {
+                    isVisible = true;
+                }
+            }
+            boundLine.add(azEleFirst);
+            if (isVisible && isBoundEnabled)
+            {
+                mLines.add(boundLine);
+            }
+            mVisibility.put(constellation.mName, isVisible);
+        }
+    }
+
+    public boolean isVisible(String name)
+    {
+        return mVisibility.get(name);
+    }
+}
 

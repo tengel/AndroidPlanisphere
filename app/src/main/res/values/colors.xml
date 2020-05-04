@@ -14,6 +14,8 @@
     <color name="colorDarkGreen">#00b300</color>
     <color name="colorBlack">#000000</color>
     <color name="colorGray">#666666</color>
+    <color name="colorLightGray">#999999</color>
+    <color name="colorDarkGray">#333333</color>
     <color name="colorYellow">#ffff00</color>
     <color name="colorOrange">#FFA500</color>
     <color name="colorCyan">#00ffff</color>

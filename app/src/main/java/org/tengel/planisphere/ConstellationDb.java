@@ -13,11 +13,11 @@ public class ConstellationDb
     {
         String mName = new String();
         ArrayList<Catalog.Entry> mLine = new ArrayList<Catalog.Entry>();
-        ArrayList<Catalog.Entry> mBoundaries = new ArrayList<Catalog.Entry>();
     }
 
     private ArrayList<Constellation> mEntries = new ArrayList<Constellation>();
     private HashMap<String, String[]> mNames = new HashMap<String, String[]>();
+    private HashMap<String, ArrayList<Double[]>> mBoundaries = new HashMap<>();
     private static ConstellationDb sInstance = null;
 
     public static ConstellationDb instance() throws NullPointerException
@@ -30,20 +30,22 @@ public class ConstellationDb
     }
 
     public synchronized static void init(InputStream lineStream, InputStream nameStream,
+                                         InputStream boundStream,
                                          Catalog catalog) throws IOException
     {
-        if (lineStream == null || nameStream == null || catalog == null)
+        if (lineStream == null || nameStream == null || boundStream == null || catalog == null)
         {
             throw new NullPointerException("parameter must not be null");
         }
         else if(sInstance == null)
         {
-            sInstance = new ConstellationDb(lineStream, nameStream, catalog);
+            sInstance = new ConstellationDb(lineStream, nameStream, boundStream, catalog);
         }
     }
 
 
     private ConstellationDb(InputStream lineStream, InputStream nameStream,
+                            InputStream boundStream,
                             Catalog catalog) throws IOException
     {
         BufferedReader fileReader = new BufferedReader(new InputStreamReader(lineStream));
@@ -60,7 +62,7 @@ public class ConstellationDb
             }
             String[] lItems = line.split(" +");
             Constellation con = new Constellation();
-            con.mName = lItems[0].trim();
+            con.mName = lItems[0].trim().toLowerCase();
             int pointId;
             for (int i = 2; i < lItems.length; ++i)
             {
@@ -79,8 +81,33 @@ public class ConstellationDb
                 break;
             }
             String[] lItems = line.split("\t");
-            mNames.put(lItems[0].trim(), new String[] {lItems[0].trim(), lItems[1].trim(),
-                                                       lItems[2].trim(), lItems[3].trim()});
+            mNames.put(lItems[0].trim().toLowerCase(),
+                       new String[] {lItems[0].trim(), lItems[1].trim(),
+                                     lItems[2].trim(), lItems[3].trim()});
+        }
+
+        fileReader = new BufferedReader(new InputStreamReader(boundStream));
+        while(true)
+        {
+            String line = fileReader.readLine();
+            if (line == null)
+            {
+                break;
+            }
+            String[] lItems = line.split("\\|");
+            String rightAscension = lItems[0].trim();
+            String[] raItems = rightAscension.split(" ");
+            Integer raH = Integer.valueOf(raItems[0].trim());
+            Integer raM = Integer.valueOf(raItems[1].trim());
+            Double raS = Double.valueOf(raItems[2].trim());
+            Double declination = Double.valueOf(lItems[1].trim());
+            String name = lItems[2].trim().toLowerCase();
+            if (mBoundaries.get(name) == null)
+            {
+                mBoundaries.put(name, new ArrayList<Double[]>());
+            }
+            mBoundaries.get(name).add(new Double[] {raH + (raM / 60.0) + (raS / 60.0 / 60.0),
+                                                    declination});
         }
     }
 
@@ -92,5 +119,10 @@ public class ConstellationDb
     public String getName(String abbr)
     {
         return mNames.get(abbr)[0];
+    }
+
+    public ArrayList<Double[]> getBoundary(String name)
+    {
+        return mBoundaries.get(name);
     }
 }

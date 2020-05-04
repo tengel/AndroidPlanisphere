@@ -10,6 +10,7 @@
         <item name="equator">@color/colorBlue</item>
         <item name="ecliptic">@color/colorRed</item>
         <item name="const_lines">@color/colorLightBlue</item>
+        <item name="const_bounds">@color/colorLightGray</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -22,6 +23,7 @@
         <item name="equator">@color/colorCyan</item>
         <item name="ecliptic">@color/colorRed</item>
         <item name="const_lines">@color/colorGray</item>
+        <item name="const_bounds">@color/colorDarkGray</item>
         <item name="android:windowBackground">@color/colorDarkBlue</item>
     </style>
 
@@ -32,9 +34,10 @@
         <item name="star">@color/colorRed</item>
         <item name="gridEq">@color/colorDarkRed</item>
         <item name="horizon">@color/colorLightRed</item>
-        <item name="equator">@color/colorDarkRed</item>
-        <item name="ecliptic">@color/colorDarkRed</item>
-        <item name="const_lines">@color/colorVeryDarkRed</item>
+        <item name="equator">@color/colorRed</item>
+        <item name="ecliptic">@color/colorRed</item>
+        <item name="const_lines">@color/colorDarkRed</item>
+        <item name="const_bounds">@color/colorVeryDarkRed</item>
         <item name="android:windowBackground">@color/colorBlack</item>
     </style>
 

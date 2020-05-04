@@ -60,13 +60,18 @@ public class Engine {
         mLocalSiderealTime = siderealTime + (mLongitude / 15.0); // in h
         mObjects.clear();
         int maxMagnitude = Settings.instance().getMaxMagnitude();
+        ConstBoundaries boundaries = null;
 
         if (mSettings.isConstLinesEnabled() || mSettings.isConstNamesEnabled() ||
             mSettings.isConstBoundEnabled())
         {
-            mObjects.add(new ConstLines(this, mConstDb, mSettings.isConstLinesEnabled(),
-                                        mSettings.isConstNamesEnabled(),
-                                        mSettings.isConstBoundEnabled()));
+            boundaries = new ConstBoundaries(this, mConstDb, mSettings.isConstBoundEnabled());
+            mObjects.add(boundaries);
+        }
+        if (mSettings.isConstLinesEnabled() || mSettings.isConstNamesEnabled())
+        {
+            mObjects.add(new ConstLines(this, mConstDb, boundaries, mSettings.isConstLinesEnabled(),
+                                        mSettings.isConstNamesEnabled()));
         }
         if (mSettings.isStarsEnabled())
         {

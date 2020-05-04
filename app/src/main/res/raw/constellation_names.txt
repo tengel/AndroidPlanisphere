@@ -26,6 +26,7 @@ CrA	Corona Australis	Southern Crown	Südliche Krone
 CrB	Corona Borealis	Northern Crown	Nördliche Krone
 Crt	Crater	Cup	Becher
 Cru	Crux	Southern Cross	Kreuz des Südens
+Cru1	 	 	 
 Crv	Corvus	Crow	Rabe
 CVn	Canes Venatici	Hunting Dogs	Jagdhunde
 Cyg	Cygnus	Swan	Schwan
@@ -71,7 +72,8 @@ Ret	Reticulum	Reticle	Netz
 Scl	Sculptor	Sculptor	Bildhauer
 Sco	Scorpius	Scorpion	Skorpion
 Sct	Scutum	Shield	Schild
-Ser	Serpens	Serpent	Schlange
+Ser1	Serpens Caput	Serpent Head	Schlange Kopf
+Ser2	Serpens Cauda	Serpent Tail	Schlange Schwanz
 Sex	Sextans	Sextant	Sextant
 Sge	Sagitta	Arrow	Pfeil
 Sgr	Sagittarius	Archer	Schütze

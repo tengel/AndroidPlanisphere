@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity
 
             ConstellationDb.init(getResources().openRawResource(R.raw.constellation_lines),
                                  getResources().openRawResource(R.raw.constellation_names),
+                                 getResources().openRawResource(R.raw.constellation_boundaries),
                                  mCatalog);
             mConstDb = ConstellationDb.instance();
 
@@ -69,11 +71,14 @@ public class MainActivity extends AppCompatActivity
             Ecliptic.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.const_lines, typedValue, true);
             ConstLines.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.const_bounds, typedValue, true);
+            ConstBoundaries.sColor = typedValue.data;
 
             update();
 
         } catch (Exception e)
         {
+            Log.e(LOG_TAG, Log.getStackTraceString(e));
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setMessage("Exception in onCreate(): " + e.toString() +
                                e.getStackTrace()[0].toString());
