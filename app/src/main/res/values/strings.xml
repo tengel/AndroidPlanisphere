@@ -13,4 +13,10 @@
     <string name="cancel">Cancel</string>
     <string name="max_magnitude">Max. apparent magnitude</string>
     <string name="set_to_now">Set time to now</string>
+    <string name="gps_no_permission">App has no permission to access GPS</string>
+    <string name="gps_disabled">Device has GPS disabled</string>
+    <string name="gps_waiting">Waiting for position from GPS</string>
+    <string name="gps_received">Received new GPS position</string>
+    <string name="latitude">Latitude (-90..90):</string>
+    <string name="longitude">Longitude (-180..180):</string>
 </resources>

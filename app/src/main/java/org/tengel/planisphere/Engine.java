@@ -12,6 +12,7 @@ public class Engine {
     private Settings mSettings;
     private double mLatitude;
     private double mLongitude;
+    private boolean mIsGpsPos;
     private GregorianCalendar mTime;
     private double mLocalSiderealTime;
     private ConstellationDb mConstDb;
@@ -26,10 +27,11 @@ public class Engine {
         mConstDb = constDb;
     }
 
-    public void setLocation(double lat, double lon)
+    public void setLocation(double lat, double lon, boolean isGpsPos)
     {
         mLatitude = lat;
         mLongitude = lon;
+        mIsGpsPos = isGpsPos;
     }
 
     public void setTime(GregorianCalendar c)
@@ -53,8 +55,11 @@ public class Engine {
 
     public void update()
     {
-        //TODO: convert to UTC
-        double utcHour = mTime.get(Calendar.HOUR_OF_DAY) + (mTime.get(Calendar.MINUTE) / 60.0);
+        double utcHour = mTime.get(Calendar.HOUR_OF_DAY) +
+                         (mTime.get(Calendar.MINUTE) / 60.0) +
+                         (mTime.get(Calendar.SECOND) / 60.0 / 60.0) -
+                         (mTime.get(Calendar.DST_OFFSET) / 1000.0 / 60.0 / 60.0) -
+                         (mTime.get(Calendar.ZONE_OFFSET) / 1000.0 / 60.0 / 60.0);
         double siderealTime = Astro.sidereal_time(mTime.get(Calendar.YEAR), mTime.get(Calendar.MONTH) + 1,
                                                   mTime.get(Calendar.DAY_OF_MONTH), utcHour);
         mLocalSiderealTime = siderealTime + (mLongitude / 15.0); // in h
@@ -104,7 +109,12 @@ public class Engine {
         {
             mObjects.add(new Ecliptic(this));
         }
-
+        String s = String.format("%04d-%02d-%02d  %02d:%02d  %s  %.2f; %.2f GPS: %d  Mag: %d",
+                mTime.get(Calendar.YEAR), (mTime.get(Calendar.MONTH) + 1),
+                mTime.get(Calendar.DAY_OF_MONTH), mTime.get(Calendar.HOUR_OF_DAY),
+                mTime.get(Calendar.MINUTE), mTime.getTimeZone().getID(),
+                mLatitude, mLongitude, mIsGpsPos? 1 : 0, maxMagnitude);
+        mObjects.add(new InfoText(this, s));
     }
 
     public Vector<ChartObject> getObjects()

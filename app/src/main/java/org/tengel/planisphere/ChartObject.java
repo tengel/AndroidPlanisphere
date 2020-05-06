@@ -101,6 +101,29 @@ class Horizon extends ChartObject
 
 //-----------------------------------------------------------------------------
 
+class InfoText extends ChartObject
+{
+    public static int sColor = 0;
+    private String mText;
+
+    public InfoText(Engine e, String text)
+    {
+        super(e);
+        mText = text;
+        mPaintText.setColor(sColor);
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
+        mPaintText.setTextAlign(Paint.Align.LEFT);
+    }
+
+    @Override
+    public void draw(DrawArea da, Canvas canvas)
+    {
+        canvas.drawText(mText, 0, mPaintText.ascent() * -1, mPaintText);
+    }
+}
+
+//-----------------------------------------------------------------------------
+
 class Star extends ChartObject
 {
     public static int sColor;

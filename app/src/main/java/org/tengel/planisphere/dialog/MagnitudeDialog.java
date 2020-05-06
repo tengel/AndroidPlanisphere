@@ -24,7 +24,8 @@ public class MagnitudeDialog extends DialogFragment
         try
         {
             mListener = (UpdateListener) context;
-        } catch (ClassCastException e)
+        }
+        catch (ClassCastException e)
         {
             throw new ClassCastException(context.toString()
                     + " must implement UpdateListener");

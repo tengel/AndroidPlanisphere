@@ -1,34 +1,47 @@
 package org.tengel.planisphere;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 import org.tengel.planisphere.dialog.DisplayOptionsDialog;
+import org.tengel.planisphere.dialog.LocationDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
-import org.tengel.planisphere.dialog.SetThemeDialog;
+import org.tengel.planisphere.dialog.SetLocationListener;
+import org.tengel.planisphere.dialog.ThemeDialog;
 import org.tengel.planisphere.dialog.SetTimeListener;
 import org.tengel.planisphere.dialog.TimeDialog;
 import org.tengel.planisphere.dialog.UpdateListener;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity
-                          implements UpdateListener, SetTimeListener
+        implements UpdateListener, SetTimeListener, SetLocationListener
 {
     private Engine mEngine;
     private DrawArea mDrawArea;
     private Settings mSettings;
     private ConstellationDb mConstDb;
     private Catalog mCatalog;
+    private LocationListener mLocListener = new LocationListener();;
+    private LocationManager mLocManager = null;
+
     public static String LOG_TAG = "Planisphere";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         try
         {
@@ -36,24 +49,28 @@ public class MainActivity extends AppCompatActivity
             mSettings = Settings.instance();
 
             Catalog.init(getResources().openRawResource(R.raw.bs_catalog));
-            mCatalog = Catalog.instance();;
+            mCatalog = Catalog.instance();
 
             ConstellationDb.init(getResources().openRawResource(R.raw.constellation_lines),
                                  getResources().openRawResource(R.raw.constellation_names),
                                  getResources().openRawResource(R.raw.constellation_boundaries),
                                  mCatalog);
             mConstDb = ConstellationDb.instance();
-
             setTheme(mSettings.getStyle());
             mEngine = new Engine(this, mSettings, mCatalog, mConstDb);
-            mEngine.setLocation(53.14, 8.19);
             mEngine.setTime(new GregorianCalendar());
-
             setContentView(R.layout.activity_main);
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-
             mDrawArea = findViewById(R.id.drawArea);
+            if (mSettings.isGpsEnabled())
+            {
+                enableGps();
+            }
+            else
+            {
+                mEngine.setLocation(mSettings.getLatitude(), mSettings.getLongitude(), false);
+            }
 
             TypedValue typedValue = new TypedValue();
             Resources.Theme theme = mDrawArea.getContext().getTheme();
@@ -73,6 +90,8 @@ public class MainActivity extends AppCompatActivity
             ConstLines.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.const_bounds, typedValue, true);
             ConstBoundaries.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.infotext, typedValue, true);
+            InfoText.sColor = typedValue.data;
 
             update();
 
@@ -80,6 +99,7 @@ public class MainActivity extends AppCompatActivity
         {
             Log.e(LOG_TAG, Log.getStackTraceString(e));
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle(R.string.app_name + " failed");
             builder.setMessage("Exception in onCreate(): " + e.toString() +
                                e.getStackTrace()[0].toString());
             builder.create().show();
@@ -92,9 +112,41 @@ public class MainActivity extends AppCompatActivity
         mDrawArea.setObjects(mEngine.getObjects());
     }
 
+    private void enableGps()
+    {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
+        {
+            Toast toast = Toast.makeText(this, R.string.gps_no_permission,
+                                         Toast.LENGTH_LONG);
+            toast.show();
+            return;
+        }
+        mLocManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        boolean isGpsEnabled = mLocManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        if (!isGpsEnabled)
+        {
+            Toast toast = Toast.makeText(this, R.string.gps_disabled, Toast.LENGTH_LONG);
+            toast.show();
+        }
+        mLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+                                           600000, 1000, mLocListener);
+                                           // 10 min , 1 km
+        Location loc = mLocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        if (loc != null)
+        {
+            mEngine.setLocation(loc.getLatitude(), loc.getLongitude(), true);
+        }
+        else if (isGpsEnabled)
+        {
+            Toast toast = Toast.makeText(this, R.string.gps_waiting, Toast.LENGTH_LONG);
+            toast.show();
+        }
+    }
+
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
@@ -124,6 +176,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.action_location)
         {
+            LocationDialog d = new LocationDialog();
+            d.show(getSupportFragmentManager(), "LocationDialog");
             return true;
         }
         else if (id == R.id.action_about)
@@ -132,8 +186,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.action_theme)
         {
-            SetThemeDialog d = new SetThemeDialog();
-            d.show(getSupportFragmentManager(), "SetThemeDialog");
+            ThemeDialog d = new ThemeDialog();
+            d.show(getSupportFragmentManager(), "ThemeDialog");
             return true;
         }
 
@@ -146,4 +200,52 @@ public class MainActivity extends AppCompatActivity
         mEngine.setTime(cal);
         update();
     }
+
+    @Override
+    public void setLocation(boolean useGps, double latitude, double longitude)
+    {
+        if (useGps)
+        {
+            enableGps();
+        }
+        else
+        {
+            if (mLocManager != null)
+            {
+                mLocManager.removeUpdates(mLocListener);
+            }
+            mEngine.setLocation(latitude, longitude, false);
+        }
+        update();
+    }
+
+
+    class LocationListener implements android.location.LocationListener
+    {
+        @Override
+        public void onLocationChanged(Location location)
+        {
+            Toast toast = Toast.makeText(MainActivity.this, R.string.gps_received,
+                                         Toast.LENGTH_LONG);
+            toast.show();
+            mEngine.setLocation(location.getLatitude(), location.getLongitude(), true);
+            update();
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras)
+        {
+        }
+
+        @Override
+        public void onProviderEnabled(String provider)
+        {
+        }
+
+        @Override
+        public void onProviderDisabled(String provider)
+        {
+        }
+    }
+
 }

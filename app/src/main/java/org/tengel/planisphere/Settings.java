@@ -21,6 +21,9 @@ public class Settings
     private boolean mSolarNamesEnabled;
     private boolean mStarsEnabled;
     private int mMaxMagnitude;
+    private boolean mGpsEnabled;
+    private float mLatitude;
+    private float mLongitude;
 
     public static Settings instance() throws NullPointerException
     {
@@ -60,6 +63,9 @@ public class Settings
         mSolarNamesEnabled = mPref.getBoolean("solarNames-enabled", true);
         mStarsEnabled = mPref.getBoolean("stars-enabled", true);
         mMaxMagnitude = mPref.getInt("magnitude-max", 8);
+        mGpsEnabled = mPref.getBoolean("gps-enabled", true);;
+        mLatitude = mPref.getFloat("latitude", 51.31f);;
+        mLongitude = mPref.getFloat("longitude", 9.49f);;
     }
 
     private void store()
@@ -78,6 +84,9 @@ public class Settings
         spe.putBoolean("solarNames-enabled", mSolarNamesEnabled);
         spe.putBoolean("stars-enabled", mStarsEnabled);
         spe.putInt("magnitude-max", mMaxMagnitude);
+        spe.putBoolean("gps-enabled", mGpsEnabled);
+        spe.putFloat("latitude", mLatitude);
+        spe.putFloat("longitude", mLongitude);
         spe.commit();
     }
 
@@ -255,6 +264,39 @@ public class Settings
     public void setMaxMagnitude(int maxMagnitude)
     {
         mMaxMagnitude = maxMagnitude;
+        store();
+    }
+
+    public boolean isGpsEnabled()
+    {
+        return mGpsEnabled;
+    }
+
+    public void setGpsEnabled(boolean gpsEnabled)
+    {
+        mGpsEnabled = gpsEnabled;
+        store();
+    }
+
+    public float getLatitude()
+    {
+        return mLatitude;
+    }
+
+    public void setLatitude(float latitude)
+    {
+        mLatitude = latitude;
+        store();
+    }
+
+    public float getLongitude()
+    {
+        return mLongitude;
+    }
+
+    public void setLongitude(float longitude)
+    {
+        mLongitude = longitude;
         store();
     }
 }

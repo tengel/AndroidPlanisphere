@@ -9,5 +9,6 @@
         <attr name="ecliptic" format="reference"/>
         <attr name="const_lines" format="reference"/>
         <attr name="const_bounds" format="reference"/>
+        <attr name="infotext" format="reference"/>
     </declare-styleable>
 </resources>

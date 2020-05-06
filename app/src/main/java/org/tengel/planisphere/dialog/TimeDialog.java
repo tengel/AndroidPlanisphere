@@ -32,7 +32,8 @@ public class TimeDialog extends DialogFragment
         try
         {
             mListener = (SetTimeListener) context;
-        } catch (ClassCastException e)
+        }
+        catch (ClassCastException e)
         {
             throw new ClassCastException(context.toString()
                     + " must implement SetTimeListener");
