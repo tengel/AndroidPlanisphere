@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Planisphere</string>
-    <string name="action_settings">Settings</string>
     <string name="action_time">Date / Time</string>
     <string name="action_location">Location</string>
     <string name="action_about">About</string>
@@ -13,6 +12,7 @@
     <string name="cancel">Cancel</string>
     <string name="max_magnitude">Max. apparent magnitude</string>
     <string name="set_to_now">Set time to now</string>
+    <string name="use_gps">Use GPS</string>
     <string name="gps_no_permission">App has no permission to access GPS</string>
     <string name="gps_disabled">Device has GPS disabled</string>
     <string name="gps_waiting">Waiting for position from GPS</string>

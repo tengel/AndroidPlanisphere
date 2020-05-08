@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class ConstellationDb
 {
@@ -62,7 +63,7 @@ public class ConstellationDb
             }
             String[] lItems = line.split(" +");
             Constellation con = new Constellation();
-            con.mName = lItems[0].trim().toLowerCase();
+            con.mName = lItems[0].trim().toLowerCase(Locale.ROOT);
             int pointId;
             for (int i = 2; i < lItems.length; ++i)
             {
@@ -81,7 +82,7 @@ public class ConstellationDb
                 break;
             }
             String[] lItems = line.split("\t");
-            mNames.put(lItems[0].trim().toLowerCase(),
+            mNames.put(lItems[0].trim().toLowerCase(Locale.ROOT),
                        new String[] {lItems[0].trim(), lItems[1].trim(),
                                      lItems[2].trim(), lItems[3].trim()});
         }
@@ -101,7 +102,7 @@ public class ConstellationDb
             Integer raM = Integer.valueOf(raItems[1].trim());
             Double raS = Double.valueOf(raItems[2].trim());
             Double declination = Double.valueOf(lItems[1].trim());
-            String name = lItems[2].trim().toLowerCase();
+            String name = lItems[2].trim().toLowerCase(Locale.ROOT);
             if (mBoundaries.get(name) == null)
             {
                 mBoundaries.put(name, new ArrayList<Double[]>());

@@ -3,6 +3,7 @@ package org.tengel.planisphere;
 import android.app.Activity;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 import java.util.Vector;
 
 public class Engine {
@@ -66,6 +67,7 @@ public class Engine {
         mObjects.clear();
         int maxMagnitude = Settings.instance().getMaxMagnitude();
         ConstBoundaries boundaries = null;
+        Planet.sEarth.calcHeliocentric(mTime);
 
         if (mSettings.isConstLinesEnabled() || mSettings.isConstNamesEnabled() ||
             mSettings.isConstBoundEnabled())
@@ -89,6 +91,15 @@ public class Engine {
                 mObjects.add(new Star(this, e));
             }
         }
+        if (mSettings.isSolarSystemEnabled())
+        {
+            for (Planet p : Planet.sPlanets)
+            {
+                p.calcHeliocentric(mTime);
+                p.calcGeocentric(Planet.sEarth);
+                mObjects.add(new ChartPlanet(this, p, mSettings.isSolarNamesEnabled()));
+            }
+        }
         if (mSettings.isAzGridEnabled())
         {
             mObjects.add(new AzGrid(this));
@@ -109,7 +120,8 @@ public class Engine {
         {
             mObjects.add(new Ecliptic(this));
         }
-        String s = String.format("%04d-%02d-%02d  %02d:%02d  %s  %.2f; %.2f GPS: %d  Mag: %d",
+        String s = String.format(Locale.ROOT,
+                "%04d-%02d-%02d  %02d:%02d  %s  %.2f; %.2f GPS: %d  Mag: %d",
                 mTime.get(Calendar.YEAR), (mTime.get(Calendar.MONTH) + 1),
                 mTime.get(Calendar.DAY_OF_MONTH), mTime.get(Calendar.HOUR_OF_DAY),
                 mTime.get(Calendar.MINUTE), mTime.getTimeZone().getID(),

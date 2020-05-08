@@ -2,6 +2,5 @@
 <resources>
     <dimen name="textsize">15sp</dimen>
     <dimen name="textsizeSmall">11sp</dimen>
-    <dimen name="textsizeTiny">8sp</dimen>
     <dimen name="starsize">1dp</dimen>
 </resources>

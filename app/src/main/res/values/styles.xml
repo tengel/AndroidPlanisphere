@@ -11,7 +11,9 @@
         <item name="ecliptic">@color/colorRed</item>
         <item name="const_lines">@color/colorLightBlue</item>
         <item name="const_bounds">@color/colorLightGray</item>
-        <item name="infotext">@color/colorBlack</item>
+        <item name="infotext">@color/colorDarkGray</item>
+        <item name="planet">@color/colorBlack</item>
+        <item name="planetText">@color/colorDarkGray</item>
     </style>
 
     <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -26,6 +28,8 @@
         <item name="const_lines">@color/colorGray</item>
         <item name="const_bounds">@color/colorDarkGray</item>
         <item name="infotext">@color/colorLightGray</item>
+        <item name="planet">@color/colorYellow</item>
+        <item name="planetText">@color/colorLightGray</item>
         <item name="android:windowBackground">@color/colorDarkBlue</item>
     </style>
 
@@ -41,6 +45,8 @@
         <item name="const_lines">@color/colorDarkRed</item>
         <item name="const_bounds">@color/colorVeryDarkRed</item>
         <item name="infotext">@color/colorDarkRed</item>
+        <item name="planet">@color/colorRed</item>
+        <item name="planetText">@color/colorDarkRed</item>
         <item name="android:windowBackground">@color/colorBlack</item>
     </style>
 

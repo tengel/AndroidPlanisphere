@@ -56,6 +56,12 @@ public class MainActivity extends AppCompatActivity
                                  getResources().openRawResource(R.raw.constellation_boundaries),
                                  mCatalog);
             mConstDb = ConstellationDb.instance();
+
+            PlanetCsv.init(getResources().openRawResource(R.raw.horizons_jupiter),
+                           getResources().openRawResource(R.raw.horizons_saturn),
+                           getResources().openRawResource(R.raw.horizons_uranus),
+                           getResources().openRawResource(R.raw.horizons_neptune));
+
             setTheme(mSettings.getStyle());
             mEngine = new Engine(this, mSettings, mCatalog, mConstDb);
             mEngine.setTime(new GregorianCalendar());
@@ -92,6 +98,10 @@ public class MainActivity extends AppCompatActivity
             ConstBoundaries.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.infotext, typedValue, true);
             InfoText.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.planet, typedValue, true);
+            ChartPlanet.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.planetText, typedValue, true);
+            ChartPlanet.sTextColor = typedValue.data;
 
             update();
 

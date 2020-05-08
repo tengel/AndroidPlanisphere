@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <CheckBox
         android:id="@+id/useGps"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Use GPS" />
+        android:text="@string/use_gps" />
 
     <TextView
         android:id="@+id/textView"
@@ -19,7 +21,8 @@
         android:id="@+id/editLatitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned" />
+        android:inputType="numberDecimal|numberSigned"
+        tools:ignore="Autofill"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -31,6 +34,7 @@
         android:id="@+id/editLongitude"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="numberDecimal|numberSigned" />
+        android:inputType="numberDecimal|numberSigned"
+        tools:ignore="Autofill"/>
 
 </LinearLayout>

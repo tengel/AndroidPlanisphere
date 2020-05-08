@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 public class Settings
 {
     private static Settings sInstance = null;
-    private Context mContext;
     private SharedPreferences mPref;
     private int mStyle;
     private boolean mHorizonEnabled;
@@ -48,8 +47,7 @@ public class Settings
 
     private Settings(Context context)
     {
-        mContext = context;
-        mPref = mContext.getSharedPreferences("settings", Context.MODE_PRIVATE);
+        mPref = context.getSharedPreferences("settings", Context.MODE_PRIVATE);
         mStyle = mPref.getInt("style", R.style.AppThemeLight);
         mHorizonEnabled = mPref.getBoolean("horizon-enabled", true);
         mEquatorEnabled = mPref.getBoolean("equator-enabled", true);
@@ -87,7 +85,7 @@ public class Settings
         spe.putBoolean("gps-enabled", mGpsEnabled);
         spe.putFloat("latitude", mLatitude);
         spe.putFloat("longitude", mLongitude);
-        spe.commit();
+        spe.apply();
     }
 
     public int getStyle()

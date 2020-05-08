@@ -124,35 +124,43 @@ class InfoText extends ChartObject
 
 //-----------------------------------------------------------------------------
 
-class Star extends ChartObject
+class RoundObject extends ChartObject
 {
-    public static int sColor;
-    private Double[] mAzEle;
-    private Catalog.Entry mEntry;
+    protected Double[] mAzEle;
+    protected double mApparentMagnitude;
+    protected String mText = null;
     private float mBaseSize;
 
-    public Star(Engine engine, Catalog.Entry ce)
+    RoundObject(Engine e)
     {
-        super(engine);
-        mEntry = ce;
-        mAzEle = mEngine.equatorial2horizontal(ce.rightAscension, ce.declination);
-        mPaint.setColor(sColor);
-        mBaseSize = engine.getActivity().getResources().getDimension(R.dimen.starsize);
+        super(e);
+        mBaseSize = mEngine.getActivity().getResources().getDimension(R.dimen.starsize);
+        mPaintText.setTextAlign(Paint.Align.LEFT);
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
     }
 
     @Override
     public void draw(DrawArea da, Canvas canvas)
     {
         int[] center = da.horizontal2area(mAzEle[0], mAzEle[1]);
-        if (mEntry.apparentMagnitude <= 1.0)
+
+        if (mApparentMagnitude <= -3.0)
         {
-            canvas.drawCircle(center[0], center[1], 3 * mBaseSize, mPaint); // 0 - 1
+            canvas.drawCircle(center[0], center[1], 5 * mBaseSize, mPaint); //  < -3
         }
-        else if (mEntry.apparentMagnitude > 1.0 && mEntry.apparentMagnitude <= 3.0)
+        if (mApparentMagnitude > -3.0 && mApparentMagnitude <= -1.0)
+        {
+            canvas.drawCircle(center[0], center[1], 4 * mBaseSize, mPaint); // -3 - -1
+        }
+        else if (mApparentMagnitude > -1.0 && mApparentMagnitude <= 1.0)
+        {
+            canvas.drawCircle(center[0], center[1], 3 * mBaseSize, mPaint); // -1 - 1
+        }
+        else if (mApparentMagnitude > 1.0 && mApparentMagnitude <= 3.0)
         {
             canvas.drawCircle(center[0], center[1], 2 * mBaseSize, mPaint); // 1 - 3
         }
-        else if (mEntry.apparentMagnitude > 3.0 && mEntry.apparentMagnitude <= 5.0)
+        else if (mApparentMagnitude > 3.0 && mApparentMagnitude <= 5.0)
         {
             canvas.drawCircle(center[0], center[1], 1 * mBaseSize, mPaint); // 3 - 5
         }
@@ -160,22 +168,48 @@ class Star extends ChartObject
         {
             canvas.drawPoint(center[0], center[1], mPaint); // >5-9
         }
+
+        if (mText != null)
+        {
+            canvas.drawText(mText, center[0], center[1] - mPaintText.descent(), mPaintText);
+        }
     }
 }
 
 //-----------------------------------------------------------------------------
 
-class Planet extends ChartObject
+class Star extends RoundObject
 {
-    public Planet(Engine e, Object planet)
+    public static int sColor;
+    private Catalog.Entry mEntry;
+
+    public Star(Engine engine, Catalog.Entry ce)
+    {
+        super(engine);
+        mEntry = ce;
+        mAzEle = mEngine.equatorial2horizontal(ce.rightAscension, ce.declination);
+        mApparentMagnitude = ce.apparentMagnitude;
+        mPaint.setColor(sColor);
+    }
+}
+
+//-----------------------------------------------------------------------------
+
+class ChartPlanet extends RoundObject
+{
+    public static int sColor;
+    public static int sTextColor;
+    private Planet mPlanet;
+
+    public ChartPlanet(Engine e, Planet planet, boolean showName)
     {
         super(e);
-    }
-
-    @Override
-    public void draw(DrawArea da, Canvas canvas)
-    {
-
+        mPlanet = planet;
+        mAzEle = mEngine.equatorial2horizontal(planet.mRa / 15, planet.mDeclination);
+        mApparentMagnitude = mPlanet.mApparentMagnitude;
+        mText = showName ? mPlanet.mName : null;
+        mPaint.setColor(sColor);
+        mPaintText.setColor(sTextColor);
     }
 }
 
@@ -331,7 +365,7 @@ class ConstLines extends LineObject
         super(e);
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
         Double[] azEle;
         boolean isVisible;
         for (ConstellationDb.Constellation constellation : db.get())
