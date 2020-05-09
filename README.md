@@ -1,5 +1,30 @@
 # AndroidPlanisphere
-Star chart for Android
+
+A simple star chart that shows stars, constellations and planets.
+
+The App shows:
+
+- over 9000 stars
+- constellation lines, boundaries and names
+- planets of the solar system
+- azimuthal grid
+- equatorial grid
+- horizon
+- ecliptic
+- celestial equator
+
+The App works on every place of the earth. An Internet connection is not
+required. The location can be entered manually or is provided by the
+device. There are several options to enable and disable elements of the
+chart, select the maximum apparent magnitude, choose the color theme and set the
+date and time.
+
+
+
+# Screenshots
+
+<img src="screenshot_01.png" width="400"/>
+
 
 # Third-party components
 This software incorporates the following third-party components:

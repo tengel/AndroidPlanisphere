@@ -1,3 +1,20 @@
+/*
+ * Copyright (C) 2020 Timo Engel
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
 package org.tengel.planisphere;
 
 import android.Manifest;
@@ -17,6 +34,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 import org.tengel.planisphere.dialog.DisplayOptionsDialog;
+import org.tengel.planisphere.dialog.InfoDialog;
 import org.tengel.planisphere.dialog.LocationDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
 import org.tengel.planisphere.dialog.SetLocationListener;
@@ -140,8 +158,8 @@ public class MainActivity extends AppCompatActivity
             toast.show();
         }
         mLocManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                                           600000, 1000, mLocListener);
-                                           // 10 min , 1 km
+                                           1200000, 10000, mLocListener);
+                                           // 20 min , 10 km
         Location loc = mLocManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         if (loc != null)
         {
@@ -192,6 +210,8 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.action_about)
         {
+            InfoDialog d = new InfoDialog();
+            d.show(getSupportFragmentManager(), "InfoDialog");
             return true;
         }
         else if (id == R.id.action_theme)

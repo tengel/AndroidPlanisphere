@@ -19,4 +19,79 @@
     <string name="gps_received">Received new GPS position</string>
     <string name="latitude">Latitude (-90..90):</string>
     <string name="longitude">Longitude (-180..180):</string>
+
+    <string name="about_text"><![CDATA[
+    <h1>Planisphere</h1>
+
+    A simple star chart that shows stars, constellations and planets.
+    <br/><br/>
+
+    Use the options menu, to set <em>Date / Time</em> and <em>Location</em>, or
+    use the location provided by the device. The <em>Display options</em> allows you
+    to enable or disable
+    <ul>
+    <li>horizon (with cardinal directions)</li>
+    <li>celestical equator</li>
+    <li>ecliptic</li>
+    <li>azimuthal grid</li>
+    <li>equatorial grid</li>
+    <li>constellation lines</li>
+    <li>constellation boundaries</li>
+    <li>constellation names</li>
+    <li>solar system (planets)</li>
+    <li>solar system names (names of planets)</li>
+    <li>stars</li>
+    </ul>
+
+
+    <br/>
+    Version: {VERSION}
+    <br/><br/>
+    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+    <br/><br/>
+
+    <h2>License</h2>
+    Copyright (C) 2020 Timo Engel
+    <br/><br/>
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    <br/><br/>
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    <br/><br/>
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see
+    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+    <h2>Credits</h2>
+    This software incorporates the following third-party components:
+    <dl>
+    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+        (Astronomical Data Center, NSSDC/ADC, 1991)
+        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+    </dd>
+    <dt>constellation_lines.dat</dt>
+    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+        CC BY-SA 4.0,
+        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+    </dd>
+    <dt>constellation_names.txt</dt>
+    <dd>The Constellations, International Astronomical Union,
+        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+        Wikipedia, Liste der Sternbilder,
+        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+    </dd>
+    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+    <dd>Jet Propulsion Laboratory, HORIZONS System,
+        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+    </dd>
+    </dl>
+
+     ]]></string>
+
 </resources>
