@@ -1,0 +1,1 @@
+Eine einfache Sternkarte die Sterne, Sternbilder und Planeten zeigt.

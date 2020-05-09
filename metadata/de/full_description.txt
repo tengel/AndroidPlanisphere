@@ -1,0 +1,13 @@
+Die App zeigt:
+
+- über 9000 Sterne
+- Sternbilder
+- Begrenzungen und Namen der Sternbilder
+- Planeten des Sonnensystems
+- Azimutales Koordinatennetz
+- Äquatoriales Koordinatennetz
+- Horizont mit Himmelsrichtungen
+- Ekliptik
+- Himmelsäquator
+
+Die App funktioniert überall auf der Erde. Eine Internetverbindung ist nicht notwendig. Der Standort kann eingegeben werden, oder es wird der Standort verwendet, der vom Gerät ermittelt wurde. Es gibt diverse Optionen um Elemente auf der Karte ein- oder auszuschalten, die maximale scheinbare Helligkeit zu ändern, zwischen verschiedenen Farbschemata zu wählen und Datum und Uhrzeit zu setzen.

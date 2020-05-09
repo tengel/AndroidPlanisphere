@@ -21,12 +21,13 @@ date and time.
 
 
 
-# Screenshots
+## Screenshots
 
-<img src="screenshot_01.png" width="400"/>
+<img src="metadata/en-US/images/phoneScreenshots/screenshot_01.png" width="400"/>
 
 
-# Third-party components
+## Third-party components
+
 This software incorporates the following third-party components:
 
 * bs_catalog.txt, bs_notes, bs_readme  
