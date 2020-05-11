@@ -218,9 +218,10 @@ abstract class PlanetCsv extends Planet
 
 class Mercury extends Planet
 {
+    public static final String sName = "Mercury";
     Mercury()
     {
-        super("Mercury", -1.9);
+        super(sName, -1.9);
     }
 
     @Override
@@ -238,9 +239,10 @@ class Mercury extends Planet
 
 class Venus extends Planet
 {
+    public static final String sName = "Venus";
     Venus()
     {
-        super("Venus", -4.6);
+        super(sName, -4.6);
     }
 
     @Override
@@ -258,9 +260,10 @@ class Venus extends Planet
 
 class Earth extends Planet
 {
+    public static final String sName = "Earth";
     Earth()
     {
-        super("Earth", 0);
+        super(sName, 0);
     }
 
     @Override
@@ -278,9 +281,10 @@ class Earth extends Planet
 
 class Mars extends Planet
 {
+    public static final String sName = "Mars";
     Mars()
     {
-        super("Mars", -2.91);
+        super(sName, -2.91);
     }
 
     @Override
@@ -298,7 +302,7 @@ class Mars extends Planet
 
 class Jupiter extends PlanetCsv
 {
-    public static String sName = "Jupiter";
+    public static final String sName = "Jupiter";
     public Jupiter()
     {
         super(sName, -2.94);
@@ -307,7 +311,7 @@ class Jupiter extends PlanetCsv
 
 class Saturn extends PlanetCsv
 {
-    public static String sName = "Saturn";
+    public static final String sName = "Saturn";
     public Saturn()
     {
         super(sName, -0.45);
@@ -316,7 +320,7 @@ class Saturn extends PlanetCsv
 
 class Uranus extends PlanetCsv
 {
-    public static String sName = "Uranus";
+    public static final String sName = "Uranus";
     public Uranus()
     {
         super(sName, 5.32);
@@ -325,7 +329,7 @@ class Uranus extends PlanetCsv
 
 class Neptune extends PlanetCsv
 {
-    public static String sName = "Neptune";
+    public static final String sName = "Neptune";
     public Neptune()
     {
         super(sName, 7.78);

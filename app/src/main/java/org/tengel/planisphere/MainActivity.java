@@ -38,6 +38,7 @@ import org.tengel.planisphere.dialog.InfoDialog;
 import org.tengel.planisphere.dialog.LocationDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
 import org.tengel.planisphere.dialog.SetLocationListener;
+import org.tengel.planisphere.dialog.SettingsDialog;
 import org.tengel.planisphere.dialog.ThemeDialog;
 import org.tengel.planisphere.dialog.SetTimeListener;
 import org.tengel.planisphere.dialog.TimeDialog;
@@ -208,16 +209,22 @@ public class MainActivity extends AppCompatActivity
             d.show(getSupportFragmentManager(), "LocationDialog");
             return true;
         }
-        else if (id == R.id.action_about)
-        {
-            InfoDialog d = new InfoDialog();
-            d.show(getSupportFragmentManager(), "InfoDialog");
-            return true;
-        }
         else if (id == R.id.action_theme)
         {
             ThemeDialog d = new ThemeDialog();
             d.show(getSupportFragmentManager(), "ThemeDialog");
+            return true;
+        }
+        else if (id == R.id.action_settings)
+        {
+            SettingsDialog d = new SettingsDialog();
+            d.show(getSupportFragmentManager(), "SettingsDialog");
+            return true;
+        }
+        else if (id == R.id.action_about)
+        {
+            InfoDialog d = new InfoDialog();
+            d.show(getSupportFragmentManager(), "InfoDialog");
             return true;
         }
 

@@ -1,0 +1,131 @@
+<resources>
+    <string name="app_name">Planisphäre</string>
+    <string name="action_time">Datum / Uhrzeit</string>
+    <string name="action_location">Standort</string>
+    <string name="action_about">Über Planisphäre</string>
+    <string name="action_magnitude">Helligkeitslimit</string>
+    <string name="action_theme">Farbschema</string>
+    <string name="action_search">Suche</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="display_options">Anzeigeoptionen</string>
+    <string name="theme">Farbschema</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="max_magnitude">Max. scheinbare Helligkeit (mag)</string>
+    <string name="set_to_now">Aktuelle Zeit verwenden</string>
+    <string name="use_gps">GPS benutzen</string>
+    <string name="gps_no_permission">App hat keine Berechtigung um auf GPS zuzugreifen</string>
+    <string name="gps_disabled">GPS ist deaktiviert</string>
+    <string name="gps_waiting">Warte auf Position vom GPS</string>
+    <string name="gps_received">Neue Position vom GPS empfangen</string>
+    <string name="latitude">Breitengrad (-90..90):</string>
+    <string name="longitude">Längengrad (-180..180):</string>
+    <string name="theme_light">Hell</string>
+    <string name="theme_dark">Dunkel</string>
+    <string name="theme_night">Nacht</string>
+    <string name="horizon">Horizont</string>
+    <string name="equator">Himmelsäquator</string>
+    <string name="ecliptic">Ekliptik</string>
+    <string name="azimuthal_grid">Azimutales Gradnetz</string>
+    <string name="equatorial_grid">Äquatoriales Gradnetz</string>
+    <string name="constellation_lines">Sternbilder</string>
+    <string name="constellation_boundaries">Sternbildgrenzen</string>
+    <string name="constellation_names">Sternbildnamen</string>
+    <string name="solar_system">Sonnensystem</string>
+    <string name="solar_names">Namen Sonnensystem</string>
+    <string name="stars">Sterne</string>
+    <string name="planet_mercury">Merkur</string>
+    <string name="planet_venus">Venus</string>
+    <string name="planet_earth">Erde</string>
+    <string name="planet_mars">Mars</string>
+    <string name="planet_jupiter">Jupiter</string>
+    <string name="planet_saturn">Saturn</string>
+    <string name="planet_uranus">Uranus</string>
+    <string name="planet_neptune">Neptun</string>
+    <string name="const_language">Sprache für Sternbildnamen:</string>
+    <string name="lang_abr">Kürzel</string>
+    <string name="lang_latin">Latein</string>
+    <string name="lang_sysdefault">Systemsprache</string>
+    <string name="lang_english">Englisch</string>
+    <string name="lang_german">Deutsch</string>
+
+    <string name="about_text"><![CDATA[
+    <h1>Planisphäre</h1>
+
+    Eine einfache Sternkarte die Sterne, Sternbilder und Planeten zeigt.
+
+    <br/><br/>
+
+    Im Menü kann <em>Datum / Uhrzeit</em> und der <em>Standort</em> eingestellt
+    werden. Es kann auch der aktuelle Standort verwendet werden, der vom Gerät
+    ermittelt wurde. Unter <em>Anzeigeoptionen</em> können folgende Elemente
+    aktiviert oder deaktiviert werden:
+    <ul>
+    <li>Horizont (mit Himmelsrichtungen)</li>
+    <li>Himmelsqäuator</li>
+    <li>Ekliptik</li>
+    <li>Azimutales Gradnetz</li>
+    <li>Äquatoriales Gradnetz</li>
+    <li>Sternbilder</li>
+    <li>Sternbildgrenzen</li>
+    <li>Sternbildnamen</li>
+    <li>Sonnensystem (Planeten)</li>
+    <li>Namen Sonnensystem (Namen der Planeten)</li>
+    <li>Sterne</li>
+    </ul>
+
+
+    <br/>
+    Version: {VERSION}
+    <br/><br/>
+    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+    <br/><br/>
+
+    <h2>License</h2>
+    Copyright (C) 2020 Timo Engel
+    <br/><br/>
+    Dieses Programm ist Freie Software: Sie können es unter den Bedingungen
+    der GNU General Public License, wie von der Free Software Foundation,
+    Version 3 der Lizenz oder (nach Ihrer Wahl) jeder neueren
+    veröffentlichten Version, weiter verteilen und/oder modifizieren.
+    <br/><br/>
+    Dieses Programm wird in der Hoffnung bereitgestellt, dass es nützlich sein wird, jedoch
+    OHNE JEDE GEWÄHR,; sogar ohne die implizite
+    Gewähr der MARKTFÄHIGKEIT oder EIGNUNG FÜR EINEN BESTIMMTEN ZWECK.
+    Siehe die GNU General Public License für weitere Einzelheiten.
+    <br/><br/>
+    Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
+    Programm erhalten haben. Wenn nicht, siehe
+    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>.
+
+    <h2>Credits</h2>
+    Diese Software verwendet die folgenden Komponenten:
+    <dl>
+    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+        (Astronomical Data Center, NSSDC/ADC, 1991)
+        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+    </dd>
+    <dt>constellation_lines.dat</dt>
+    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+        CC BY-SA 4.0,
+        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+    </dd>
+    <dt>constellation_names.txt</dt>
+    <dd>The Constellations, International Astronomical Union,
+        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+        Wikipedia, Liste der Sternbilder,
+        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+    </dd>
+    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+    <dd>Jet Propulsion Laboratory, HORIZONS System,
+        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+    </dd>
+    <dt>Berechnungen basierend auf</dt>
+    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+    </dd>
+    </dl>
+
+     ]]></string>
+
+</resources>

@@ -224,7 +224,7 @@ class ChartPlanet extends RoundObject
         mPlanet = planet;
         mAzEle = mEngine.equatorial2horizontal(planet.mRa / 15, planet.mDeclination);
         mApparentMagnitude = mPlanet.mApparentMagnitude;
-        mText = showName ? mPlanet.mName : null;
+        mText = showName ? Settings.instance().translateName(mPlanet.mName) : null;
         mPaint.setColor(sColor);
         mPaintText.setColor(sTextColor);
     }

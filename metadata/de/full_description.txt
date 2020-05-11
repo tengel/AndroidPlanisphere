@@ -4,8 +4,8 @@ Die App zeigt:
 - Sternbilder
 - Begrenzungen und Namen der Sternbilder
 - Planeten des Sonnensystems
-- Azimutales Koordinatennetz
-- Äquatoriales Koordinatennetz
+- Azimutales Gradnetz
+- Äquatoriales Gradnetz
 - Horizont mit Himmelsrichtungen
 - Ekliptik
 - Himmelsäquator

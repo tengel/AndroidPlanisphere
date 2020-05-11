@@ -19,6 +19,8 @@ package org.tengel.planisphere;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import java.util.HashMap;
+import java.util.Locale;
 
 public class Settings
 {
@@ -40,6 +42,9 @@ public class Settings
     private boolean mGpsEnabled;
     private float mLatitude;
     private float mLongitude;
+    private HashMap<String, String> mTranslations = new HashMap<>();
+    private String mLanguage;
+    private int mConstLanguage;
 
     public static Settings instance() throws NullPointerException
     {
@@ -78,9 +83,21 @@ public class Settings
         mSolarNamesEnabled = mPref.getBoolean("solarNames-enabled", true);
         mStarsEnabled = mPref.getBoolean("stars-enabled", true);
         mMaxMagnitude = mPref.getInt("magnitude-max", 8);
-        mGpsEnabled = mPref.getBoolean("gps-enabled", true);;
-        mLatitude = mPref.getFloat("latitude", 51.31f);;
-        mLongitude = mPref.getFloat("longitude", 9.49f);;
+        mGpsEnabled = mPref.getBoolean("gps-enabled", true);
+        mLatitude = mPref.getFloat("latitude", 51.31f);
+        mLongitude = mPref.getFloat("longitude", 9.49f);
+        mConstLanguage = mPref.getInt("constLanguage", 4);
+
+        mTranslations.put(Mercury.sName, context.getString(R.string.planet_mercury));
+        mTranslations.put(Venus.sName, context.getString(R.string.planet_venus));
+        mTranslations.put(Earth.sName, context.getString(R.string.planet_earth));
+        mTranslations.put(Mars.sName, context.getString(R.string.planet_mars));
+        mTranslations.put(Jupiter.sName, context.getString(R.string.planet_jupiter));
+        mTranslations.put(Saturn.sName, context.getString(R.string.planet_saturn));
+        mTranslations.put(Uranus.sName, context.getString(R.string.planet_uranus));
+        mTranslations.put(Neptune.sName, context.getString(R.string.planet_neptune));
+
+        mLanguage = context.getResources().getConfiguration().locale.getLanguage();
     }
 
     private void store()
@@ -102,6 +119,7 @@ public class Settings
         spe.putBoolean("gps-enabled", mGpsEnabled);
         spe.putFloat("latitude", mLatitude);
         spe.putFloat("longitude", mLongitude);
+        spe.putInt("constLanguage", mConstLanguage);
         spe.apply();
     }
 
@@ -313,5 +331,26 @@ public class Settings
     {
         mLongitude = longitude;
         store();
+    }
+
+    public int getConstLanguage()
+    {
+        return mConstLanguage;
+    }
+
+    public void setConstLanguage(int constLanguage)
+    {
+        mConstLanguage = constLanguage;
+        store();
+    }
+
+    public String translateName(String s)
+    {
+        return mTranslations.get(s);
+    }
+
+    public String getLanguage()
+    {
+        return mLanguage;
     }
 }

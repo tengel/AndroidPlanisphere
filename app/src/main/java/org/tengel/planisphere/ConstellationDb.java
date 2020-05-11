@@ -136,7 +136,25 @@ public class ConstellationDb
 
     public String getName(String abbr)
     {
-        return mNames.get(abbr)[0];
+        // 0=Abbrv; 1=Latin; 2=English; 3=German; 4=system default
+        int langIdx = Settings.instance().getConstLanguage();
+        if (langIdx == 4)
+        {
+            String lang = Settings.instance().getLanguage();
+            if (lang.equals("en"))
+            {
+                langIdx = 2;
+            }
+            else if (lang.equals("de"))
+            {
+                langIdx = 3;
+            }
+            else
+            {
+                langIdx = 1;
+            }
+        }
+        return mNames.get(abbr)[langIdx];
     }
 
     public ArrayList<Double[]> getBoundary(String name)

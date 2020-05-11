@@ -22,7 +22,6 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.WindowManager;
 import android.webkit.WebView;
-
 import org.tengel.planisphere.BuildConfig;
 import org.tengel.planisphere.R;
 import androidx.fragment.app.DialogFragment;
@@ -37,9 +36,8 @@ public class InfoDialog extends DialogFragment
         s= s.replace("{VERSION}", String.valueOf(BuildConfig.VERSION_NAME));
 
         WebView wv = new WebView(getActivity());
-        wv.loadData(s, "text/html", "utf-8");
+        wv.loadData(s, "text/html; charset=utf-8", null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        //builder.setTitle(R.string.action_about);
         builder.setView(wv);
         builder.setPositiveButton(R.string.ok, null);
         return builder.create();
