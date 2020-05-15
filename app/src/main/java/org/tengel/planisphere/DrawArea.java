@@ -18,7 +18,6 @@
 package org.tengel.planisphere;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
@@ -26,6 +25,7 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import java.util.Vector;
+import androidx.appcompat.app.ActionBar;
 
 public class DrawArea extends View
 {
@@ -36,6 +36,7 @@ public class DrawArea extends View
     private double mScaleFactor = 1.f;
     private double mScrollOffsetX = 0;
     private double mScrollOffsetY = 0;
+    private ActionBar mActionBar;
 
     private static int BORDER = 10;
 
@@ -61,11 +62,6 @@ public class DrawArea extends View
     {
         mScaleDetector = new ScaleGestureDetector(getContext(), new ScaleListener());
         mGestureDetector = new GestureDetector(getContext(), new GestureListener());
-
-        final TypedArray a = getContext().obtainStyledAttributes(
-                attrs, R.styleable.DrawArea, defStyle, 0);
-
-        a.recycle();
     }
 
     @Override
@@ -115,6 +111,24 @@ public class DrawArea extends View
         return mSize;
     }
 
+    public void setActionBar(ActionBar actionBar)
+    {
+        mActionBar = actionBar;
+        handleToolbarVisibility();
+    }
+
+    private void handleToolbarVisibility()
+    {
+        if (Settings.instance().getToolbarIsVisible())
+        {
+            mActionBar.show();
+        }
+        else
+        {
+            mActionBar.hide();
+        }
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent ev)
     {
@@ -140,16 +154,24 @@ public class DrawArea extends View
     private class GestureListener extends GestureDetector.SimpleOnGestureListener
     {
         @Override
-        public boolean onDown(MotionEvent e)
+        public boolean onSingleTapConfirmed(MotionEvent e)
         {
-            //Log.d("SimpleOngestureListener", "onDown");
-            return true;
+            Settings.instance().toggleToolbarIsVisible();
+            handleToolbarVisibility();
+            return super.onSingleTapConfirmed(e);
+        }
+
+        @Override
+        public void onLongPress(MotionEvent e)
+        {
+            //Log.d(MainActivity.LOG_TAG, "onLongPress");
+            super.onLongPress(e);
         }
 
         @Override
         public boolean onDoubleTap(MotionEvent e)
         {
-            //Log.d("SimpleOngestureListener", "onDoubleTap");
+            //Log.d(MainActivity.LOG_TAG, "onDoubleTap");
             return true;
         }
 
@@ -164,13 +186,6 @@ public class DrawArea extends View
             mScrollOffsetY = Math.max((mSize / -2) * mScaleFactor,
                                       Math.min(mScrollOffsetY, (mSize / 2) * mScaleFactor));
             invalidate();
-            return true;
-        }
-
-        @Override
-        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY)
-        {
-            //Log.d("SimpleOngestureListener", "onFling");
             return true;
         }
     }

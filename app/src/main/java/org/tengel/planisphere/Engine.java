@@ -52,11 +52,6 @@ public class Engine {
         mIsGpsPos = isGpsPos;
     }
 
-    public void setTime(GregorianCalendar c)
-    {
-        mTime = c;
-    }
-
     public GregorianCalendar getTime()
     {
         return mTime;
@@ -73,6 +68,7 @@ public class Engine {
 
     public void update()
     {
+        mTime = mSettings.getCurrentTime();
         double utcHour = mTime.get(Calendar.HOUR_OF_DAY) +
                          (mTime.get(Calendar.MINUTE) / 60.0) +
                          (mTime.get(Calendar.SECOND) / 60.0 / 60.0) -

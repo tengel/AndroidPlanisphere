@@ -91,7 +91,7 @@ public class LocationDialog extends DialogFragment
                     Settings.instance().setLatitude(lat);
                     Settings.instance().setLongitude(lon);
                 }
-                mListener.setLocation(isEnabled, lat, lon);
+                mListener.changeLocationSettings(isEnabled, lat, lon);
             }
         });
 

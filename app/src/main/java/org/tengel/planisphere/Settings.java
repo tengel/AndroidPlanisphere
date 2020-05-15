@@ -19,8 +19,8 @@ package org.tengel.planisphere;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Locale;
 
 public class Settings
 {
@@ -45,6 +45,8 @@ public class Settings
     private HashMap<String, String> mTranslations = new HashMap<>();
     private String mLanguage;
     private int mConstLanguage;
+    private GregorianCalendar mCurrentTime;
+    private boolean mToolbarIsVisible = true;
 
     public static Settings instance() throws NullPointerException
     {
@@ -100,6 +102,7 @@ public class Settings
         mTranslations.put("Moon", context.getString(R.string.moon));
 
         mLanguage = context.getResources().getConfiguration().locale.getLanguage();
+        mCurrentTime = new GregorianCalendar();
     }
 
     private void store()
@@ -354,5 +357,25 @@ public class Settings
     public String getLanguage()
     {
         return mLanguage;
+    }
+
+    public GregorianCalendar getCurrentTime()
+    {
+        return mCurrentTime;
+    }
+
+    public void setCurrentTime(GregorianCalendar currentTime)
+    {
+        mCurrentTime = currentTime;
+    }
+
+    public boolean getToolbarIsVisible()
+    {
+        return mToolbarIsVisible;
+    }
+
+    public void toggleToolbarIsVisible()
+    {
+        mToolbarIsVisible = !mToolbarIsVisible;
     }
 }

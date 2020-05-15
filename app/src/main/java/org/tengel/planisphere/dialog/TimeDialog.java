@@ -28,19 +28,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import org.tengel.planisphere.R;
+import org.tengel.planisphere.Settings;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import androidx.fragment.app.DialogFragment;
 
 public class TimeDialog extends DialogFragment
 {
-    private SetTimeListener mListener;
-    private GregorianCalendar mCurrSetting;
-
-    public TimeDialog(GregorianCalendar currTime)
-    {
-        mCurrSetting = currTime;
-    }
+    private UpdateListener mListener;
 
     @Override
     public void onAttach(Context context)
@@ -48,12 +43,12 @@ public class TimeDialog extends DialogFragment
         super.onAttach(context);
         try
         {
-            mListener = (SetTimeListener) context;
+            mListener = (UpdateListener) context;
         }
         catch (ClassCastException e)
         {
             throw new ClassCastException(context.toString()
-                    + " must implement SetTimeListener");
+                    + " must implement UpdateListener");
         }
     }
 
@@ -65,13 +60,14 @@ public class TimeDialog extends DialogFragment
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.time_dialog, null);
         builder.setView(view);
+        GregorianCalendar currTime = Settings.instance().getCurrentTime();
         final TimePicker tp = view.findViewById(R.id.timePicker);
         final DatePicker dp = view.findViewById(R.id.datePicker);
         tp.setIs24HourView(true);
-        tp.setCurrentHour(mCurrSetting.get(Calendar.HOUR_OF_DAY));
-        tp.setCurrentMinute(mCurrSetting.get(Calendar.MINUTE));
-        dp.init(mCurrSetting.get(Calendar.YEAR), mCurrSetting.get(Calendar.MONTH),
-                mCurrSetting.get(Calendar.DAY_OF_MONTH), null);
+        tp.setCurrentHour(currTime.get(Calendar.HOUR_OF_DAY));
+        tp.setCurrentMinute(currTime.get(Calendar.MINUTE));
+        dp.init(currTime.get(Calendar.YEAR), currTime.get(Calendar.MONTH),
+                currTime.get(Calendar.DAY_OF_MONTH), null);
         Button setNow = view.findViewById(R.id.setToNow);
         setNow.setOnClickListener(new View.OnClickListener()
         {
@@ -89,9 +85,10 @@ public class TimeDialog extends DialogFragment
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-                mListener.setTime(new GregorianCalendar(dp.getYear(), dp.getMonth(),
-                                                        dp.getDayOfMonth(),
-                                                        tp.getCurrentHour(), tp.getCurrentMinute()));
+                Settings.instance().setCurrentTime(new GregorianCalendar(
+                        dp.getYear(), dp.getMonth(), dp.getDayOfMonth(),
+                        tp.getCurrentHour(), tp.getCurrentMinute()));
+                mListener.update();
             }
         });
 
