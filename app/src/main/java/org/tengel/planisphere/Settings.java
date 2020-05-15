@@ -96,6 +96,8 @@ public class Settings
         mTranslations.put(Saturn.sName, context.getString(R.string.planet_saturn));
         mTranslations.put(Uranus.sName, context.getString(R.string.planet_uranus));
         mTranslations.put(Neptune.sName, context.getString(R.string.planet_neptune));
+        mTranslations.put("Sun", context.getString(R.string.sun));
+        mTranslations.put("Moon", context.getString(R.string.moon));
 
         mLanguage = context.getResources().getConfiguration().locale.getLanguage();
     }

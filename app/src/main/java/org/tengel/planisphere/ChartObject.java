@@ -160,35 +160,45 @@ class RoundObject extends ChartObject
     public void draw(DrawArea da, Canvas canvas)
     {
         int[] center = da.horizontal2area(mAzEle[0], mAzEle[1]);
+        float radius;
 
-        if (mApparentMagnitude <= -3.0)
+        if (mApparentMagnitude <= -20)
         {
-            canvas.drawCircle(center[0], center[1], 5 * mBaseSize, mPaint); //  < -3
+            radius = 9 * mBaseSize; // <= -20
         }
-        if (mApparentMagnitude > -3.0 && mApparentMagnitude <= -1.0)
+        else if (mApparentMagnitude > -20 && mApparentMagnitude <= -10.0)
         {
-            canvas.drawCircle(center[0], center[1], 4 * mBaseSize, mPaint); // -3 - -1
+            radius = 7 * mBaseSize; // -20 - -10
+        }
+        else if (mApparentMagnitude > -10 && mApparentMagnitude <= -3.0)
+        {
+            radius = 5 * mBaseSize; // -10 - -3
+        }
+        else if (mApparentMagnitude > -3.0 && mApparentMagnitude <= -1.0)
+        {
+            radius = 4 * mBaseSize; // -3 - -1
         }
         else if (mApparentMagnitude > -1.0 && mApparentMagnitude <= 1.0)
         {
-            canvas.drawCircle(center[0], center[1], 3 * mBaseSize, mPaint); // -1 - 1
+            radius = 3 * mBaseSize; // -1 - 1
         }
         else if (mApparentMagnitude > 1.0 && mApparentMagnitude <= 3.0)
         {
-            canvas.drawCircle(center[0], center[1], 2 * mBaseSize, mPaint); // 1 - 3
+            radius = 2 * mBaseSize; // 1 - 3
         }
         else if (mApparentMagnitude > 3.0 && mApparentMagnitude <= 5.0)
         {
-            canvas.drawCircle(center[0], center[1], 1 * mBaseSize, mPaint); // 3 - 5
+            radius = 1 * mBaseSize; // 3 - 5
         }
         else
         {
-            canvas.drawPoint(center[0], center[1], mPaint); // >5-9
+            radius = 0.5f * mBaseSize;
         }
+        canvas.drawCircle(center[0], center[1], radius, mPaint);
 
         if (mText != null)
         {
-            canvas.drawText(mText, center[0], center[1] - mPaintText.descent(), mPaintText);
+            canvas.drawText(mText, center[0] + radius, center[1] , mPaintText);
         }
     }
 }
@@ -232,17 +242,39 @@ class ChartPlanet extends RoundObject
 
 //-----------------------------------------------------------------------------
 
-class Sun extends ChartObject
+class Sun extends RoundObject
 {
-    public Sun(Engine e)
+    public static int sColor;
+    public static int sTextColor;
+
+    public Sun(Engine e, boolean showName)
     {
         super(e);
+        double[] raDec = Astro.calcPositionSun(Astro.julian_date(mEngine.getTime()));
+        mAzEle = mEngine.equatorial2horizontal(raDec[0] / 15, raDec[1]);
+        mApparentMagnitude = -26.74;
+        mText = showName ? Settings.instance().translateName("Sun") : null;
+        mPaint.setColor(sColor);
+        mPaintText.setColor(sTextColor);
     }
+}
 
-    @Override
-    public void draw(DrawArea da, Canvas canvas)
+//-----------------------------------------------------------------------------
+
+class Moon extends RoundObject
+{
+    public static int sColor;
+    public static int sTextColor;
+
+    public Moon(Engine e, boolean showName)
     {
-
+        super(e);
+        double[] raDec = Astro.calcPositionMoon(Astro.julian_date(mEngine.getTime()));
+        mAzEle = mEngine.equatorial2horizontal(raDec[0] / 15, raDec[1]);
+        mApparentMagnitude = -12.7;
+        mText = showName ? Settings.instance().translateName("Moon") : null;
+        mPaint.setColor(sColor);
+        mPaintText.setColor(sTextColor);
     }
 }
 

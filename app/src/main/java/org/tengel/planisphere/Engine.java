@@ -116,6 +116,8 @@ public class Engine {
                 p.calcGeocentric(Planet.sEarth);
                 mObjects.add(new ChartPlanet(this, p, mSettings.isSolarNamesEnabled()));
             }
+            mObjects.add(new Sun(this, mSettings.isSolarNamesEnabled()));
+            mObjects.add(new Moon(this, mSettings.isSolarNamesEnabled()));
         }
         if (mSettings.isAzGridEnabled())
         {

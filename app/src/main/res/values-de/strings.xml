@@ -34,6 +34,8 @@
     <string name="solar_system">Sonnensystem</string>
     <string name="solar_names">Namen Sonnensystem</string>
     <string name="stars">Sterne</string>
+    <string name="sun">Sonne</string>
+    <string name="moon">Mond</string>
     <string name="planet_mercury">Merkur</string>
     <string name="planet_venus">Venus</string>
     <string name="planet_earth">Erde</string>

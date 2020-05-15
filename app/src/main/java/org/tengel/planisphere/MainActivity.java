@@ -88,13 +88,10 @@ public class MainActivity extends AppCompatActivity
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
             mDrawArea = findViewById(R.id.drawArea);
+            mEngine.setLocation(mSettings.getLatitude(), mSettings.getLongitude(), false);
             if (mSettings.isGpsEnabled())
             {
                 enableGps();
-            }
-            else
-            {
-                mEngine.setLocation(mSettings.getLatitude(), mSettings.getLongitude(), false);
             }
 
             TypedValue typedValue = new TypedValue();
@@ -119,8 +116,12 @@ public class MainActivity extends AppCompatActivity
             InfoText.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.planet, typedValue, true);
             ChartPlanet.sColor = typedValue.data;
+            Sun.sColor = typedValue.data;
+            Moon.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.planetText, typedValue, true);
             ChartPlanet.sTextColor = typedValue.data;
+            Sun.sTextColor = typedValue.data;
+            Moon.sTextColor = typedValue.data;
 
             update();
 

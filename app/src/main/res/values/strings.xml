@@ -34,6 +34,8 @@
     <string name="solar_system">Solar system</string>
     <string name="solar_names">Solar system names</string>
     <string name="stars">Stars</string>
+    <string name="sun">Sun</string>
+    <string name="moon">Moon</string>
     <string name="planet_mercury">Mercury</string>
     <string name="planet_venus">Venus</string>
     <string name="planet_earth">Earth</string>
