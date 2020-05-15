@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">星座盤</string>
+    <string name="action_time">日期 / 時間</string>
+    <string name="action_location">地點</string>
+    <string name="action_about">關於</string>
+    <string name="action_magnitude">最亮視星等</string>
+    <string name="action_theme">主題</string>
+    <string name="action_search">搜尋</string>
+    <string name="action_settings">設定</string>
+    <string name="display_options">顯示選項</string>
+    <string name="theme">主題</string>
+    <string name="ok">完成</string>
+    <string name="cancel">取消</string>
+    <string name="max_magnitude">最亮視星等 (mag)</string>
+    <string name="set_to_now">時間設定為現在</string>
+    <string name="use_gps">用 GPS 定位</string>
+    <string name="gps_no_permission">程式無權限取得定位資訊</string>
+    <string name="gps_disabled">定位服務已關閉</string>
+    <string name="gps_waiting">等待定位</string>
+    <string name="gps_received">收到定位</string>
+    <string name="gps_received_new">收到新定位</string>
+    <string name="latitude">緯度 (-90..90):</string>
+    <string name="longitude">經度 (-180..180):</string>
+    <string name="theme_light">明亮</string>
+    <string name="theme_dark">黑暗</string>
+    <string name="theme_night">夜間模式</string>
+    <string name="horizon">地平線</string>
+    <string name="equator">天球赤道</string>
+    <string name="ecliptic">黃道</string>
+    <string name="azimuthal_grid">地平坐標格線</string>
+    <string name="equatorial_grid">赤道坐標格線</string>
+    <string name="constellation_lines">星座線</string>
+    <string name="constellation_boundaries">星座界線</string>
+    <string name="constellation_names">星座名稱</string>
+    <string name="solar_system">太陽系</string>
+    <string name="solar_names">太陽系（含名稱）</string>
+    <string name="stars">恆星</string>
+    <string name="sun">太陽</string>
+    <string name="moon">月亮</string>
+    <string name="planet_mercury">水星</string>
+    <string name="planet_venus">金星</string>
+    <string name="planet_earth">地球</string>
+    <string name="planet_mars">火星</string>
+    <string name="planet_jupiter">木星</string>
+    <string name="planet_saturn">土星</string>
+    <string name="planet_uranus">天王星</string>
+    <string name="planet_neptune">海王星</string>
+    <string name="const_language">星座名稱：</string>
+    <string name="lang_abr">縮寫</string>
+    <string name="lang_latin">拉丁文</string>
+    <string name="lang_sysdefault">系統語言</string>
+    <string name="lang_english">英文</string>
+    <string name="lang_german">德文</string>
+    <string name="lang_chinese">中文</string>
+
+    <string name="about_text"><![CDATA[
+    <h1>星座盤</h1>
+
+   顯示恆星、星座和星球的簡易星座盤。
+    <br/><br/>
+
+    使用功能表設定<em>日期 / 時間</em> 和 <em>地點</em>，也可由裝置提供定位服務。 <em>顯示項目</em> 讓你可以選擇是否顯示：
+    <ul>
+    <li>地平線（含羅盤方位）</li>
+    <li>天球赤道</li>
+    <li>黃道</li>
+    <li>地平坐標格線</li>
+    <li>赤道坐標格線</li>
+    <li>星座線</li>
+    <li>星座界線</li>
+    <li>星座名稱</li>
+    <li>太陽系（行星）</li>
+    <li>太陽系名稱（行星名稱）</li>
+    <li>恆星</li>
+    </ul>
+
+
+    <br/>
+    版本： {VERSION}
+    <br/><br/>
+    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+    <br/><br/>
+
+    <h2>授權條款</h2>
+    Copyright (C) 2020 Timo Engel
+    <br/><br/>
+    此程式是自由軟體：散布或／和修改此程式須根據由自由軟體基金會發布的GNU通用公眾授權條款第三版或更新版本之規範。
+    <br/><br/>
+    此程式公開之目的是希望能提供協助，但不提供任何保證；亦不提供默示擔保中的可銷售性擔保和適用性擔保。詳情請參閱GNU通用公眾授權條款。
+    <br/><br/>
+    您應該已收到隨程式附上的GNU通用公眾授權條款，若未收到，請前往：
+    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+    <h2>Credits</h2>
+    此軟體包含了以下所列之第三方元件：
+    <dl>
+    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+        (Astronomical Data Center, NSSDC/ADC, 1991)
+        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+    </dd>
+    <dt>constellation_lines.dat</dt>
+    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+        CC BY-SA 4.0,
+        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+    </dd>
+    <dt>constellation_names.txt</dt>
+    <dd>The Constellations, International Astronomical Union,
+        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+        Wikipedia, Liste der Sternbilder,
+        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+    </dd>
+    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+    <dd>Jet Propulsion Laboratory, HORIZONS System,
+        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+    </dd>
+    <dt>Calculations based on</dt>
+    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+    </dd>
+    </dl>
+
+    ]]></string>
+
+</resources>

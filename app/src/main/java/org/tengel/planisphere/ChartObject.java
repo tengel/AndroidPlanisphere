@@ -487,4 +487,3 @@ class ConstBoundaries extends LineObject
         return mVisibility.get(name);
     }
 }
-

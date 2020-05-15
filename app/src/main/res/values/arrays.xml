@@ -23,6 +23,7 @@
         <item>@string/lang_latin</item>
         <item>@string/lang_english</item>
         <item>@string/lang_german</item>
+        <item>@string/lang_chinese</item>
         <item>@string/lang_sysdefault</item>
     </string-array>
 </resources>

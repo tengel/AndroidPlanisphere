@@ -51,6 +51,7 @@
     <string name="lang_sysdefault">Systemsprache</string>
     <string name="lang_english">Englisch</string>
     <string name="lang_german">Deutsch</string>
+    <string name="lang_chinese">Chinesisch</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphäre</h1>

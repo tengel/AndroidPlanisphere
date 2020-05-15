@@ -387,7 +387,7 @@ class Astro
     /**
      * Calculate the geocentric, equatorial position (ra, dec) of the moon for a
      * julian date.
-     * 
+     *
      * :param float jd: Julian date
      * :return: Geocentric, equatorial coordinates
      *         (right ascension alpha, declination delta) in degree

@@ -88,7 +88,7 @@ public class Settings
         mGpsEnabled = mPref.getBoolean("gps-enabled", true);
         mLatitude = mPref.getFloat("latitude", 51.31f);
         mLongitude = mPref.getFloat("longitude", 9.49f);
-        mConstLanguage = mPref.getInt("constLanguage", 4);
+        mConstLanguage = mPref.getInt("constLanguage", 5);
 
         mTranslations.put(Mercury.sName, context.getString(R.string.planet_mercury));
         mTranslations.put(Venus.sName, context.getString(R.string.planet_venus));

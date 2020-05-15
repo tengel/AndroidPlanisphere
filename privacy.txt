@@ -1,0 +1,15 @@
+Privacy Policy
+Planisphere
+
+
+This App can access your location. The location is used calculate the star
+chart.
+
+Location information is not collected or stored on your device and is not shared
+with anyone.
+
+Display options and settings are the only information stored locally on your
+device. No information does ever leave your device. This app does not connect to
+the Internet at all.
+
+If you have any questions, feel free to contact 1a.timescale@gmail.com.

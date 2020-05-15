@@ -38,6 +38,16 @@ class OrbitalElements
     double N  = 0.0; // Mean motion, n (degrees/day)
     double JD = 0.0; // Julian Day Number, Barycentric Dynamical Time
     double dayDiff = 0.0;
+
+    OrbitalElements()
+    {
+    }
+
+    OrbitalElements(OrbitalElements o)
+    {
+        MA = o.MA; EC = o.EC; IN = o.IN; OM = o.OM; W = o.W; om = o.om;
+        A = o.A; N = o.N; JD = o.JD; dayDiff  = o.dayDiff;
+    }
 }
 
 
@@ -204,7 +214,7 @@ abstract class PlanetCsv extends Planet
             last_e = e;
             last_diff = diff;
         }
-        return e;
+        return new OrbitalElements(e);
     }
 
     protected void calcHeliocentric(GregorianCalendar date)
