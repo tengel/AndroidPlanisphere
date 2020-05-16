@@ -7,7 +7,7 @@
     <string name="action_theme">主題</string>
     <string name="action_search">搜尋</string>
     <string name="action_settings">設定</string>
-    <string name="display_options">顯示選項</string>
+    <string name="display_options">顯示項目</string>
     <string name="theme">主題</string>
     <string name="ok">完成</string>
     <string name="cancel">取消</string>
@@ -56,10 +56,11 @@
     <string name="about_text"><![CDATA[
     <h1>星座盤</h1>
 
-   顯示恆星、星座和星球的簡易星座盤。
+   呈現太陽、月亮、恆星、星座和行星的簡易星座盤。
     <br/><br/>
 
-    使用功能表設定<em>日期 / 時間</em> 和 <em>地點</em>，也可由裝置提供定位服務。 <em>顯示項目</em> 讓你可以選擇是否顯示：
+    點一下顯示或隱藏工具列。使用功能表設定
+    <em>日期 / 時間</em> 和 <em>地點</em>，也可由裝置提供定位服務。 使用者可透過<em>顯示項目</em> 選擇是否顯示：
     <ul>
     <li>地平線（含羅盤方位）</li>
     <li>天球赤道</li>
@@ -68,9 +69,9 @@
     <li>赤道坐標格線</li>
     <li>星座線</li>
     <li>星座界線</li>
-    <li>星座名稱</li>
-    <li>太陽系（行星）</li>
-    <li>太陽系名稱（行星名稱）</li>
+    <li>星座名稱（語言可在<em>設定</em>中更改）</li>
+    <li>太陽系（太陽、月亮、行星）</li>
+    <li>太陽系名稱（行星名稱等等）</li>
     <li>恆星</li>
     </ul>
 
@@ -80,6 +81,11 @@
     <br/><br/>
     <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
     <br/><br/>
+
+
+    <h2>Privacy</h2>
+    此應用程式可取得使用者位置，以此位置計算星座盤。此程式不會搜集、儲存使用者裝置上的位置資訊，亦不會將此資訊分享給任何人。顯示選項和設定是唯一會儲存在使用者裝置上的資訊。沒有任何資訊會傳出裝置。此應用程式完全不會連上網路。
+
 
     <h2>授權條款</h2>
     Copyright (C) 2020 Timo Engel

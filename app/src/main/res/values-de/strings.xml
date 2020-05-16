@@ -56,14 +56,15 @@
     <string name="about_text"><![CDATA[
     <h1>Planisphäre</h1>
 
-    Eine einfache Sternkarte die Sterne, Sternbilder und Planeten zeigt.
-
+    Eine einfache Sternkarte die Sonne, Mond und Sterne sowie Sternbilder und
+    Planeten zeigt.
     <br/><br/>
 
-    Im Menü kann <em>Datum / Uhrzeit</em> und der <em>Standort</em> eingestellt
-    werden. Es kann auch der aktuelle Standort verwendet werden, der vom Gerät
-    ermittelt wurde. Unter <em>Anzeigeoptionen</em> können folgende Elemente
-    aktiviert oder deaktiviert werden:
+    Ein einfacher Fingertipp blendet die Toolbar ein oder aus. Im Menü kann
+    <em>Datum / Uhrzeit</em> und der <em>Standort</em> eingestellt werden. Es
+    kann auch der aktuelle Standort verwendet werden, der vom Gerät ermittelt
+    wurde. Unter <em>Anzeigeoptionen</em> können folgende Elemente aktiviert
+    oder deaktiviert werden:
     <ul>
     <li>Horizont (mit Himmelsrichtungen)</li>
     <li>Himmelsqäuator</li>
@@ -72,9 +73,9 @@
     <li>Äquatoriales Gradnetz</li>
     <li>Sternbilder</li>
     <li>Sternbildgrenzen</li>
-    <li>Sternbildnamen</li>
-    <li>Sonnensystem (Planeten)</li>
-    <li>Namen Sonnensystem (Namen der Planeten)</li>
+    <li>Sternbildnamen (Sprache kann unter <em>Einstellungen</em> geändert werden)</li>
+    <li>Sonnensystem (Sonne, Mond und Planeten)</li>
+    <li>Namen Sonnensystem (Namen der Planeten, etc)</li>
     <li>Sterne</li>
     </ul>
 
@@ -84,6 +85,16 @@
     <br/><br/>
     <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
     <br/><br/>
+
+
+    <h2>Privacy</h2>
+    Diese App kann Ihren Standort ermitteln. Der Standort wird verwendet um die
+    Sternkarte zu berechnen. Standortinformationen werden nicht auf dem Gerät
+    gesammelt oder gespeichert und an niemanden weitergegeben. Die Anzeigeoptionen
+    und Einstellungen sind die einzigen Information, die lokal auf dem Gerät
+    gespeichert werden. Keine Information verlässt jemals das Gerät. Diese App
+    verbindet sich unter keinen Umständen mit dem Internet.
+
 
     <h2>License</h2>
     Copyright (C) 2020 Timo Engel
@@ -101,6 +112,7 @@
     Sie sollten eine Kopie der GNU General Public License zusammen mit diesem
     Programm erhalten haben. Wenn nicht, siehe
     <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>.
+
 
     <h2>Credits</h2>
     Diese Software verwendet die folgenden Komponenten:

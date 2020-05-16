@@ -1,0 +1,5 @@
+* show sun and moon
+* single tap shows or hides the toolbar
+* the language for constellation names can be changed
+* Chinese and German translation
+* several fixes and improvements in handling of time and location

@@ -2,7 +2,7 @@ Privacy Policy
 Planisphere
 
 
-This App can access your location. The location is used calculate the star
+This App can access your location. The location is used to calculate the star
 chart.
 
 Location information is not collected or stored on your device and is not shared

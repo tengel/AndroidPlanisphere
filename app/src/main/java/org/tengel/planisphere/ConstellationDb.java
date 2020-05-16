@@ -150,6 +150,10 @@ public class ConstellationDb
             {
                 langIdx = 3;
             }
+            else if (lang.equals("zh"))
+            {
+                langIdx = 4;
+            }
             else
             {
                 langIdx = 1;
