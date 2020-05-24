@@ -23,11 +23,17 @@ apparent magnitude or choose the color theme. No Internet connection required.
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
       alt="Get it on F-Droid"
       height="75">](https://f-droid.org/packages/org.tengel.planisphere)
+[<img src="google-play-badge.png"
+      alt="Get it on Google Play"
+      height="75" >](https://play.google.com/store/apps/details?id=org.tengel.planisphere)
 
 
 ## Screenshots
 
 <img src="metadata/en-US/images/phoneScreenshots/screenshot_01.png" width="400"/>
+<img src="metadata/en-US/images/phoneScreenshots/screenshot_05.png" width="400"/>
+
+<img src="metadata/en-US/images/phoneScreenshots/screenshot_03.png" height="400"/>
 
 
 ## Third-party components
