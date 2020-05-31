@@ -79,6 +79,7 @@ public class MainActivity extends AppCompatActivity
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
 
+
             mDrawArea = findViewById(R.id.drawArea);
             mDrawArea.setActionBar(getSupportActionBar());
             LocationHandler.init(this);
@@ -132,6 +133,14 @@ public class MainActivity extends AppCompatActivity
                             mLocHandler.getIsGpsPosition());
         mEngine.update();
         mDrawArea.setObjects(mEngine.getObjects());
+        if (mSettings.getKeepScreenOn())
+        {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
+        else
+        {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
     }
 
     @Override

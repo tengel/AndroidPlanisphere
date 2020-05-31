@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import org.tengel.planisphere.R;
 import org.tengel.planisphere.Settings;
@@ -41,6 +42,8 @@ public class SettingsDialog extends DialogFragment
         View view = inflater.inflate(R.layout.settings_dialog, null);
         builder.setView(view);
         final Spinner spinner = (Spinner) view.findViewById(R.id.const_langauge);
+        final CheckBox keepScreen = (CheckBox) view.findViewById(R.id.keepScreenOn);
+        keepScreen.setChecked(Settings.instance().getKeepScreenOn());
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                                                                              R.array.const_language,
                                                                              android.R.layout.simple_spinner_item);
@@ -52,6 +55,7 @@ public class SettingsDialog extends DialogFragment
             public void onClick(DialogInterface dialog, int id)
             {
                 Settings.instance().setConstLanguage(spinner.getSelectedItemPosition());
+                Settings.instance().setKeepScreenOn(keepScreen.isChecked());
                 mListener.update();
             }
         });

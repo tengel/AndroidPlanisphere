@@ -52,6 +52,7 @@
     <string name="lang_english">Englisch</string>
     <string name="lang_german">Deutsch</string>
     <string name="lang_chinese">Chinesisch</string>
+    <string name="keep_screen_on">Display nicht ausschalten</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphäre</h1>
