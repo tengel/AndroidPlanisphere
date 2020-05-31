@@ -25,6 +25,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 import org.tengel.planisphere.R;
@@ -35,7 +37,9 @@ import androidx.fragment.app.DialogFragment;
 
 public class TimeDialog extends DialogFragment
 {
-    private UpdateListener mListener;
+    private SetTimeListener mListener;
+    private TimePicker mTp;
+    private DatePicker mDp;
 
     @Override
     public void onAttach(Context context)
@@ -43,12 +47,12 @@ public class TimeDialog extends DialogFragment
         super.onAttach(context);
         try
         {
-            mListener = (UpdateListener) context;
+            mListener = (SetTimeListener) context;
         }
         catch (ClassCastException e)
         {
             throw new ClassCastException(context.toString()
-                    + " must implement UpdateListener");
+                    + " must implement SetTimeListener");
         }
     }
 
@@ -61,38 +65,61 @@ public class TimeDialog extends DialogFragment
         View view = inflater.inflate(R.layout.time_dialog, null);
         builder.setView(view);
         GregorianCalendar currTime = Settings.instance().getCurrentTime();
-        final TimePicker tp = view.findViewById(R.id.timePicker);
-        final DatePicker dp = view.findViewById(R.id.datePicker);
-        tp.setIs24HourView(true);
-        tp.setCurrentHour(currTime.get(Calendar.HOUR_OF_DAY));
-        tp.setCurrentMinute(currTime.get(Calendar.MINUTE));
-        dp.init(currTime.get(Calendar.YEAR), currTime.get(Calendar.MONTH),
-                currTime.get(Calendar.DAY_OF_MONTH), null);
-        Button setNow = view.findViewById(R.id.setToNow);
-        setNow.setOnClickListener(new View.OnClickListener()
+        mTp = view.findViewById(R.id.timePicker);
+        mDp = view.findViewById(R.id.datePicker);
+        final CheckBox autoUpdateCb = view.findViewById(R.id.timeAutoUpdate);
+        mTp.setIs24HourView(true);
+        mTp.setCurrentHour(currTime.get(Calendar.HOUR_OF_DAY));
+        mTp.setCurrentMinute(currTime.get(Calendar.MINUTE));
+        mDp.init(currTime.get(Calendar.YEAR), currTime.get(Calendar.MONTH),
+                 currTime.get(Calendar.DAY_OF_MONTH), null);
+        final Button setNowBtn = view.findViewById(R.id.setToNow);
+        setNowBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                GregorianCalendar now = new GregorianCalendar();
-                tp.setCurrentHour(now.get(Calendar.HOUR_OF_DAY));
-                tp.setCurrentMinute(now.get(Calendar.MINUTE));
-                dp.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH),
-                        now.get(Calendar.DAY_OF_MONTH), null);
+                setToNow();
             }
         });
+
+        autoUpdateCb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked)
+            {
+                mTp.setEnabled(!isChecked);
+                mDp.setEnabled(!isChecked);
+                setNowBtn.setEnabled(!isChecked);
+                if (isChecked)
+                {
+                   setToNow();
+                }
+            }
+        });
+        autoUpdateCb.setChecked(Settings.instance().getAutoUpdate());
 
         builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 Settings.instance().setCurrentTime(new GregorianCalendar(
-                        dp.getYear(), dp.getMonth(), dp.getDayOfMonth(),
-                        tp.getCurrentHour(), tp.getCurrentMinute()));
-                mListener.update();
+                        mDp.getYear(), mDp.getMonth(), mDp.getDayOfMonth(),
+                        mTp.getCurrentHour(), mTp.getCurrentMinute()));
+                Settings.instance().setAutoUpdate(autoUpdateCb.isChecked());
+                mListener.changeAutoUpdate(autoUpdateCb.isChecked());
             }
         });
 
         builder.setNegativeButton(R.string.cancel, null);
         return builder.create();
+    }
+
+    void setToNow()
+    {
+        GregorianCalendar now = new GregorianCalendar();
+        mTp.setCurrentHour(now.get(Calendar.HOUR_OF_DAY));
+        mTp.setCurrentMinute(now.get(Calendar.MINUTE));
+        mDp.init(now.get(Calendar.YEAR), now.get(Calendar.MONTH),
+                 now.get(Calendar.DAY_OF_MONTH), null);
     }
 }

@@ -2,6 +2,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <CheckBox
+        android:id="@+id/timeAutoUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/time_auto_update" />
     <Button
         android:id="@+id/setToNow"
         android:layout_width="match_parent"

@@ -48,6 +48,7 @@ public class Settings
     private GregorianCalendar mCurrentTime;
     private boolean mToolbarIsVisible = true;
     private boolean mKeepScreenOn;
+    private boolean mAutoUpdate;
 
     public static Settings instance() throws NullPointerException
     {
@@ -91,6 +92,7 @@ public class Settings
         mLongitude = mPref.getFloat("longitude", 9.49f);
         mConstLanguage = mPref.getInt("constLanguage", 5);
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
+        mAutoUpdate = mPref.getBoolean("autoUpdate", true);
 
         mTranslations.put(Mercury.sName, context.getString(R.string.planet_mercury));
         mTranslations.put(Venus.sName, context.getString(R.string.planet_venus));
@@ -128,6 +130,7 @@ public class Settings
         spe.putFloat("longitude", mLongitude);
         spe.putInt("constLanguage", mConstLanguage);
         spe.putBoolean("keepScreenOn", mKeepScreenOn);
+        spe.putBoolean("autoUpdate", mAutoUpdate);
         spe.apply();
     }
 
@@ -390,6 +393,17 @@ public class Settings
     public void setKeepScreenOn(boolean keepScreenOn)
     {
         mKeepScreenOn = keepScreenOn;
+        store();
+    }
+
+    public boolean getAutoUpdate()
+    {
+        return mAutoUpdate;
+    }
+
+    public void setAutoUpdate(boolean enabled)
+    {
+        mAutoUpdate = enabled;
         store();
     }
 }

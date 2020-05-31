@@ -53,6 +53,7 @@
     <string name="lang_german">German</string>
     <string name="lang_chinese">Chinese</string>
     <string name="keep_screen_on">Keep screen on</string>
+    <string name="time_auto_update">Keep chart updated to current time</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphere</h1>

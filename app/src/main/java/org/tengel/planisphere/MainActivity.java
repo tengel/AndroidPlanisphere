@@ -22,6 +22,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -32,21 +34,35 @@ import org.tengel.planisphere.dialog.InfoDialog;
 import org.tengel.planisphere.dialog.LocationDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
 import org.tengel.planisphere.dialog.SetLocationListener;
+import org.tengel.planisphere.dialog.SetTimeListener;
 import org.tengel.planisphere.dialog.SettingsDialog;
 import org.tengel.planisphere.dialog.ThemeDialog;
 import org.tengel.planisphere.dialog.TimeDialog;
 import org.tengel.planisphere.dialog.UpdateListener;
+import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity
-        implements UpdateListener, SetLocationListener
+        implements UpdateListener, SetLocationListener, SetTimeListener
 {
+    public static String LOG_TAG = "Planisphere";
+    private static long UPDATE_DELAY_MS = 60000;
     private Engine mEngine;
     private DrawArea mDrawArea;
     private Settings mSettings;
     private ConstellationDb mConstDb;
     private Catalog mCatalog;
     private LocationHandler mLocHandler;
-    public static String LOG_TAG = "Planisphere";
+    private boolean mIsRunningUpdateTask = false;
+    private Handler mTimerHandler = new Handler(Looper.getMainLooper());
+    private Runnable mAutoUpdateTask = new Runnable() {
+        public void run() {
+            android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_BACKGROUND);
+            Log.i(LOG_TAG, "running AutoUpdateTask");
+            mSettings.setCurrentTime(new GregorianCalendar());
+            update();
+            mTimerHandler.postDelayed(mAutoUpdateTask, UPDATE_DELAY_MS);
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -78,7 +94,6 @@ public class MainActivity extends AppCompatActivity
             setContentView(R.layout.activity_main);
             Toolbar toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
-
 
             mDrawArea = findViewById(R.id.drawArea);
             mDrawArea.setActionBar(getSupportActionBar());
@@ -212,6 +227,54 @@ public class MainActivity extends AppCompatActivity
         {
             mLocHandler.disableGps(latitude, longitude);
             mEngine.setLocation(latitude, longitude, false);
+        }
+        update();
+    }
+
+    private void startTimer()
+    {
+        if (!mIsRunningUpdateTask)
+        {
+            mIsRunningUpdateTask = true;
+            mTimerHandler.postDelayed(mAutoUpdateTask, UPDATE_DELAY_MS);
+        }
+    }
+
+    private void stopTimer()
+    {
+        mTimerHandler.removeCallbacks(mAutoUpdateTask);
+        mIsRunningUpdateTask = false;
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        stopTimer();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        if (mSettings.getAutoUpdate())
+        {
+            mSettings.setCurrentTime(new GregorianCalendar());
+            update();
+            startTimer();
+        }
+    }
+
+    @Override
+    public void changeAutoUpdate(boolean enabled)
+    {
+        if (enabled)
+        {
+            startTimer();
+        }
+        else
+        {
+            stopTimer();
         }
         update();
     }
