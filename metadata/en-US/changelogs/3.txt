@@ -1,0 +1,3 @@
+* add option to keep the screen on
+* add option to keep the chart updated to the current time
+* Spanish translation
