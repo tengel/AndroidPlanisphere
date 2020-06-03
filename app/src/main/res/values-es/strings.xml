@@ -1,0 +1,147 @@
+<resources>
+  <string name="app_name">Planisferio</string>
+  <string name="action_time">Fecha / Hora</string>
+  <string name="action_location">Localización</string>
+  <string name="action_about">Acerca de</string>
+  <string name="action_magnitude">Límite de luminosidad</string>
+  <string name="action_theme">Esquema de colores</string>
+  <string name="action_search">Buscar</string>
+  <string name="action_settings">Ajustes</string>
+  <string name="display_options">Opciones de visualización</string>
+  <string name="theme">Tema</string>
+  <string name="ok">Aceptar</string>
+  <string name="cancel">Cancelar</string>
+  <string name="max_magnitude">Max. magnitud aparente (mag)</string>
+  <string name="set_to_now">Usar la hora actual</string>
+  <string name="use_gps">Usar GPS</string>
+  <string name="gps_no_permission">App no tiene permiso para acceder a GPS</string>
+  <string name="gps_disabled">GPS está desactivado</string>
+  <string name="gps_waiting">Esperando la posición del GPS</string>
+  <string name="gps_received">Posición recibida del GPS</string>
+  <string name="gps_received_new">Recibir nueva posición de GPS</string>
+  <string name="latitude">Latitud (-90..90):</string>
+  <string name="longitude">Longitud (-180..180):</string>
+  <string name="theme_light">Claro</string>
+  <string name="theme_dark">Oscuro</string>
+  <string name="theme_night">Noche</string>
+  <string name="horizon">Horizonte</string>
+  <string name="equator">Ecuador celeste</string>
+  <string name="ecliptic">Eclíptica</string>
+  <string name="azimuthal_grid">Cuadrilla cenital</string>
+  <string name="equatorial_grid">Cuadrilla ecuatorial</string>
+  <string name="constellation_lines">Líneas de constelación</string>
+  <string name="constellation_boundaries">Regiones de la constelación</string>
+  <string name="constellation_names">Nombres de la constelación</string>
+  <string name="solar_system">Sistema solar</string>
+  <string name="solar_names">Nombres del sistema solar</string>
+  <string name="stars">Estrellas</string>
+  <string name="sun">Sol</string>
+  <string name="moon">Luna</string>
+  <string name="planet_mercury">Mercurio</string>
+  <string name="planet_venus">Venus</string>
+  <string name="planet_earth">Tierra</string>
+  <string name="planet_mars">Marte</string>
+  <string name="planet_jupiter">Júpiter</string>
+  <string name="planet_saturn">Saturno</string>
+  <string name="planet_uranus">Urano</string>
+  <string name="planet_neptune">Neptuno</string>
+  <string name="const_language">Idioma para nombres de constelaciones:</string>
+  <string name="lang_abr">Abreviatura</string>
+  <string name="lang_latin">Latin</string>
+  <string name="lang_sysdefault">Idioma del sistema</string>
+  <string name="lang_english">Inglés</string>
+  <string name="lang_german">Alemán</string>
+  <string name="lang_chinese">Chino</string>
+  <string name="lang_spanish">El Español</string>
+  <string name="keep_screen_on">Keep screen on</string>
+  <string name="time_auto_update">Keep chart updated to current time</string>
+
+  <string name="about_text"><![CDATA[
+    <h1>Planisferio</h1>
+
+    Un simple mapa estelar que muestra las estrellas, constelaciones y planetas.
+    <br/><br/>
+
+    Un solo toque muestra u oculta la barra de tareas. Usa el menú de opciones para
+    establecer <em>Fecha / Hora</em> y <em>Ubicación</em>, o usa la ubicación proporcionada
+    por el equipo. Las <em>Opciones de visualización</em> permiten activar o desactivar
+    los elementos elementos del mapa:
+    <ul>
+    <li>horizonte (con direcciones cardinales)</li>
+    <li>ecuador celeste</li>
+    <li>eclíptica</li>
+    <li>cuadrilla cenital</li>
+    <li>cuadrilla ecuatorial</li>
+    <li>línea de constelación</li>
+    <li>regiones de constelación</li>
+    <li>nombres de constelación (el idiomaa puede cambiarse en los <em>Ajustes</em>)</li>
+    <li>sistema solar (sol, luna y planetas)</li>
+    <li>nombres del sistema solar (nombres de planetas, etcétera)</li>
+    <li>estrellas</li>
+    </ul>
+
+
+    <br/>
+    Versión: {VERSION}
+    <br/><br/>
+    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+    <br/><br/>
+
+
+    <h2>Privacy</h2>
+    Esta aplicación puede acceder a su ubicación. La ubicación se utiliza para calcular
+    el mapa estelar. No se recopilan datos de localización ni se almacenan en su dispositivo
+    ni se comparten con nadie. Los ajustes generales y de visualización son los únicos
+    que se almacenan localmente en su dispositivo. Ninguna información sale nunca
+    de tu dispositivo. Esta aplicación tampoco se conecta a Internet en absoluto.
+
+
+    <h2>Licencia</h2>
+    Copyright (C) 2020 Timo Engel
+    <br/><br/>
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    <br/><br/>
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    <br/><br/>
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see
+    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+
+    <h2>Créditos</h2>
+    Este software incorpora los siguientes componentes de terceros:
+    <dl>
+    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+        (Astronomical Data Center, NSSDC/ADC, 1991)
+        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+    </dd>
+    <dt>constellation_lines.dat</dt>
+    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+        CC BY-SA 4.0,
+        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+    </dd>
+    <dt>constellation_names.txt</dt>
+    <dd>The Constellations, Unión Astronómica Internacional,
+        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+        Wikipedia, Liste der Sternbilder,
+        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+    </dd>
+    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+    <dd>Jet Propulsion Laboratory, HORIZONS System,
+        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+    </dd>
+    <dt>Calculations based on</dt>
+    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+    </dd>
+    </dl>
+
+     ]]></string>
+
+</resources>

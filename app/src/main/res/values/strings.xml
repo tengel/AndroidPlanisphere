@@ -52,6 +52,7 @@
     <string name="lang_english">English</string>
     <string name="lang_german">German</string>
     <string name="lang_chinese">Chinese</string>
+    <string name="lang_spanish">Spanish</string>
     <string name="keep_screen_on">Keep screen on</string>
     <string name="time_auto_update">Keep chart updated to current time</string>
 

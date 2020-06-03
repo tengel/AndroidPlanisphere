@@ -1,0 +1,15 @@
+La aplicación muestra el cielo para un punto de tiempo definido por el usuario y una ubicación arbitraria en la tierra:
+
+- el sol y la luna
+- más de 9000 estrellas
+- líneas de constelación
+- nombres de constelaciones en inglés, latín o bajo abreviatura
+- límites de la constelación
+- los ocho planetas del sistema solar
+- red azimutal
+- red ecuatorial
+- horizonte
+- eclíptica
+- ecuador celestial
+
+La ubicación puede ser introducida manualmente o es proporcionada por el dispositivo. Hay varias opciones para activar o desactivar elementos del gráfico, seleccionar la máxima magnitud aparente o elegir el tema del color. No se requiere una conexión a Internet.
