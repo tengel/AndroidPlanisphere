@@ -1,0 +1,148 @@
+<resources>
+    <string name="app_name">Planisfære</string>
+    <string name="action_time">Dato / Klokkeslett</string>
+    <string name="action_location">Sted</string>
+    <string name="action_about">Om Planisfære</string>
+    <string name="action_magnitude">Maks. magnitude</string>
+    <string name="action_theme">Tema</string>
+    <string name="action_search">Søk</string>
+    <string name="action_settings">Innstillinger</string>
+    <string name="display_options">Visningsalternativer</string>
+    <string name="theme">Tema</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Avbryt</string>
+    <string name="max_magnitude">Maks. tilsynelat. magnitude (mag)</string>
+    <string name="set_to_now">Sett tid til nå</string>
+    <string name="use_gps">Bruk GPS</string>
+    <string name="gps_no_permission">App har ingen tillatelse for adgang til GPS</string>
+    <string name="gps_disabled">Enhet har GPS deaktivert</string>
+    <string name="gps_waiting">Venter på posisjon fra GPS</string>
+    <string name="gps_received">Mottatt GPS-posisjon</string>
+    <string name="gps_received_new">Mottatt ny GPS-posisjon</string>
+    <string name="latitude">Breddegrad (-90..90):</string>
+    <string name="longitude">Lengdegrad (-180..180):</string>
+    <string name="theme_light">Lyst</string>
+    <string name="theme_dark">Mørkt</string>
+    <string name="theme_night">Natt</string>
+    <string name="horizon">Horisont</string>
+    <string name="equator">Himmelekvator</string>
+    <string name="ecliptic">Ekliptikken</string>
+    <string name="azimuthal_grid">Asimutnett</string>
+    <string name="equatorial_grid">Ekvatorialnett</string>
+    <string name="constellation_lines">Stjernebilder</string>
+    <string name="constellation_boundaries">Stjernebildegrenser</string>
+    <string name="constellation_names">Stjernebildenavn</string>
+    <string name="solar_system">Solsystem</string>
+    <string name="solar_names">Solsystemnavn</string>
+    <string name="stars">Stjerner</string>
+    <string name="sun">Solen</string>
+    <string name="moon">Månen</string>
+    <string name="planet_mercury">Merkur</string>
+    <string name="planet_venus">Venus</string>
+    <string name="planet_earth">Jorden</string>
+    <string name="planet_mars">Mars</string>
+    <string name="planet_jupiter">Jupiter</string>
+    <string name="planet_saturn">Saturn</string>
+    <string name="planet_uranus">Uranus</string>
+    <string name="planet_neptune">Neptun</string>
+    <string name="const_language">Språk for stjernebildenavn:</string>
+    <string name="lang_abr">Forkortelse</string>
+    <string name="lang_latin">Latin</string>
+    <string name="lang_sysdefault">Systemets språk</string>
+    <string name="lang_english">Engelsk</string>
+    <string name="lang_german">Tysk</string>
+    <string name="lang_chinese">Kinesisk</string>
+    <string name="lang_spanish">Spansk</string>
+    <string name="keep_screen_on">Hold skjermen på</string>
+    <string name="time_auto_update">Hold stjernekart oppdatert til gjeldende tid</string>
+
+    <string name="about_text"><![CDATA[
+    <h1>Planisphere</h1>
+
+    A simple star chart that shows sun, moon and stars as well as constellations
+    and planets.
+    <br/><br/>
+
+    Single tap shows or hides the toolbar. Use the options menu, to set
+    <em>Date / Time</em> and <em>Location</em>, or use the location provided by
+    the device. The <em>Display options</em> allows you to enable or disable the
+    elements of the chart:
+    <ul>
+    <li>horizon (with cardinal directions)</li>
+    <li>celestical equator</li>
+    <li>ecliptic</li>
+    <li>azimuthal grid</li>
+    <li>equatorial grid</li>
+    <li>constellation lines</li>
+    <li>constellation boundaries</li>
+    <li>constellation names (language can be changed in <em>Settings</em>)</li>
+    <li>solar system (sun, moon and planets)</li>
+    <li>solar system names (names of planets, etc)</li>
+    <li>stars</li>
+    </ul>
+
+
+    <br/>
+    Version: {VERSION}
+    <br/><br/>
+    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+    <br/><br/>
+
+
+    <h2>Privacy</h2>
+    This App can access your location. The location is used to calculate the star
+    chart. Location information is not collected or stored on your device and is
+    not shared with anyone. Display options and settings are the only
+    information stored locally on your device. No information does ever leave
+    your device. This app does not connect to the Internet at all.
+
+
+    <h2>License</h2>
+    Copyright (C) 2020 Timo Engel
+    <br/><br/>
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    <br/><br/>
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    <br/><br/>
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see
+    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+
+    <h2>Credits</h2>
+    This software incorporates the following third-party components:
+    <dl>
+    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+        (Astronomical Data Center, NSSDC/ADC, 1991)
+        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+    </dd>
+    <dt>constellation_lines.dat</dt>
+    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+        CC BY-SA 4.0,
+        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+    </dd>
+    <dt>constellation_names.txt</dt>
+    <dd>The Constellations, International Astronomical Union,
+        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+        Wikipedia, Liste der Sternbilder,
+        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+    </dd>
+    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+    <dd>Jet Propulsion Laboratory, HORIZONS System,
+        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+    </dd>
+    <dt>Calculations based on</dt>
+    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+    </dd>
+    </dl>
+
+     ]]></string>
+
+</resources>
