@@ -44,6 +44,8 @@ public class SettingsDialog extends DialogFragment
         final Spinner spinner = (Spinner) view.findViewById(R.id.const_langauge);
         final CheckBox keepScreen = (CheckBox) view.findViewById(R.id.keepScreenOn);
         keepScreen.setChecked(Settings.instance().getKeepScreenOn());
+        final CheckBox visiblePlanets = (CheckBox) view.findViewById(R.id.onlyVisiblePlanets);
+        visiblePlanets.setChecked(Settings.instance().getOnlyVisiblePlanets());
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this.getContext(),
                                                                              R.array.const_language,
                                                                              android.R.layout.simple_spinner_item);
@@ -56,6 +58,7 @@ public class SettingsDialog extends DialogFragment
             {
                 Settings.instance().setConstLanguage(spinner.getSelectedItemPosition());
                 Settings.instance().setKeepScreenOn(keepScreen.isChecked());
+                Settings.instance().setOnlyVisiblePlanets(visiblePlanets.isChecked());
                 mListener.update();
             }
         });

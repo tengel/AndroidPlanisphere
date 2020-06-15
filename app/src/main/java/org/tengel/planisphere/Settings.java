@@ -50,6 +50,7 @@ public class Settings
     private boolean mKeepScreenOn;
     private boolean mAutoUpdate;
     private double[] mNearbyAzEle = null;
+    private boolean mOnlyVisiblePlanets;
 
     public static Settings instance() throws NullPointerException
     {
@@ -94,6 +95,7 @@ public class Settings
         mConstLanguage = mPref.getInt("constLanguage", 6);
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
+        mOnlyVisiblePlanets = mPref.getBoolean("onlyVisiblePlanets", false);
 
         mTranslations.put(Mercury.sName, context.getString(R.string.planet_mercury));
         mTranslations.put(Venus.sName, context.getString(R.string.planet_venus));
@@ -132,6 +134,7 @@ public class Settings
         spe.putInt("constLanguage", mConstLanguage);
         spe.putBoolean("keepScreenOn", mKeepScreenOn);
         spe.putBoolean("autoUpdate", mAutoUpdate);
+        spe.putBoolean("onlyVisiblePlanets", mOnlyVisiblePlanets);
         spe.apply();
     }
 
@@ -416,5 +419,16 @@ public class Settings
     public void setNearbyAzEle(double[] azEle)
     {
         mNearbyAzEle = azEle;
+    }
+
+    public boolean getOnlyVisiblePlanets()
+    {
+        return mOnlyVisiblePlanets;
+    }
+
+    public void setOnlyVisiblePlanets(boolean onlyVisiblePlanets)
+    {
+        mOnlyVisiblePlanets = onlyVisiblePlanets;
+        store();
     }
 }

@@ -20,4 +20,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/keep_screen_on" />
+
+    <CheckBox
+        android:id="@+id/onlyVisiblePlanets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/onlyVisiblePlanets" />
 </LinearLayout>

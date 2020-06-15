@@ -75,6 +75,7 @@
     <string name="star">恆星</string>
     <string name="planet">行星</string>
     <string name="unknown">未知</string>
+    <string name="onlyVisiblePlanets">僅顯示可見行星</string>
 
     <string name="about_text"><![CDATA[
     <h1>星座盤</h1>

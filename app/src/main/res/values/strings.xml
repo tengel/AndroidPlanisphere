@@ -75,6 +75,7 @@
     <string name="star">Star</string>
     <string name="planet">Planet</string>
     <string name="unknown">unknown</string>
+    <string name="onlyVisiblePlanets">Only show visible planets</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphere</h1>

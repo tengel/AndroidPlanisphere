@@ -111,7 +111,12 @@ public class Engine {
             {
                 p.calcHeliocentric(mTime);
                 p.calcGeocentric(Planet.sEarth);
-                mObjects.add(new ChartPlanet(this, p, mSettings.isSolarNamesEnabled()));
+                ChartPlanet cp = new ChartPlanet(this, p, mSettings.isSolarNamesEnabled());
+                if (mSettings.getOnlyVisiblePlanets() == false ||
+                    (p.mApparentMagnitude <= maxMagnitude && cp.mAzEle[1] >= 0))
+                {
+                    mObjects.add(cp);
+                }
             }
             mObjects.add(new Sun(this, mSettings.isSolarNamesEnabled()));
             mObjects.add(new Moon(this, mSettings.isSolarNamesEnabled()));
