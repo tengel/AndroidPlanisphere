@@ -55,6 +55,26 @@
     <string name="lang_spanish">Spanisch</string>
     <string name="keep_screen_on">Display nicht ausschalten</string>
     <string name="time_auto_update">Sternkarte automatisch auf aktuelle Zeit nachführen</string>
+    <string name="direction_n">N</string>
+    <string name="direction_e">O</string>
+    <string name="direction_s">S</string>
+    <string name="direction_w">W</string>
+    <string name="objects_nearby">Objekte in der Nähe</string>
+    <string name="azimuth">Azimut</string>
+    <string name="elevation">Höhe</string>
+    <string name="type">Typ</string>
+    <string name="apparent_magnitude">Scheinbare Helligkeit</string>
+    <string name="RA">Rektaszension</string>
+    <string name="DEC">Deklination</string>
+    <string name="helio_ecliptic_lat">Heliozentrische ekliptikale Breite</string>
+    <string name="helio_ecliptic_lon">Heliozentrische ekliptikale Länge</string>
+    <string name="distance_sun">Entfernung zur Sonne</string>
+    <string name="geo_ecliptic_lat">Geozentrische ekliptikale Breite</string>
+    <string name="geo_ecliptic_lon">Geozentrische ekliptikale Länge</string>
+    <string name="distance_earth">Entfernung zur Erde</string>
+    <string name="star">Stern</string>
+    <string name="planet">Planet</string>
+    <string name="unknown">unbekannt</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphäre</h1>

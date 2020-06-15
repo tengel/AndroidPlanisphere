@@ -49,6 +49,7 @@ public class Settings
     private boolean mToolbarIsVisible = true;
     private boolean mKeepScreenOn;
     private boolean mAutoUpdate;
+    private double[] mNearbyAzEle = null;
 
     public static Settings instance() throws NullPointerException
     {
@@ -405,5 +406,15 @@ public class Settings
     {
         mAutoUpdate = enabled;
         store();
+    }
+
+    public double[] getNearbyAzEle()
+    {
+        return mNearbyAzEle;
+    }
+
+    public void setNearbyAzEle(double[] azEle)
+    {
+        mNearbyAzEle = azEle;
     }
 }

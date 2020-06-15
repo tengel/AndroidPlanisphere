@@ -37,6 +37,7 @@ public class DrawArea extends View
     private double mScrollOffsetX = 0;
     private double mScrollOffsetY = 0;
     private ActionBar mActionBar;
+    private MainActivity mMainActivity;
 
     private static int BORDER = 10;
 
@@ -106,6 +107,32 @@ public class DrawArea extends View
         return horizontal2area(azEle[0], azEle[1]);
     }
 
+    /**
+     * Convert paint area coordinates to horizontal coordinates
+     * Returns (azimuth, elevation)
+     */
+    public double[] area2horizontal(float x, float y)
+    {
+        int contentWidth = getWidth();
+        int contentHeight = getHeight();
+        double hpixel = (mSize * mScaleFactor) / 2.0 / 90.0;
+        double xoff = x - (contentWidth / 2.0) + mScrollOffsetX;
+        double yoff = y - (contentHeight / 2.0) + mScrollOffsetY;
+        double hy = Math.sqrt(xoff*xoff + yoff*yoff);
+        double az = Math.toDegrees(Math.asin(xoff / hy));
+        if (yoff < 0)
+        {
+            az = 180 - az;
+        }
+        else if (xoff < 0)
+        {
+            az = 360 + az;
+        }
+        double ele = (90 - (hy / hpixel));
+        double [] rc = {az, ele};
+        return rc;
+    }
+
     public int size()
     {
         return mSize;
@@ -127,6 +154,11 @@ public class DrawArea extends View
         {
             mActionBar.hide();
         }
+    }
+
+    public void setMainActivity(MainActivity m)
+    {
+        mMainActivity = m;
     }
 
     @Override
@@ -164,8 +196,10 @@ public class DrawArea extends View
         @Override
         public void onLongPress(MotionEvent e)
         {
-            //Log.d(MainActivity.LOG_TAG, "onLongPress");
-            super.onLongPress(e);
+            if (mMainActivity != null)
+            {
+                mMainActivity.showNearbyObjects(area2horizontal(e.getX(), e.getY()));
+            }
         }
 
         @Override

@@ -81,7 +81,7 @@ class Catalog
         public Entry(String s)
         {
             hr = Integer.valueOf(substr(s, 0, 4).trim());
-            name = substr(s, 5, 14);
+            name = substr(s, 5, 14).trim().replaceAll(" +", " ");
             DM = substr(s, 14, 25);
             HD = substr(s, 25, 31);
             SAO = substr(s, 31 ,37);

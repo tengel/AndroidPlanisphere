@@ -20,6 +20,7 @@ package org.tengel.planisphere;
 import android.app.Activity;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.LinkedHashSet;
 import java.util.Locale;
 import java.util.Vector;
 
@@ -152,6 +153,28 @@ public class Engine {
     public Activity getActivity()
     {
         return mActivity;
+    }
+
+    public ChartObject[] findObjectsNear(double[] azEle)
+    {
+        LinkedHashSet<ChartObject> objects = new LinkedHashSet<>();
+        double distance = 1;
+        while (objects.size() < 10 && distance < 90)
+        {
+            for (ChartObject co : mObjects)
+            {
+                if (co.getType() != ObjectType.OTHER &&
+                    azEle[0] >= co.getAzimuth() - distance &&
+                    azEle[0] <= co.getAzimuth() + distance &&
+                    azEle[1] >= co.getElevation() - distance &&
+                    azEle[1] <= co.getElevation() + distance)
+                {
+                    objects.add(co);
+                }
+            }
+            distance += 1;
+        }
+        return objects.toArray(new ChartObject[0]);
     }
 
 }

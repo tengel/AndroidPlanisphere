@@ -33,16 +33,22 @@ import org.tengel.planisphere.dialog.DisplayOptionsDialog;
 import org.tengel.planisphere.dialog.InfoDialog;
 import org.tengel.planisphere.dialog.LocationDialog;
 import org.tengel.planisphere.dialog.MagnitudeDialog;
+import org.tengel.planisphere.dialog.ObjectDetailsDialog;
+import org.tengel.planisphere.dialog.ObjectDetailsListener;
+import org.tengel.planisphere.dialog.ObjectsNearbyDialog;
 import org.tengel.planisphere.dialog.SetLocationListener;
 import org.tengel.planisphere.dialog.SetTimeListener;
 import org.tengel.planisphere.dialog.SettingsDialog;
 import org.tengel.planisphere.dialog.ThemeDialog;
 import org.tengel.planisphere.dialog.TimeDialog;
 import org.tengel.planisphere.dialog.UpdateListener;
+import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity
-        implements UpdateListener, SetLocationListener, SetTimeListener
+        implements UpdateListener, SetLocationListener, SetTimeListener,
+                   ObjectDetailsListener
 {
     public static String LOG_TAG = "Planisphere";
     private static long UPDATE_DELAY_MS = 60000;
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity
     private Catalog mCatalog;
     private LocationHandler mLocHandler;
     private boolean mIsRunningUpdateTask = false;
+    private ChartObject[] mNearbyObjects = null;
     private Handler mTimerHandler = new Handler(Looper.getMainLooper());
     private Runnable mAutoUpdateTask = new Runnable() {
         public void run() {
@@ -97,6 +104,7 @@ public class MainActivity extends AppCompatActivity
 
             mDrawArea = findViewById(R.id.drawArea);
             mDrawArea.setActionBar(getSupportActionBar());
+            mDrawArea.setMainActivity(this);
             LocationHandler.init(this);
             mLocHandler = LocationHandler.instance();
 
@@ -131,6 +139,11 @@ public class MainActivity extends AppCompatActivity
 
             update();
 
+            double[] nearbyAzEle = Settings.instance().getNearbyAzEle();
+            if (nearbyAzEle != null)
+            {
+                mNearbyObjects = mEngine.findObjectsNear(nearbyAzEle);
+            }
         } catch (Exception e)
         {
             Log.e(LOG_TAG, Log.getStackTraceString(e));
@@ -277,6 +290,94 @@ public class MainActivity extends AppCompatActivity
             stopTimer();
         }
         update();
+    }
+
+    public void showNearbyObjects(double[] azEle)
+    {
+        Settings.instance().setNearbyAzEle(azEle);
+        mNearbyObjects = mEngine.findObjectsNear(azEle);
+        ArrayList<String> nameArray = new ArrayList<>();
+        for (ChartObject co : mNearbyObjects)
+        {
+            nameArray.add(co.getText());
+        }
+        Bundle data = new Bundle();
+        data.putStringArrayList("nameArray", nameArray);
+        data.putDouble("azimuth", azEle[0]);
+        data.putDouble("elevation", azEle[1]);
+        ObjectsNearbyDialog d = new ObjectsNearbyDialog();
+        d.setArguments(data);
+        d.show(getSupportFragmentManager(), "ObjectsNearbyDialog");
+    }
+
+    @Override
+    public void showObjectDetails(int idx)
+    {
+        ChartObject chartObject = mNearbyObjects[idx];
+        Bundle data = new Bundle();
+        ArrayList<String> links = new ArrayList<>();
+        ArrayList<String> keys = new ArrayList<>();
+        ArrayList<String> values = new ArrayList<>();
+        keys.add(getString(R.string.type));
+        values.add(String.valueOf(chartObject.getTypeString()));
+        keys.add(getString(R.string.azimuth));
+        values.add(String.format(Locale.getDefault(), "%.1f°", chartObject.getAzimuth()));
+        keys.add(getString(R.string.elevation));
+        values.add(String.format(Locale.getDefault(), "%.1f°", chartObject.getElevation()));
+        keys.add(getString(R.string.apparent_magnitude));
+        values.add(String.format(Locale.getDefault(), "%.1f mag", chartObject.getApparentMagnitude()));
+        if (chartObject.getType() == ObjectType.STAR)
+        {
+            Catalog.Entry ce = ((Star) chartObject).getCatalogEntry();
+            keys.add(getString(R.string.RA));
+            values.add(String.format(Locale.getDefault(), "%.4f°", ce.rightAscension));
+            keys.add(getString(R.string.DEC));
+            values.add(String.format(Locale.getDefault(), "%.4f°", ce.declination));
+            links.add(String.format(Locale.US,
+                    "<a href=\"https://simbad.u-strasbg.fr/simbad/sim-id?Ident=HR+%d\">&#8599; SIMBAD</a>",
+                    ce.hr));
+            links.add(String.format(Locale.US,
+                    "<a href=\"https://m.wikidata.org/w/index.php?search=%%22HR+%d%%22\">&#8599; Wikidata</a>",
+                    ce.hr));
+        }
+        else if (chartObject.getType() == ObjectType.PLANET)
+        {
+            Planet p = ((ChartPlanet) chartObject).getPlanet();
+            keys.add(getString(R.string.helio_ecliptic_lat));
+            values.add(String.format(Locale.getDefault(), "%.4f°", p.mHelio_lat));
+            keys.add(getString(R.string.helio_ecliptic_lon));
+            values.add(String.format(Locale.getDefault(), "%.4f°", p.mHelio_lon));
+            keys.add(getString(R.string.distance_sun));
+            values.add(String.format(Locale.getDefault(), "%.4f AU", p.mDistance_sun));
+            keys.add(getString(R.string.geo_ecliptic_lat));
+            values.add(String.format(Locale.getDefault(), "%.4f°", p.mEcliptic_lat));
+            keys.add(getString(R.string.geo_ecliptic_lon));
+            values.add(String.format(Locale.getDefault(), "%.4f°", p.mEcliptic_lon));
+            keys.add(getString(R.string.distance_earth));
+            values.add(String.format(Locale.getDefault(), "%.4f AU", p.mDistance_earth));
+            links.add(String.format(Locale.US,
+                    "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
+                    p.mWikidataId));
+        }
+        else if (chartObject.getType() == ObjectType.SUN)
+        {
+            links.add(String.format(Locale.US,
+                    "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
+                    Sun.sWikidataId));
+        }
+        else if (chartObject.getType() == ObjectType.MOON)
+        {
+            links.add(String.format(Locale.US,
+                    "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
+                    Moon.sWikidataId));
+        }
+        data.putString("name", chartObject.getText());
+        data.putStringArrayList("keys", keys);
+        data.putStringArrayList("values", values);
+        data.putStringArrayList("links", links);
+        ObjectDetailsDialog d = new ObjectDetailsDialog();
+        d.setArguments(data);
+        d.show(getSupportFragmentManager(), "ObjectDetailsDialog");
     }
 
 }

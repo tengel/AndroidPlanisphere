@@ -74,11 +74,13 @@ abstract class Planet
     public double mRa = 0;
 
     public double mApparentMagnitude = 0;
+    public String mWikidataId = "";
 
-    Planet(String name, double apparentMagnitude)
+    Planet(String name, double apparentMagnitude, String wikidataId)
     {
         mName = name;
         mApparentMagnitude = apparentMagnitude;
+        mWikidataId = wikidataId;
         mOe = new OrbitalElements();
     }
 
@@ -141,9 +143,9 @@ abstract class PlanetCsv extends Planet
         Planet.sEarth = new Earth();
     }
 
-    PlanetCsv(String name, double apparentMagnitude)
+    PlanetCsv(String name, double apparentMagnitude, String wikidataId)
     {
-        super(name, apparentMagnitude);
+        super(name, apparentMagnitude, wikidataId);
         mElements = PlanetCsv.sPlanetOrbitalElements.get(name);
     }
 
@@ -231,7 +233,7 @@ class Mercury extends Planet
     public static final String sName = "Mercury";
     Mercury()
     {
-        super(sName, -1.9);
+        super(sName, -1.9, "Q308");
     }
 
     @Override
@@ -252,7 +254,7 @@ class Venus extends Planet
     public static final String sName = "Venus";
     Venus()
     {
-        super(sName, -4.6);
+        super(sName, -4.6, "Q313");
     }
 
     @Override
@@ -273,7 +275,7 @@ class Earth extends Planet
     public static final String sName = "Earth";
     Earth()
     {
-        super(sName, 0);
+        super(sName, 0, "Q2");
     }
 
     @Override
@@ -294,7 +296,7 @@ class Mars extends Planet
     public static final String sName = "Mars";
     Mars()
     {
-        super(sName, -2.91);
+        super(sName, -2.91, "Q111");
     }
 
     @Override
@@ -315,7 +317,7 @@ class Jupiter extends PlanetCsv
     public static final String sName = "Jupiter";
     public Jupiter()
     {
-        super(sName, -2.94);
+        super(sName, -2.94, "Q319");
     }
 }
 
@@ -324,7 +326,7 @@ class Saturn extends PlanetCsv
     public static final String sName = "Saturn";
     public Saturn()
     {
-        super(sName, -0.45);
+        super(sName, -0.45, "Q193");
     }
 }
 
@@ -333,7 +335,7 @@ class Uranus extends PlanetCsv
     public static final String sName = "Uranus";
     public Uranus()
     {
-        super(sName, 5.32);
+        super(sName, 5.32, "Q324");
     }
 }
 
@@ -342,6 +344,6 @@ class Neptune extends PlanetCsv
     public static final String sName = "Neptune";
     public Neptune()
     {
-        super(sName, 7.78);
+        super(sName, 7.78, "Q332");
     }
 }

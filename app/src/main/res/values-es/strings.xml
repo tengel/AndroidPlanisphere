@@ -55,6 +55,26 @@
   <string name="lang_spanish">El Español</string>
   <string name="keep_screen_on">Keep screen on</string>
   <string name="time_auto_update">Keep chart updated to current time</string>
+  <string name="direction_n">N</string>
+  <string name="direction_e">E</string>
+  <string name="direction_s">S</string>
+  <string name="direction_w">W</string>
+  <string name="objects_nearby">Objects nearby</string>
+  <string name="azimuth">Azimuth</string>
+  <string name="elevation">Elevation</string>
+  <string name="type">Type</string>
+  <string name="apparent_magnitude">Apparent magnitude</string>
+  <string name="RA">Right ascension</string>
+  <string name="DEC">Declination</string>
+  <string name="helio_ecliptic_lat">Heliocentric ecliptic latitude</string>
+  <string name="helio_ecliptic_lon">Heliocentric ecliptic longitude</string>
+  <string name="distance_sun">Distance to Sun</string>
+  <string name="geo_ecliptic_lat">Geocentric ecliptic latitude</string>
+  <string name="geo_ecliptic_lon">Geocentric ecliptic longitude</string>
+  <string name="distance_earth">Distance to Earth</string>
+  <string name="star">Star</string>
+  <string name="planet">Planet</string>
+  <string name="unknown">unknown</string>
 
   <string name="about_text"><![CDATA[
     <h1>Planisferio</h1>

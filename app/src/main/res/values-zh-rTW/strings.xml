@@ -55,6 +55,26 @@
     <string name="lang_spanish">西班牙語</string>
     <string name="keep_screen_on">螢幕保持開啟</string>
     <string name="time_auto_update">即時更新此圖</string>
+    <string name="direction_n">北</string>
+    <string name="direction_e">東</string>
+    <string name="direction_s">南</string>
+    <string name="direction_w">西</string>
+    <string name="objects_nearby">鄰近星球</string>
+    <string name="azimuth">方位</string>
+    <string name="elevation">仰角</string>
+    <string name="type">類型</string>
+    <string name="apparent_magnitude">視星等</string>
+    <string name="RA">赤經</string>
+    <string name="DEC">赤緯</string>
+    <string name="helio_ecliptic_lat">日心黃緯</string>
+    <string name="helio_ecliptic_lon">日心黃經</string>
+    <string name="distance_sun">與太陽相距</string>
+    <string name="geo_ecliptic_lat">地心黃緯</string>
+    <string name="geo_ecliptic_lon">地心黃經</string>
+    <string name="distance_earth">與地球相距</string>
+    <string name="star">恆星</string>
+    <string name="planet">行星</string>
+    <string name="unknown">未知</string>
 
     <string name="about_text"><![CDATA[
     <h1>星座盤</h1>

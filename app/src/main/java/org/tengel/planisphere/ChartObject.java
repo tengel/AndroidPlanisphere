@@ -23,6 +23,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+enum ObjectType {STAR, PLANET, SUN, MOON, OTHER}
 
 interface ChartObjectInterface
 {
@@ -34,11 +35,62 @@ abstract class ChartObject implements ChartObjectInterface
     protected Paint mPaint = new Paint();
     protected Paint mPaintText = new Paint();
     protected Engine mEngine;
+    protected Double[] mAzEle = {0.0, 0.0};
+    protected String mText = null;
+    protected boolean mShowText = false;
+    protected ObjectType mType;
+    protected double mApparentMagnitude;
 
     ChartObject(Engine e)
     {
         mEngine = e;
         mPaintText.setTextAlign(Paint.Align.CENTER);
+    }
+
+    public double getAzimuth()
+    {
+        return mAzEle[0];
+    }
+
+    public double getElevation()
+    {
+        return mAzEle[1];
+    }
+
+    public String getText()
+    {
+        return mText;
+    }
+
+    public ObjectType getType()
+    {
+        return mType;
+    }
+
+    public String getTypeString()
+    {
+        int sid = R.string.unknown;
+        switch (mType)
+        {
+            case STAR:
+                sid = R.string.star;
+                break;
+            case PLANET:
+                sid = R.string.planet;
+                break;
+            case SUN:
+                sid = R.string.sun;
+                break;
+            case MOON:
+                sid = R.string.moon;
+                break;
+        }
+        return mEngine.getActivity().getString(sid);
+    }
+
+    public double getApparentMagnitude()
+    {
+        return mApparentMagnitude;
     }
 }
 
@@ -57,6 +109,7 @@ class AzGrid extends ChartObject
         mPaintText.setColor(sColor);
         mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
         mAlignY = (mPaintText.ascent() + mPaintText.descent()) / 2;
+        mType = ObjectType.OTHER;
     }
 
     @Override
@@ -98,6 +151,7 @@ class Horizon extends ChartObject
         mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
         mH = mPaintText.ascent() + mPaintText.descent();
         mAlignY = mH / 2;
+        mType = ObjectType.OTHER;
     }
 
     @Override
@@ -109,10 +163,14 @@ class Horizon extends ChartObject
         int[] west  = da.horizontal2area(90, 0);
         int[] north = da.horizontal2area(180, 0);
         int[] east  = da.horizontal2area(270, 0);
-        canvas.drawText("S", south[0], south[1] - mH * 2, mPaintText);
-        canvas.drawText("W", west[0] - mH * 2, west[1] - mAlignY, mPaintText);
-        canvas.drawText("N", north[0], north[1] + mH, mPaintText);
-        canvas.drawText("E", east[0] + mH * 2, east[1] - mAlignY, mPaintText);
+        canvas.drawText(da.getContext().getString(R.string.direction_s),
+                        south[0], south[1] - mH * 2, mPaintText);
+        canvas.drawText(da.getContext().getString(R.string.direction_w),
+                        west[0] - mH * 2, west[1] - mAlignY, mPaintText);
+        canvas.drawText(da.getContext().getString(R.string.direction_n),
+                        north[0], north[1] + mH, mPaintText);
+        canvas.drawText(da.getContext().getString(R.string.direction_e),
+                        east[0] + mH * 2, east[1] - mAlignY, mPaintText);
     }
 }
 
@@ -121,15 +179,16 @@ class Horizon extends ChartObject
 class InfoText extends ChartObject
 {
     public static int sColor = 0;
-    private String mText;
 
     public InfoText(Engine e, String text)
     {
         super(e);
         mText = text;
+        mShowText = true;
         mPaintText.setColor(sColor);
         mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
         mPaintText.setTextAlign(Paint.Align.LEFT);
+        mType = ObjectType.OTHER;
     }
 
     @Override
@@ -141,11 +200,8 @@ class InfoText extends ChartObject
 
 //-----------------------------------------------------------------------------
 
-class RoundObject extends ChartObject
+abstract class RoundObject extends ChartObject
 {
-    protected Double[] mAzEle;
-    protected double mApparentMagnitude;
-    protected String mText = null;
     private float mBaseSize;
 
     RoundObject(Engine e)
@@ -196,7 +252,7 @@ class RoundObject extends ChartObject
         }
         canvas.drawCircle(center[0], center[1], radius, mPaint);
 
-        if (mText != null)
+        if (mShowText && mText != null)
         {
             canvas.drawText(mText, center[0] + radius, center[1] , mPaintText);
         }
@@ -217,6 +273,17 @@ class Star extends RoundObject
         mAzEle = mEngine.equatorial2horizontal(ce.rightAscension, ce.declination);
         mApparentMagnitude = ce.apparentMagnitude;
         mPaint.setColor(sColor);
+        mText = "HR " + mEntry.hr;
+        if (mEntry.name.length() > 0)
+        {
+            mText += " (" + mEntry.name + ")";
+        }
+        mType = ObjectType.STAR;
+    }
+
+    public Catalog.Entry getCatalogEntry()
+    {
+        return mEntry;
     }
 }
 
@@ -234,9 +301,16 @@ class ChartPlanet extends RoundObject
         mPlanet = planet;
         mAzEle = mEngine.equatorial2horizontal(planet.mRa / 15, planet.mDeclination);
         mApparentMagnitude = mPlanet.mApparentMagnitude;
-        mText = showName ? Settings.instance().translateName(mPlanet.mName) : null;
+        mText = Settings.instance().translateName(mPlanet.mName);
+        mShowText = showName;
         mPaint.setColor(sColor);
         mPaintText.setColor(sTextColor);
+        mType = ObjectType.PLANET;
+    }
+
+    public Planet getPlanet()
+    {
+        return mPlanet;
     }
 }
 
@@ -246,6 +320,7 @@ class Sun extends RoundObject
 {
     public static int sColor;
     public static int sTextColor;
+    public static final String sWikidataId = "Q525";
 
     public Sun(Engine e, boolean showName)
     {
@@ -253,9 +328,11 @@ class Sun extends RoundObject
         double[] raDec = Astro.calcPositionSun(Astro.julian_date(mEngine.getTime()));
         mAzEle = mEngine.equatorial2horizontal(raDec[0] / 15, raDec[1]);
         mApparentMagnitude = -26.74;
-        mText = showName ? Settings.instance().translateName("Sun") : null;
+        mText = Settings.instance().translateName("Sun");
+        mShowText = showName;
         mPaint.setColor(sColor);
         mPaintText.setColor(sTextColor);
+        mType = ObjectType.SUN;
     }
 }
 
@@ -265,6 +342,7 @@ class Moon extends RoundObject
 {
     public static int sColor;
     public static int sTextColor;
+    public static final String sWikidataId = "Q405";
 
     public Moon(Engine e, boolean showName)
     {
@@ -272,15 +350,17 @@ class Moon extends RoundObject
         double[] raDec = Astro.calcPositionMoon(Astro.julian_date(mEngine.getTime()));
         mAzEle = mEngine.equatorial2horizontal(raDec[0] / 15, raDec[1]);
         mApparentMagnitude = -12.7;
-        mText = showName ? Settings.instance().translateName("Moon") : null;
+        mText = Settings.instance().translateName("Moon");
+        mShowText = showName;
         mPaint.setColor(sColor);
         mPaintText.setColor(sTextColor);
+        mType = ObjectType.MOON;
     }
 }
 
 //=============================================================================
 
-class LineObject extends ChartObject
+abstract class LineObject extends ChartObject
 {
     protected ArrayList<ArrayList<Double[]>> mLines = new ArrayList<>();
     protected ArrayList<Double[]> mTextCoords = new ArrayList<Double[]>();
@@ -333,6 +413,7 @@ class EqGrid extends LineObject
     public EqGrid(Engine e)
     {
         super(e);
+        mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
         mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
@@ -371,6 +452,7 @@ class Equator extends LineObject
     public Equator(Engine e)
     {
         super(e);
+        mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         ArrayList<Double[]> line = new ArrayList<>();
         for (int ra = 0; ra <= 24; ra++)
@@ -389,6 +471,7 @@ class Ecliptic extends LineObject
     public Ecliptic(Engine e)
     {
         super(e);
+        mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
         double[] raDec;
@@ -412,6 +495,7 @@ class ConstLines extends LineObject
                       boolean isLinesEnabled, boolean isNamesEnabled)
     {
         super(e);
+        mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
         mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
@@ -451,6 +535,7 @@ class ConstBoundaries extends LineObject
     public ConstBoundaries(Engine e, ConstellationDb db, boolean isBoundEnabled)
     {
         super(e);
+        mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         Double[] azEle;
         Double[] azEleFirst = null;
