@@ -55,35 +55,56 @@
     <string name="lang_spanish">Spansk</string>
     <string name="keep_screen_on">Hold skjermen på</string>
     <string name="time_auto_update">Hold stjernekart oppdatert til gjeldende tid</string>
+    <string name="direction_n">N</string>
+    <string name="direction_e">Ø</string>
+    <string name="direction_s">S</string>
+    <string name="direction_w">V</string>
+    <string name="objects_nearby">Objekter i nærheten</string>
+    <string name="azimuth">Asimut</string>
+    <string name="elevation">Høyde</string>
+    <string name="type">Type</string>
+    <string name="apparent_magnitude">Tilsynelatende magnitude</string>
+    <string name="RA">Rektasensjon</string>
+    <string name="DEC">Deklinasjon</string>
+    <string name="helio_ecliptic_lat">Heliosentrisk ekliptikkbredde</string>
+    <string name="helio_ecliptic_lon">Heliosentrisk ekliptikklengde</string>
+    <string name="distance_sun">Avstand til solen</string>
+    <string name="geo_ecliptic_lat">Geosentrisk ekliptikkbredde</string>
+    <string name="geo_ecliptic_lon">Geosentrisk ekliptikklengde</string>
+    <string name="distance_earth">Avstand til jorden</string>
+    <string name="star">Stjerne</string>
+    <string name="planet">Planet</string>
+    <string name="unknown">ukjent</string>
+    <string name="onlyVisiblePlanets">Vis bare synlige planeter</string>
 
     <string name="about_text"><![CDATA[
-    <h1>Planisphere</h1>
+    <h1>Planisfære</h1>
 
-    A simple star chart that shows sun, moon and stars as well as constellations
-    and planets.
+    Et enkelt stjernekart som viser solen, månen og stjerner så vel som stjernebilder
+    og planeter.
     <br/><br/>
 
-    Single tap shows or hides the toolbar. Use the options menu, to set
-    <em>Date / Time</em> and <em>Location</em>, or use the location provided by
-    the device. The <em>Display options</em> allows you to enable or disable the
-    elements of the chart:
+    Enkelttrykk viser eller skjuler verktøylinjen. Bruk alternativer-menyen for å
+    stille inn <em>Dato / Klokkeslett</em> og <em>Sted</em>, eller bruk stedet gitt av
+    enheten. <em>Visningsalternativer</em> tillater deg å aktivere eller deaktivere
+    elementene på kartet:
     <ul>
-    <li>horizon (with cardinal directions)</li>
-    <li>celestical equator</li>
-    <li>ecliptic</li>
-    <li>azimuthal grid</li>
-    <li>equatorial grid</li>
-    <li>constellation lines</li>
-    <li>constellation boundaries</li>
-    <li>constellation names (language can be changed in <em>Settings</em>)</li>
-    <li>solar system (sun, moon and planets)</li>
-    <li>solar system names (names of planets, etc)</li>
-    <li>stars</li>
+    <li>horisont (med himmelretninger)</li>
+    <li>himmelekvator</li>
+    <li>ekliptikken</li>
+    <li>asimutnett</li>
+    <li>ekvatorialnett</li>
+    <li>stjernebilder</li>
+    <li>stjernebildegrenser</li>
+    <li>stjernebildenavn (språk kan endres i <em>Innstillinger</em>)</li>
+    <li>solsystem (solen, månen og planeter)</li>
+    <li>solsystemnavn (navn på planeter etc.)</li>
+    <li>stjerner</li>
     </ul>
 
 
     <br/>
-    Version: {VERSION}
+    Versjon: {VERSION}
     <br/><br/>
     <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
     <br/><br/>
