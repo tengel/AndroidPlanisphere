@@ -90,7 +90,7 @@ public class Settings
         mGpsEnabled = mPref.getBoolean("gps-enabled", true);
         mLatitude = mPref.getFloat("latitude", 51.31f);
         mLongitude = mPref.getFloat("longitude", 9.49f);
-        mConstLanguage = mPref.getInt("constLanguage", 5);
+        mConstLanguage = mPref.getInt("constLanguage", 6);
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
 

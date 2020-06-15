@@ -54,7 +54,7 @@ public class LocationDialog extends DialogFragment
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(R.string.action_time);
+        builder.setTitle(R.string.action_location);
         LayoutInflater inflater = requireActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.location_dialog, null);
         builder.setView(view);
