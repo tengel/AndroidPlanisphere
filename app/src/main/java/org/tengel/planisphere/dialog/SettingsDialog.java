@@ -38,8 +38,7 @@ public class SettingsDialog extends DialogFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.action_settings);
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.settings_dialog, null);
+        View view = View.inflate(getContext(), R.layout.settings_dialog, null);
         builder.setView(view);
         final Spinner spinner = (Spinner) view.findViewById(R.id.const_langauge);
         final CheckBox keepScreen = (CheckBox) view.findViewById(R.id.keepScreenOn);

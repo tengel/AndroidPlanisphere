@@ -61,8 +61,7 @@ public class TimeDialog extends DialogFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.action_time);
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.time_dialog, null);
+        View view = View.inflate(getContext(), R.layout.time_dialog, null);
         builder.setView(view);
         GregorianCalendar currTime = Settings.instance().getCurrentTime();
         mTp = view.findViewById(R.id.timePicker);
@@ -114,7 +113,7 @@ public class TimeDialog extends DialogFragment
         return builder.create();
     }
 
-    void setToNow()
+    private void setToNow()
     {
         GregorianCalendar now = new GregorianCalendar();
         mTp.setCurrentHour(now.get(Calendar.HOUR_OF_DAY));

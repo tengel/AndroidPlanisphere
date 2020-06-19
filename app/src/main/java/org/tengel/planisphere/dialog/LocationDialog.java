@@ -55,8 +55,7 @@ public class LocationDialog extends DialogFragment
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.action_location);
-        LayoutInflater inflater = requireActivity().getLayoutInflater();
-        View view = inflater.inflate(R.layout.location_dialog, null);
+        View view = View.inflate(getContext(), R.layout.location_dialog, null);
         builder.setView(view);
         final EditText latEdit = view.findViewById(R.id.editLatitude);
         latEdit.setText(String.valueOf(Settings.instance().getLatitude()));

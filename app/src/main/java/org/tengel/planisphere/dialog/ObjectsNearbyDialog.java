@@ -62,8 +62,8 @@ public class ObjectsNearbyDialog extends DialogFragment
         tv.setText(String.format(" " + getString(R.string.azimuth) + ": %.1f°   " +
                    getString(R.string.elevation) + ": %.1f°", azimuth, elevation));
         ListView lv = new ListView(getContext());
-        ArrayAdapter lvAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1,
-                                                  nameArray);
+        ArrayAdapter<String> lvAdapter = new ArrayAdapter<>(getContext(),
+                android.R.layout.simple_list_item_1, nameArray);
         lv.setAdapter(lvAdapter);
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
