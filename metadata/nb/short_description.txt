@@ -1,0 +1,1 @@
+A simple star chart that shows stars, constellations and planets.

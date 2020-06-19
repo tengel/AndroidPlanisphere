@@ -1,0 +1,15 @@
+The app shows the sky for an user defined point of time and an arbitrary location on the earth:
+
+- sun and moon
+- over 9000 stars
+- constellation lines
+- constellation names in English, Latin or as abbreviation
+- constellation boundaries
+- all eight planets of the solar system
+- azimuthal grid
+- equatorial grid
+- horizon
+- ecliptic
+- celestial equator
+
+The location can be entered manually or is provided by the device. There are several options to enable or disable elements of the chart, select the maximum apparent magnitude or choose the color theme. No Internet connection required.
