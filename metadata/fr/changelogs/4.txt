@@ -1,0 +1,3 @@
+* Un appui long affiche des informations sur les objets célestes proches
+* Ajout d'une nouvelle option : Afficher seulement les planètes visibles
+* Traduction en norvégien

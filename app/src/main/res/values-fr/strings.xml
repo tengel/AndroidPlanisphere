@@ -1,0 +1,170 @@
+<resources>
+    <string name="app_name">Planisphère</string>
+    <string name="action_time">Date / Heure</string>
+    <string name="action_location">Position</string>
+    <string name="action_about">À propos</string>
+    <string name="action_magnitude">Magnitude max.</string>
+    <string name="action_theme">Thème</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="display_options">Options d'affichage</string>
+    <string name="theme">Thème</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
+    <string name="max_magnitude">Magnitude (mag) apparente max.</string>
+    <string name="set_to_now">Définir l'heure à maintenant</string>
+    <string name="use_gps">Utiliser le GPS</string>
+    <string name="gps_no_permission">L'application n'a pas la permission d'utiliser le GPS</string>
+    <string name="gps_disabled">Le GPS n'est pas activé</string>
+    <string name="gps_waiting">En attente du GPS pour le positionnement</string>
+    <string name="gps_received">Position reçue du GPS</string>
+    <string name="gps_received_new">Réception d'une nouvelle position du GPS</string>
+    <string name="latitude">Latitude (-90..90):</string>
+    <string name="longitude">Longitude (-180..180):</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Foncé</string>
+    <string name="theme_night">Nuit</string>
+    <string name="horizon">Horizon</string>
+    <string name="equator">Équateur céleste</string>
+    <string name="ecliptic">Écliptique</string>
+    <string name="azimuthal_grid">Grille Azimutale</string>
+    <string name="equatorial_grid">Grille équatoriale</string>
+    <string name="constellation_lines">Lignes des constellations</string>
+    <string name="constellation_boundaries">Limites des constellations</string>
+    <string name="constellation_names">Noms des constellations</string>
+    <string name="solar_system">Système Solaire</string>
+    <string name="solar_names">Noms des objets du Système Solaire</string>
+    <string name="stars">Étoiles</string>
+    <string name="sun">Soleil</string>
+    <string name="moon">Lune</string>
+    <string name="planet_mercury">Mercure</string>
+    <string name="planet_venus">Vénus</string>
+    <string name="planet_earth">Terre</string>
+    <string name="planet_mars">Mars</string>
+    <string name="planet_jupiter">Jupiter</string>
+    <string name="planet_saturn">Saturne</string>
+    <string name="planet_uranus">Uranus</string>
+    <string name="planet_neptune">Neptune</string>
+    <string name="const_language">Langue à utiliser pour le nom des objets :</string>
+    <string name="lang_abr">Abbréviation</string>
+    <string name="lang_latin">Latin</string>
+    <string name="lang_sysdefault">Langue du système</string>
+    <string name="lang_english">Anglais</string>
+    <string name="lang_german">Allemand</string>
+    <string name="lang_chinese">Chinois</string>
+    <string name="lang_spanish">Espagnol</string>
+    <string name="lang_norwegian">Norvégien</string>
+    <string name="keep_screen_on">Garder l'écran allumé</string>
+    <string name="time_auto_update">Conserver la carte à jour pour l'heure courante</string>
+    <string name="direction_n">N</string>
+    <string name="direction_e">E</string>
+    <string name="direction_s">S</string>
+    <string name="direction_w">O</string>
+    <string name="objects_nearby">Objets proches</string>
+    <string name="azimuth">Azimut</string>
+    <string name="elevation">Altitude</string>
+    <string name="type">Type</string>
+    <string name="apparent_magnitude">Magnitude apparente</string>
+    <string name="RA">Ascension droite</string>
+    <string name="DEC">Déclinaison</string>
+    <string name="helio_ecliptic_lat">Latitude écliptique héliocentrique</string>
+    <string name="helio_ecliptic_lon">Longitude écliptique héliocentrique</string>
+    <string name="distance_sun">Distance au Soleil</string>
+    <string name="geo_ecliptic_lat">Latitude écliptique géocentrique</string>
+    <string name="geo_ecliptic_lon">Longitude écliptique géocentrique</string>
+    <string name="distance_earth">Distance à la Terre</string>
+    <string name="star">Étoile</string>
+    <string name="planet">Planète</string>
+    <string name="unknown">Inconnu</string>
+    <string name="onlyVisiblePlanets">Montrer seulement les planètes visibles</string>
+
+    <string name="about_text"><![CDATA[
+    <h1>Planisphère</h1>
+
+    Une simple carte affichant la Lune, le Soleil, les étoiles,
+    constellations et planètes.
+    <br/><br/>
+
+    Un appui simple permet de montrer ou cacher la barre
+    d'outils. Utilisez le menu pour définir la <em>date et l'heure</em>,
+    votre <em>position</em> ou pour utiliser les informations fournies
+    par votre appareil. Les <em>Options d'affichage</em> vous permettent
+    d'activer ou non les éléments suivants sur la carte :
+    <ul>
+    <li>l'horizon (avec les directions)</li>
+    <li>l'équateur céleste</li>
+    <li>l'écliptique</li>
+    <li>la grille azimutale</li>
+    <li>la grille équatoriale</li>
+    <li>les lignes des constellations</li>
+    <li>les limites des constellations</li>
+    <li>le nom des constellations (la langue utilisée peut être modifiée
+    dans les <em>Paramètres</em>)</li>
+    <li>les objets du Système Solaire (Soleil, Lune, planètes)</li>
+    <li>le nom des objets du Système Solaire</li>
+    <li>les étoiles</li>
+    </ul>
+
+    <br/>
+    Version: {VERSION}
+    <br/><br/>
+    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+    <br/><br/>
+
+    <h2>Respect de votre vie privée</h2>
+    Cette application peut accéder à votre position. Celle-ci est
+    utilisée pour calculer la carte des étoiles observables. Votre
+    position n'est pas enregistrée sur votre appareil ni partagée avec
+    qui que ce soit. Les options d'affichage et les paramètres sont les
+    seules informations enregistrées sur votre appareil. Aucune
+    information ne quitte jamais votre appareil. Cette application ne se
+    connecte jamais à internet.
+
+    <h2>Licence</h2>
+    Copyright (C) 2020 Timo Engel
+    <br/><br/>
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+    <br/><br/>
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+    GNU General Public License for more details.
+    <br/><br/>
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see
+    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+
+    <h2>Crédits</h2>
+    Ce logiciel utilise les composants tiers suivants :
+    <dl>
+    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+        (Astronomical Data Center, NSSDC/ADC, 1991)
+        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+    </dd>
+    <dt>constellation_lines.dat</dt>
+    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+        CC BY-SA 4.0,
+        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+    </dd>
+    <dt>constellation_names.txt</dt>
+    <dd>The Constellations, International Astronomical Union,
+        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+        Wikipedia, Liste der Sternbilder,
+        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+    </dd>
+    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+    <dd>Jet Propulsion Laboratory, HORIZONS System,
+        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+    </dd>
+    <dt>Calculs construits à partir de</dt>
+    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+    </dd>
+    </dl>
+
+     ]]></string>
+
+</resources>
