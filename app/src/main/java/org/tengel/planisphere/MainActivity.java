@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity
     private LocationHandler mLocHandler;
     private boolean mIsRunningUpdateTask = false;
     private ChartObject[] mNearbyObjects = null;
+    private boolean mIsRunning = false;
     private Handler mTimerHandler = new Handler(Looper.getMainLooper());
     private Runnable mAutoUpdateTask = new Runnable() {
         public void run() {
@@ -263,6 +264,7 @@ public class MainActivity extends AppCompatActivity
     protected void onPause()
     {
         super.onPause();
+        mIsRunning = false;
         stopTimer();
     }
 
@@ -270,6 +272,7 @@ public class MainActivity extends AppCompatActivity
     protected void onResume()
     {
         super.onResume();
+        mIsRunning = true;
         if (mSettings.getAutoUpdate())
         {
             mSettings.setCurrentTime(new GregorianCalendar());
@@ -290,6 +293,11 @@ public class MainActivity extends AppCompatActivity
             stopTimer();
         }
         update();
+    }
+
+    public boolean isRunning()
+    {
+        return mIsRunning;
     }
 
     public void showNearbyObjects(double[] azEle)

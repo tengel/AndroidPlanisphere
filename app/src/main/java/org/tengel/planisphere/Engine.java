@@ -141,11 +141,16 @@ public class Engine {
         {
             mObjects.add(new Ecliptic(this));
         }
+
+        Calendar utcTime = (Calendar) mTime.clone();
+        utcTime.add(Calendar.MILLISECOND,
+                    -(mTime.get(Calendar.DST_OFFSET) + mTime.get(Calendar.ZONE_OFFSET)));
         String s = String.format(Locale.ROOT,
-                "%04d-%02d-%02d  %02d:%02d  %s  %.2f; %.2f GPS: %d  Mag: %d",
+                "%04d-%02d-%02d  %02d:%02d %s  %02d:%02d UTC  %.2f; %.2f GPS: %d  Mag: %d",
                 mTime.get(Calendar.YEAR), (mTime.get(Calendar.MONTH) + 1),
                 mTime.get(Calendar.DAY_OF_MONTH), mTime.get(Calendar.HOUR_OF_DAY),
                 mTime.get(Calendar.MINUTE), mTime.getTimeZone().getID(),
+                utcTime.get(Calendar.HOUR_OF_DAY), utcTime.get(Calendar.MINUTE),
                 mLatitude, mLongitude, mIsGpsPos? 1 : 0, maxMagnitude);
         mObjects.add(new InfoText(this, s));
     }
