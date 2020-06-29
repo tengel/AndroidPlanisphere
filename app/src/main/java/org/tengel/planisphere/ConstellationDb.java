@@ -102,7 +102,7 @@ public class ConstellationDb
             mNames.put(lItems[0].trim().toLowerCase(Locale.ROOT),
                        new String[] {lItems[0].trim(), lItems[1].trim(), lItems[2].trim(),
                                      lItems[3].trim(), lItems[4].trim(), lItems[5].trim(),
-                                     lItems[6].trim()});
+                                     lItems[6].trim(), lItems[7].trim()});
         }
 
         fileReader = new BufferedReader(new InputStreamReader(boundStream));
@@ -137,9 +137,10 @@ public class ConstellationDb
 
     public String getName(String abbr)
     {
-        // 0=Abbrv; 1=Latin; 2=English; 3=German; 4=Chinese; 5=Spanish; 6=Norwegian 7=system default
+        // 0=Abbrv; 1=Latin; 2=English; 3=German; 4=Chinese; 5=Spanish;
+        // 6=Norwegian 7=French 8=system default
         int langIdx = Settings.instance().getConstLanguage();
-        if (langIdx == 7)
+        if (langIdx == 8)
         {
             String lang = Settings.instance().getLanguage();
             if (lang.equals("en"))
@@ -161,6 +162,10 @@ public class ConstellationDb
             else if (lang.equals("nb"))
             {
                 langIdx = 6;
+            }
+            else if (lang.equals("fr"))
+            {
+                langIdx = 7;
             }
             else
             {

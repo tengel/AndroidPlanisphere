@@ -1,0 +1,3 @@
+* ajout d'une option pour garder l'écran allumé
+* ajout d'une option pour conserver la carte à jour pour l'heure courante
+* traduction en espagnol

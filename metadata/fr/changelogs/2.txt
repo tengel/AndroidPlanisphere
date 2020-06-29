@@ -1,0 +1,5 @@
+* affiche la lune et le soleil
+* un appui simple affiche ou cache la barre d'outils
+* la langue d'affichage du nom des constellations peut être changé
+* traductions en chinois et en allemand
+* plusieurs corrections et améliorations dans la gestion du temps et de la localisation

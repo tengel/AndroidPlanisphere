@@ -53,6 +53,7 @@
     <string name="lang_chinese">Chinesisch</string>
     <string name="lang_spanish">Spanisch</string>
     <string name="lang_norwegian">Norwegisch</string>
+    <string name="lang_french">Französisch</string>
     <string name="keep_screen_on">Display nicht ausschalten</string>
     <string name="time_auto_update">Sternkarte automatisch auf aktuelle Zeit nachführen</string>
     <string name="direction_n">N</string>

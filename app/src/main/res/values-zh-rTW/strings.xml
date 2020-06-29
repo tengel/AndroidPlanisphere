@@ -53,6 +53,7 @@
     <string name="lang_chinese">中文</string>
     <string name="lang_spanish">西班牙文</string>
     <string name="lang_norwegian">挪威文</string>
+    <string name="lang_french">法文</string>
     <string name="keep_screen_on">螢幕保持開啟</string>
     <string name="time_auto_update">即時更新此圖</string>
     <string name="direction_n">北</string>

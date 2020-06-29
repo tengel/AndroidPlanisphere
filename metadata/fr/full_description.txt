@@ -1,0 +1,14 @@
+Cette application affiche le ciel terrestre en un lieu et temps donné par l'utilisateur.
+
+- Position de la Lune et du Soleil
+- Position de plus de 9000 étoiles
+- Affiche les constellations
+- Affiche le nom des constellations en anglais, latin ou en abrégé
+- Affiche les huit planètes du Système Solaire
+- Affiche la grille azimutale
+- Affiche la grille équatoriale
+- Affiche la position de l'horizon
+- Affiche le plan de l'écliptique
+- Affiche l'équateur céleste
+
+La position terrestre peut être entrée manuellement ou fournie par le GPS. Différentes options permettent d'afficher ou masquer les éléments sur la carte, sélectionner la magnitude maximale des corps à afficher ou changer le thème de couleur. La connexion à internet n'est pas requise.

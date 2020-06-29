@@ -1,90 +1,90 @@
-And	Andromeda	Chained Maiden	Andromeda	仙女座	Andrómeda	Andromeda
-Ant	Antlia	Air Pump	Luftpumpe	唧筒座	La Máquina Neumática	Luftpumpen
-Aps	Apus	Bird of Paradise	Paradiesvogel	天燕座	El Ave del Paraíso	Paradisfuglen
-Aql	Aquila	Eagle	Adler	天鷹座	El Águila	Ørnen
-Aqr	Aquarius	Water Bearer	Wassermann	寶瓶座	Acuario	Vannmannen
-Ara	Ara	Altar	Altar	天壇座	El Altar	Alteret
-Ari	Aries	Ram	Widder	白羊座	El Carnero	Væren
-Aur	Auriga	Charioteer	Fuhrmann	御夫座	El Cochero	Kusken
-Boo	Boötes	Herdsman	Bärenhüter	牧夫座	El Boyero	Bjørnevokteren
-Cae	Caelum	Engraving Tool	Grabstichel	雕具座	El Cincel	Meiselen
-Cam	Camelopardalis	Giraffe	Giraffe	鹿豹座	La Jirafa	Giraffen
-Cap	Capricornus	Sea Goat	Steinbock	摩羯座	Capricornio	Steinbukken
-Car	Carina	Keel	Kiel des Schiffs	船底座	La Quilla	Kjølen
-Cas	Cassiopeia	Seated Queen	Kassiopeia	仙后座	Casiopea	Kassiopeia
-Cen	Centaurus	Centaur	Zentaur	半人馬座	El Centauro	Kentauren
-Cep	Cepheus	King	Kepheus	仙王座	Cefeo	Kefeus
-Cet	Cetus	Sea Monster	Walfisch	鯨魚座	La Ballena	Hvalfisken
-Cha	Chamaeleon	Chameleon	Chamäleon	蝘蜓座	El Camaleón	Kameleonen
-Cir	Circinus	Compass	Zirkel	圓規座	El Compás	Passeren
-CMa	Canis Major	Great Dog	Großer Hund	大犬座	El Can Mayor	Store hund
-CMi	Canis Minor	Lesser Dog	Kleiner Hund	小犬座	El Can Menor	Lille hund
-Cnc	Cancer	Crab	Krebs	巨蟹座	El Cangrejo	Krepsen
-Col	Columba	Dove	Taube	天鴿座	La Paloma	Duen
-Com	Coma Berenices	Bernice's Hair	Haar der Berenike	后髮座	Cabellera de Berenice	Berenikes hår
-CrA	Corona Australis	Southern Crown	Südliche Krone	南冕座	La Corona Austral	Sydlige krone
-CrB	Corona Borealis	Northern Crown	Nördliche Krone	北冕座	La Corona Boreal	Nordlige krone
-Crt	Crater	Cup	Becher	巨爵座	La Copa	Begeret
-Cru	Crux	Southern Cross	Kreuz des Südens	南十字座	La Cruz del Sur	Sydkorset
-Cru1	 	 	 	 	 	 
-Crv	Corvus	Crow	Rabe	烏鴉座	Cuervo	Ravnen
-CVn	Canes Venatici	Hunting Dogs	Jagdhunde	獵犬座	Los Lebreles	Jakthundene
-Cyg	Cygnus	Swan	Schwan	天鵝座	El Cisne	Svanen
-Del	Delphinus	Dolphin	Delphin	海豚座	El Delfín	Delfinen
-Dor	Dorado	Swordfish	Schwertfisch	劍魚座	La Dorada	Gullfisken
-Dra	Draco	Dragon	Drache	天龍座	El Dragón	Dragen
-Equ	Equuleus	Little Horse	Füllen	小馬座	El Caballito	Føllet
-Eri	Eridanus	River	Eridanus	波江座	El Eridano	Floden
-For	Fornax	Furnace	Chemischer Ofen	天爐座	El Horno	Smelteovnen
-Gem	Gemini	Twins	Zwillinge	雙子座	Los Gemelos	Tvillingene
-Gru	Grus	Crane	Kranich	天鶴座	La Grulla	Tranen
-Her	Hercules	Hercules	Herkules	武仙座	Hércules	Herkules
-Hor	Horologium	Clock	Pendeluhr	時鐘座	El Reloj	Uret
-Hya	Hydra	Female Water Snake	Wasserschlange	長蛇座	La Hidra	Vannslangen
-Hyi	Hydrus	Male Water Snake	Kleine Wasserschlange	水蛇座	La Hidra Macho	Sydlige vannslange
-Ind	Indus	Indian	Indianer	印第安座	El Indio	Indianeren
-Lac	Lacerta	Lizard	Eidechse	蝎虎座	El Lagarto	Firfislen
-Leo	Leo	Lion	Löwe	獅子座	El León	Løven
-Lep	Lepus	Hare	Hase	天兔座	La Liebre	Haren
-Lib	Libra	Scales	Waage	天秤座	La Balanza	Vekten
-LMi	Leo Minor	Lesser Lion	Kleiner Löwe	小獅座	El León Menor	Lille løve
-Lup	Lupus	Wolf	Wolf	豺狼座	El Lobo	Ulven
-Lyn	Lynx	Lynx	Luchs	天貓座	El Lince	Gaupen
-Lyr	Lyra	Lyre	Leier	天琴座	La Lira	Lyren
-Men	Mensa	Table Mountain	Tafelberg	山案座	La Mesa	Bordet
-Mic	Microscopium	Microscope	Mikroskop	顯微鏡座	El Microscopio	Mikroskopet
-Mon	Monoceros	Unicorn	Einhorn	麒麟座	El Unicornio	Enhjørningen
-Mus	Musca	Fly	Fliege	蒼蠅座	La Mosca	Fluen
-Nor	Norma	Carpenter's Square	Winkelmaß	矩尺座	La Escuadra	Vinkelhaken
-Oct	Octans	Octant	Oktant	南極座	El Octante	Oktanten
-Oph	Ophiuchus	Serpent Bearer	Schlangenträger	蛇夫座	El Ofiuco	Slangebæreren
-Ori	Orion	Hunter	Orion	獵戶座	Orión	Orion
-Pav	Pavo	Peacock	Pfau	孔雀座	El Pavo	Påfuglen
-Peg	Pegasus	Winged Horse	Pegasus	飛馬座	Pegaso	Pegasus
-Per	Perseus	Hero	Perseus	英仙座	Perseo	Persevs
-Phe	Phoenix	Phoenix	Phönix	鳳凰座	El Ave Fénix	Føniks
-Pic	Pictor	Painter's Easel	Maler	繪架座	El Caballete del Pintor	Maleren
-PsA	Piscis Austrinus	Southern Fish	Südlicher Fisch	南魚座	El Pez Austral	Sydlige fisk
-Psc	Pisces	Fishes	Fische	雙魚座	Los Peces	Fiskene
-Pup	Puppis	Stern	Achterdeck des Schiffs	船尾座	La Popa	Akterstavnen
-Pyx	Pyxis	Compass	Kompass	羅盤座	La Brújula	Kompasset
-Ret	Reticulum	Reticle	Netz	網罟座	El Retículo	Nettet
-Scl	Sculptor	Sculptor	Bildhauer	玉夫座	El Taller del Escultor	Billedhuggeren
-Sco	Scorpius	Scorpion	Skorpion	天蠍座	El Escorpión	Skorpionen
-Sct	Scutum	Shield	Schild	盾牌座	El Escudo	Skjoldet
-Ser1	Serpens Caput	Serpent Head	Schlange Kopf	巨蛇座蛇頭	La Cabeza de la Serpiente	Slangens hode
-Ser2	Serpens Cauda	Serpent Tail	Schlange Schwanz	巨蛇座蛇尾	La Cola de la Serpiente	Slangens hale
-Sex	Sextans	Sextant	Sextant	六分儀座	El Sextante	Sekstanten
-Sge	Sagitta	Arrow	Pfeil	天箭座	La Flecha	Pilen
-Sgr	Sagittarius	Archer	Schütze	人馬座	Sagitario	Skytten
-Tau	Taurus	Bull	Stier	金牛座	El Toro	Tyren
-Tel	Telescopium	Telescope	Teleskop	望遠鏡座	El Telescopio	Teleskopet
-TrA	Triangulum Australe	Southern Triangle	Südliches Dreieck	南三角座	El Triángulo Austral	Sydlige triangelet
-Tri	Triangulum	Triangle	Dreieck	三角座	El Triángulo	Triangelet
-Tuc	Tucana	Toucan	Tukan	杜鵑座	El Tucán	Tukanen
-UMa	Ursa Major	Great Bear	Großer Bär	大熊座	La Osa Mayor	Store bjørn
-UMi	Ursa Minor	Little Bear	Kleiner Bär	小熊座	La Osa Menor	Lille bjørn
-Vel	Vela	Sails	Segel des Schiffs	船帆座	Las Velas	Seilet
-Vir	Virgo	Maiden	Jungfrau	室女座	La Virgen	Jomfruen
-Vol	Volans	Flying Fish	Fliegender Fisch	飛魚座	El Pez Volador	Flygefisken
-Vul	Vulpecula	Fox	Fuchs	狐狸座	La Raposa	Reven
+And	Andromeda	Chained Maiden	Andromeda	仙女座	Andrómeda	Andromeda	Andromède
+Ant	Antlia	Air Pump	Luftpumpe	唧筒座	La Máquina Neumática	Luftpumpen	Machine Pneumatique
+Aps	Apus	Bird of Paradise	Paradiesvogel	天燕座	El Ave del Paraíso	Paradisfuglen	Oiseau de Paradis
+Aql	Aquila	Eagle	Adler	天鷹座	El Águila	Ørnen	Aigle
+Aqr	Aquarius	Water Bearer	Wassermann	寶瓶座	Acuario	Vannmannen	Verseau
+Ara	Ara	Altar	Altar	天壇座	El Altar	Alteret	Autel
+Ari	Aries	Ram	Widder	白羊座	El Carnero	Væren	Bélier
+Aur	Auriga	Charioteer	Fuhrmann	御夫座	El Cochero	Kusken	Cocher
+Boo	Boötes	Herdsman	Bärenhüter	牧夫座	El Boyero	Bjørnevokteren	Bouvier
+Cae	Caelum	Engraving Tool	Grabstichel	雕具座	El Cincel	Meiselen	Burin
+Cam	Camelopardalis	Giraffe	Giraffe	鹿豹座	La Jirafa	Giraffen	Giraffe
+Cap	Capricornus	Sea Goat	Steinbock	摩羯座	Capricornio	Steinbukken	Capricorne
+Car	Carina	Keel	Kiel des Schiffs	船底座	La Quilla	Kjølen	Carène
+Cas	Cassiopeia	Seated Queen	Kassiopeia	仙后座	Casiopea	Kassiopeia	Cassiopée
+Cen	Centaurus	Centaur	Zentaur	半人馬座	El Centauro	Kentauren	Centaure
+Cep	Cepheus	King	Kepheus	仙王座	Cefeo	Kefeus	Céphée
+Cet	Cetus	Sea Monster	Walfisch	鯨魚座	La Ballena	Hvalfisken	Baleine
+Cha	Chamaeleon	Chameleon	Chamäleon	蝘蜓座	El Camaleón	Kameleonen	Caméléon
+Cir	Circinus	Compass	Zirkel	圓規座	El Compás	Passeren	Compas
+CMa	Canis Major	Great Dog	Großer Hund	大犬座	El Can Mayor	Store hund	Grand Chien
+CMi	Canis Minor	Lesser Dog	Kleiner Hund	小犬座	El Can Menor	Lille hund	Petit Chien
+Cnc	Cancer	Crab	Krebs	巨蟹座	El Cangrejo	Krepsen	Cancer
+Col	Columba	Dove	Taube	天鴿座	La Paloma	Duen	Colombe
+Com	Coma Berenices	Bernice's Hair	Haar der Berenike	后髮座	Cabellera de Berenice	Berenikes hår	Chevelure de Bérénice
+CrA	Corona Australis	Southern Crown	Südliche Krone	南冕座	La Corona Austral	Sydlige krone	Couronne Australe
+CrB	Corona Borealis	Northern Crown	Nördliche Krone	北冕座	La Corona Boreal	Nordlige krone	Couronne Boréale
+Crt	Crater	Cup	Becher	巨爵座	La Copa	Begeret	Coupe
+Cru	Crux	Southern Cross	Kreuz des Südens	南十字座	La Cruz del Sur	Sydkorset	Croix du Sud
+Cru1	 	 	 	 	 	 	 
+Crv	Corvus	Crow	Rabe	烏鴉座	Cuervo	Ravnen	Corbeau
+CVn	Canes Venatici	Hunting Dogs	Jagdhunde	獵犬座	Los Lebreles	Jakthundene	Chiens de Chasse
+Cyg	Cygnus	Swan	Schwan	天鵝座	El Cisne	Svanen	Cygne
+Del	Delphinus	Dolphin	Delphin	海豚座	El Delfín	Delfinen	Dauphin
+Dor	Dorado	Swordfish	Schwertfisch	劍魚座	La Dorada	Gullfisken	Dorade
+Dra	Draco	Dragon	Drache	天龍座	El Dragón	Dragen	Dragon
+Equ	Equuleus	Little Horse	Füllen	小馬座	El Caballito	Føllet	Petit Cheval
+Eri	Eridanus	River	Eridanus	波江座	El Eridano	Floden	Éridan
+For	Fornax	Furnace	Chemischer Ofen	天爐座	El Horno	Smelteovnen	Fourneau
+Gem	Gemini	Twins	Zwillinge	雙子座	Los Gemelos	Tvillingene	Gémeaux
+Gru	Grus	Crane	Kranich	天鶴座	La Grulla	Tranen	Grue
+Her	Hercules	Hercules	Herkules	武仙座	Hércules	Herkules	Hercule
+Hor	Horologium	Clock	Pendeluhr	時鐘座	El Reloj	Uret	Horloge
+Hya	Hydra	Female Water Snake	Wasserschlange	長蛇座	La Hidra	Vannslangen	Hydre
+Hyi	Hydrus	Male Water Snake	Kleine Wasserschlange	水蛇座	La Hidra Macho	Sydlige vannslange	Hydre Mâle
+Ind	Indus	Indian	Indianer	印第安座	El Indio	Indianeren	Indien
+Lac	Lacerta	Lizard	Eidechse	蝎虎座	El Lagarto	Firfislen	Lézard
+Leo	Leo	Lion	Löwe	獅子座	El León	Løven	Lion
+Lep	Lepus	Hare	Hase	天兔座	La Liebre	Haren	Lièvre
+Lib	Libra	Scales	Waage	天秤座	La Balanza	Vekten	Balance
+LMi	Leo Minor	Lesser Lion	Kleiner Löwe	小獅座	El León Menor	Lille løve	Petit Lion
+Lup	Lupus	Wolf	Wolf	豺狼座	El Lobo	Ulven	Loup
+Lyn	Lynx	Lynx	Luchs	天貓座	El Lince	Gaupen	Lynx
+Lyr	Lyra	Lyre	Leier	天琴座	La Lira	Lyren	Lyre
+Men	Mensa	Table Mountain	Tafelberg	山案座	La Mesa	Bordet	Table
+Mic	Microscopium	Microscope	Mikroskop	顯微鏡座	El Microscopio	Mikroskopet	Microscope
+Mon	Monoceros	Unicorn	Einhorn	麒麟座	El Unicornio	Enhjørningen	Licorne
+Mus	Musca	Fly	Fliege	蒼蠅座	La Mosca	Fluen	Mouche
+Nor	Norma	Carpenter's Square	Winkelmaß	矩尺座	La Escuadra	Vinkelhaken	Règle
+Oct	Octans	Octant	Oktant	南極座	El Octante	Oktanten	Octant
+Oph	Ophiuchus	Serpent Bearer	Schlangenträger	蛇夫座	El Ofiuco	Slangebæreren	Ophiuchus
+Ori	Orion	Hunter	Orion	獵戶座	Orión	Orion	Orion
+Pav	Pavo	Peacock	Pfau	孔雀座	El Pavo	Påfuglen	Paon
+Peg	Pegasus	Winged Horse	Pegasus	飛馬座	Pegaso	Pegasus	Pégase
+Per	Perseus	Hero	Perseus	英仙座	Perseo	Persevs	Persée
+Phe	Phoenix	Phoenix	Phönix	鳳凰座	El Ave Fénix	Føniks	Phénix
+Pic	Pictor	Painter's Easel	Maler	繪架座	El Caballete del Pintor	Maleren	Peintre
+PsA	Piscis Austrinus	Southern Fish	Südlicher Fisch	南魚座	El Pez Austral	Sydlige fisk	Poisson Austral
+Psc	Pisces	Fishes	Fische	雙魚座	Los Peces	Fiskene	Poissons
+Pup	Puppis	Stern	Achterdeck des Schiffs	船尾座	La Popa	Akterstavnen	Poupe
+Pyx	Pyxis	Compass	Kompass	羅盤座	La Brújula	Kompasset	Boussole
+Ret	Reticulum	Reticle	Netz	網罟座	El Retículo	Nettet	Réticule
+Scl	Sculptor	Sculptor	Bildhauer	玉夫座	El Taller del Escultor	Billedhuggeren	Sculpteur
+Sco	Scorpius	Scorpion	Skorpion	天蠍座	El Escorpión	Skorpionen	Scorpion
+Sct	Scutum	Shield	Schild	盾牌座	El Escudo	Skjoldet	Écu de Sobieski
+Ser1	Serpens Caput	Serpent Head	Schlange Kopf	巨蛇座蛇頭	La Cabeza de la Serpiente	Slangens hode	Tête du Serpent
+Ser2	Serpens Cauda	Serpent Tail	Schlange Schwanz	巨蛇座蛇尾	La Cola de la Serpiente	Slangens hale	Queue du Serpent
+Sex	Sextans	Sextant	Sextant	六分儀座	El Sextante	Sekstanten	Sextant
+Sge	Sagitta	Arrow	Pfeil	天箭座	La Flecha	Pilen	Flèche
+Sgr	Sagittarius	Archer	Schütze	人馬座	Sagitario	Skytten	Sagittaire
+Tau	Taurus	Bull	Stier	金牛座	El Toro	Tyren	Taureau
+Tel	Telescopium	Telescope	Teleskop	望遠鏡座	El Telescopio	Teleskopet	Télescope
+TrA	Triangulum Australe	Southern Triangle	Südliches Dreieck	南三角座	El Triángulo Austral	Sydlige triangelet	Triangle Austral
+Tri	Triangulum	Triangle	Dreieck	三角座	El Triángulo	Triangelet	Triangle
+Tuc	Tucana	Toucan	Tukan	杜鵑座	El Tucán	Tukanen	Toucan
+UMa	Ursa Major	Great Bear	Großer Bär	大熊座	La Osa Mayor	Store bjørn	Grande Ourse
+UMi	Ursa Minor	Little Bear	Kleiner Bär	小熊座	La Osa Menor	Lille bjørn	Petite Ourse
+Vel	Vela	Sails	Segel des Schiffs	船帆座	Las Velas	Seilet	Voiles
+Vir	Virgo	Maiden	Jungfrau	室女座	La Virgen	Jomfruen	Vierge
+Vol	Volans	Flying Fish	Fliegender Fisch	飛魚座	El Pez Volador	Flygefisken	Poisson Volant
+Vul	Vulpecula	Fox	Fuchs	狐狸座	La Raposa	Reven	Petit Renard
