@@ -28,6 +28,9 @@
 
 package org.tengel.planisphere;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 public class Kepler
 {
     /**
@@ -82,4 +85,39 @@ public class Kepler
     {
         return semiMajorAxis * (1 - eccentricity * Astro.cos(eccentricAnomaly));
     }
+
+
+    /**
+     * Calculate the rise time (if calcRise is True) or the set time (if
+     * calcRise is False) of a Planet.
+     *
+     * :param double longitude: Geographical longitude of observer (degree).
+     * :param double latitude: Geographical latitude of observer (degree).
+     * :param GregorianCalendar date: Date of rise/set.
+     * :param Planet planet: Planet object to use for calculation.
+     * :param boolean calcRise: True to calculate rise time, False for set time.
+     * :return: Returns the rise time or set time as Calendar set to UTC.
+     */
+    static Calendar calcRiseSet_planet(double longitude, double latitude,
+                                       final GregorianCalendar date,
+                                       final Planet planet, boolean calcRise)
+    {
+        String objType = "planet";
+        double elevation = -0.566667;
+        ObjectPositionCalculator objPosCalc = new ObjectPositionCalculator()
+        {
+            @Override
+            public double[] calcPos(double jd)
+            {
+                Planet earth = new Earth();
+                earth.calcHeliocentric(date);
+                planet.calcHeliocentric(date);
+                planet.calcGeocentric(earth);
+                return new double[]{planet.mRa / 15, planet.mDeclination};
+            }
+        };
+        return Astro.calcRiseSet(objType, elevation, longitude, latitude,
+                                 objPosCalc, date, 12, calcRise, 3);
+    }
+
 }

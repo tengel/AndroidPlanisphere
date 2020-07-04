@@ -28,6 +28,9 @@
 package org.tengel.planisphere;
 
 import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+import java.util.TimeZone;
 
 class Degree
 {
@@ -37,6 +40,16 @@ class Degree
     int d;
     int m;
     double s;
+}
+
+/**
+ * The ObjectPositionCalculator is used for calculating rise/set times of
+ * celestial objects. The function is called with the julian date as parameter
+ * and returns the position (ra [h] / dec [degree]) of the object.
+ */
+interface ObjectPositionCalculator
+{
+    double[] calcPos(double jd);
 }
 
 class Astro
@@ -131,15 +144,21 @@ class Astro
     }
 
     /**
-     * Return the julian date (as float) from a python datetime object.
+     * Return the julian date (as double) from a Calendar object.
+     * The Calendar object may use a timezone and/or DST. This function converts
+     * the value to UTC without modifying the passed object.
      */
     static double julian_date(Calendar c)
     {
-        return julian_date(c.get(Calendar.YEAR), c.get(Calendar.MONTH) + 1,
-                           c.get(Calendar.DAY_OF_MONTH),
-                           (c.get(Calendar.HOUR_OF_DAY) +
-                            (c.get(Calendar.MINUTE) / 60.0) +
-                            (c.get(Calendar.SECOND) / 3600.0)));
+        Calendar cc = (Calendar) c.clone();
+        cc.getTime(); // force recomputation of fields
+        cc.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        return julian_date(cc.get(Calendar.YEAR), cc.get(Calendar.MONTH) + 1,
+                           cc.get(Calendar.DAY_OF_MONTH),
+                           (cc.get(Calendar.HOUR_OF_DAY) +
+                            (cc.get(Calendar.MINUTE) / 60.0) +
+                            (cc.get(Calendar.SECOND) / 3600.0)));
     }
 
     /**
@@ -209,8 +228,7 @@ class Astro
         {
             throw new RuntimeException("should not happen");
         }
-        Double[] ret =  {lambda, beta};
-        return ret;
+        return new Double[]{lambda, beta};
     }
 
     /**
@@ -242,8 +260,7 @@ class Astro
         {
             l = l - 360;
         }
-        double[] rt = {l, b};
-        return rt;
+        return new double[]{l, b};
     }
 
     /**
@@ -282,8 +299,7 @@ class Astro
         x = r * cos(beta) * cos(lamda);
         y = r * cos(beta) * sin(lamda);
         z = r * sin(beta);
-        double[] rc = {x, y, z};
-        return rc;
+        return new double[]{x, y, z};
     }
 
     /**
@@ -337,8 +353,7 @@ class Astro
         else {
             throw new RuntimeException("should not happen");
         }
-        double[] rc = {beta, lambda, r};
-        return rc;
+        return new double[]{beta, lambda, r};
     }
 
     /**
@@ -361,8 +376,7 @@ class Astro
         y = cos(epsilon) * cos(beta) * sin(lamb) - sin(epsilon) * sin(beta);
         z = sin(epsilon) * cos(beta) * sin(lamb) + cos(epsilon) * sin(beta);
         double[] polar = cart2sphe(x, y, z);
-        double[] rc = {polar[1], polar[0]};
-        return rc;
+        return new double[]{polar[1], polar[0]};
     }
 
     /**
@@ -447,4 +461,219 @@ class Astro
     {
         return d.d + (d.m / 60.0) + (d.s / 60.0 / 60.0);
     }
+
+    /**
+     * Calculate the rise time (if calcRise is True) or the set time (if
+     * calcRise is False) of a star.
+     *
+     * :param double longitude: Geographical longitude of observer (degree).
+     * :param double latitude: Geographical latitude of observer (degree).
+     * :param GregorianCalendar date: Date of rise/set.
+     * :param double objRa: Right ascension of star (h).
+     * :param double objDec: Declination of star (degree).
+     * :param boolean calcRise: True to calculate rise time, False for set time.
+     * :return: Returns the rise time or set time as Calendar set to UTC.
+     */
+    static Calendar calcRiseSet_star(double longitude, double latitude,
+                                     GregorianCalendar date, final double objRa,
+                                     final double objDec, boolean calcRise)
+    {
+        String objType = "star";
+        double elevation = -0.566667;
+        ObjectPositionCalculator objPosCalc = new ObjectPositionCalculator()
+        {
+            @Override
+            public double[] calcPos(double jd)
+            {
+                return new double[]{objRa, objDec};
+            }
+        };
+        return calcRiseSet(objType, elevation, longitude, latitude,
+                           objPosCalc, date, 12, calcRise, 2);
+    }
+
+    /**
+     * Calculate the rise time (if calcRise is True) or the set time (if
+     * calcRise is False) of of the Sun.
+     *
+     * :param double longitude: Geographical longitude of observer (degree).
+     * :param double latitude: Geographical latitude of observer (degree).
+     * :param GregorianCalendar date: Date of rise/set.
+     * :param boolean calcRise: True to calculate rise time, False for set time.
+     * :return: Returns the rise time or set time as Calendar set to UTC.
+     */
+    static Calendar calcRiseSet_sun(double longitude, double latitude,
+                                    GregorianCalendar date, boolean calcRise)
+    {
+        String objType = "sun";
+        double elevation = -0.83333;
+        ObjectPositionCalculator objPosCalc = new ObjectPositionCalculator()
+        {
+            @Override
+            public double[] calcPos(double jd)
+            {
+                double[] raDec = calcPositionSun(jd);
+                return new double[]{raDec[0] / 15, raDec[1]};
+            }
+        };
+        return calcRiseSet(objType, elevation, longitude, latitude, objPosCalc,
+                           date,  calcRise ? 6 : 18, calcRise, 2);
+    }
+
+    /**
+     * Calculate the rise time (if calcRise is True) or the set time (if
+     * calcRise is False) of the Moon.
+     *
+     * :param double longitude: Geographical longitude of observer (degree).
+     * :param double latitude: Geographical latitude of observer (degree).
+     * :param GregorianCalendar date: Date of rise/set.
+     * :param boolean calcRise: True to calculate rise time, False for set time.
+     * :return: Returns the rise time or set time as Calendar set to UTC.
+     */
+    static Calendar calcRiseSet_moon(double longitude, double latitude,
+                                     GregorianCalendar date, boolean calcRise)
+    {
+        String objType = "moon";
+        double elevation = 0.133333;
+        ObjectPositionCalculator objPosCalc = new ObjectPositionCalculator()
+        {
+            @Override
+            public double[] calcPos(double jd)
+            {
+                double[] raDec = calcPositionMoon(jd);
+                return new double[]{raDec[0] / 15, raDec[1]};
+            }
+        };
+        return calcRiseSet(objType, elevation, longitude, latitude, objPosCalc,
+                           date, 12, calcRise, 5);
+    }
+
+    /**
+     * General function to calculate the rise time (if calcRise is True) or the
+     * set time (if calcRise is False) of different kinds of celestial objects.
+     *
+     * :param string objType: Type of celestial object. Must be one of "star",
+     * sun", "moon", "planet".
+     * :param double elevation: Horizontal elevation (degree).
+     * :param double longitude: Geographical longitude of observer (degree).
+     * :param double latitude: Geographical latitude of observer (degree).
+     * :param ObjectPositionCalculator objPosCalc: Returns the position
+     * (ra [h] / dec [degree]) of the celestial object. The function is called
+     * with a double parameter, containing the julian date.
+     * :param GregorianCalendar date: Date, may contain timezone and/or DST.
+     * :param double T0: Initial value for rise/set time (UTC hours as double).
+     * :param boolean calcRise: True to calculate rise time. False to calculate
+     * set time.
+     * :param int iterations: Number of iterations.
+     * :return: Returns the rise time or set time as a Calendar object which is
+     * always set to UTC.
+     */
+    static Calendar calcRiseSet(String objType, double elevation,
+                                double longitude, double latitude,
+                                ObjectPositionCalculator objPosCalc,
+                                GregorianCalendar date, double T0,
+                                boolean calcRise, int iterations)
+    {
+        double localSiderealTime;
+        double hourAngle;
+        double[] objRaDec;
+        double n = 0;
+        double objRa_last = 0;
+        double T_last = 0;
+
+        Calendar dateUtc = (Calendar) date.clone();
+        dateUtc.getTime();
+        dateUtc.setTimeZone(TimeZone.getTimeZone("UTC"));
+        dateUtc.set(Calendar.HOUR_OF_DAY, 0);
+        dateUtc.set(Calendar.MINUTE, 0);
+        dateUtc.set(Calendar.SECOND, 0);
+        dateUtc.set(Calendar.MILLISECOND, 0);
+
+        double jdBase = julian_date(dateUtc);
+        double T = T0;
+
+        for (int i = 0; i < iterations; ++i)
+        {
+            localSiderealTime = (sidereal_time(dateUtc.get(Calendar.YEAR),
+                    dateUtc.get(Calendar.MONTH) + 1,
+                    dateUtc.get(Calendar.DAY_OF_MONTH), T) +
+                                 longitude / 15.0);
+
+            objRaDec = objPosCalc.calcPos(jdBase + (T / 24));
+
+            hourAngle = localSiderealTime - objRaDec[0]; // hour angle  (tau)
+            if (hourAngle > 12)
+            {
+                hourAngle -= 24;
+            }
+            else if (hourAngle < -12)
+            {
+                hourAngle += 24;
+            }
+
+            double x = ((sin(elevation) - sin(latitude) * sin(objRaDec[1])) /
+                        (cos(latitude) * cos(objRaDec[1])));
+            if (Math.abs(x) > 1)
+            {
+                // no rise/set, always or never visible
+                return null;
+            }
+            double t = acos(x) / 15.0;
+            if (calcRise)
+            {
+                t = -t;
+            }
+
+            if (objType.equals("star"))
+            {
+                n = 1.0027379;
+            }
+            else if (objType.equals("sun"))
+            {
+                n = 1;
+            }
+            else if (objType.equals("moon") || objType.equals("planet"))
+            {
+                if (i == 0)
+                {
+                    if      (objType.equals("moon"))   { n = 1.0027 - 0.0366; }
+                    else if (objType.equals("planet")) { n = 1.0027 - 0;      }
+                }
+                else
+                {
+                    n = 1.0027 - ((objRaDec[0] - objRa_last) / (T - T_last));
+                }
+            }
+            else
+            {
+                throw new RuntimeException("invalid object type: " + objType);
+            }
+
+            T_last = T;
+            objRa_last = objRaDec[0];
+            T = T + ((t - hourAngle) / n);
+        }
+        dateUtc.add(Calendar.MILLISECOND, (int) (T*60*60*1000));
+        return dateUtc;
+    }
+
+    /**
+     * Convert a Calendar object to String
+     */
+    static String formatCal(final Calendar gc)
+    {
+        if (gc != null)
+        {
+            return String.format(Locale.US, "%04d-%02d-%02d %02d:%02d:%02d",
+                                 gc.get(Calendar.YEAR), gc.get(Calendar.MONTH) + 1,
+                                 gc.get(Calendar.DAY_OF_MONTH),
+                                 gc.get(Calendar.HOUR_OF_DAY),
+                                 gc.get(Calendar.MINUTE), gc.get(Calendar.SECOND));
+        }
+        else
+        {
+            return " - ";
+        }
+    }
+
 }

@@ -341,6 +341,14 @@ public class MainActivity extends AppCompatActivity
             values.add(String.format(Locale.getDefault(), "%.4f°", ce.rightAscension));
             keys.add(getString(R.string.DEC));
             values.add(String.format(Locale.getDefault(), "%.4f°", ce.declination));
+            keys.add(getString(R.string.riseUtc));
+            values.add(mEngine.calcRise(ce, false));
+            keys.add(getString(R.string.setUtc));
+            values.add(mEngine.calcSet(ce, false));
+            keys.add(getString(R.string.rise));
+            values.add(mEngine.calcRise(ce, true));
+            keys.add(getString(R.string.set));
+            values.add(mEngine.calcSet(ce, true));
             links.add(String.format(Locale.US,
                     "<a href=\"https://simbad.u-strasbg.fr/simbad/sim-id?Ident=HR+%d\">&#8599; SIMBAD</a>",
                     ce.hr));
@@ -363,18 +371,46 @@ public class MainActivity extends AppCompatActivity
             values.add(String.format(Locale.getDefault(), "%.4f°", p.mEcliptic_lon));
             keys.add(getString(R.string.distance_earth));
             values.add(String.format(Locale.getDefault(), "%.4f AU", p.mDistance_earth));
+            keys.add(getString(R.string.RA));
+            values.add(String.format(Locale.getDefault(), "%.4f°", p.mRa));
+            keys.add(getString(R.string.DEC));
+            values.add(String.format(Locale.getDefault(), "%.4f°", p.mDeclination));
+            keys.add(getString(R.string.riseUtc));
+            values.add(mEngine.calcRise(p, false));
+            keys.add(getString(R.string.setUtc));
+            values.add(mEngine.calcSet(p, false));
+            keys.add(getString(R.string.rise));
+            values.add(mEngine.calcRise(p, true));
+            keys.add(getString(R.string.set));
+            values.add(mEngine.calcSet(p, true));
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     p.mWikidataId));
         }
         else if (chartObject.getType() == ObjectType.SUN)
         {
+            keys.add(getString(R.string.riseUtc));
+            values.add(mEngine.calcRiseSun(false));
+            keys.add(getString(R.string.setUtc));
+            values.add(mEngine.calcSetSun(false));
+            keys.add(getString(R.string.rise));
+            values.add(mEngine.calcRiseSun(true));
+            keys.add(getString(R.string.set));
+            values.add(mEngine.calcSetSun(true));
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     Sun.sWikidataId));
         }
         else if (chartObject.getType() == ObjectType.MOON)
         {
+            keys.add(getString(R.string.riseUtc));
+            values.add(mEngine.calcRiseMoon(false));
+            keys.add(getString(R.string.setUtc));
+            values.add(mEngine.calcSetMoon(false));
+            keys.add(getString(R.string.rise));
+            values.add(mEngine.calcRiseMoon(true));
+            keys.add(getString(R.string.set));
+            values.add(mEngine.calcSetMoon(true));
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     Moon.sWikidataId));

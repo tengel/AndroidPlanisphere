@@ -18,7 +18,9 @@
 package org.tengel.planisphere;
 
 import org.junit.Test;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import static org.junit.Assert.*;
 
 public class AstroTest
@@ -54,9 +56,20 @@ public class AstroTest
         double j = Astro.julian_date(1983, 1, 18, 7 + (12.0 / 60.0));
         assertEquals(2445352.8, j, 0);
 
-        GregorianCalendar gc = new GregorianCalendar();
-        gc.set(1983, 1 - 1, 18, 7, 12, 0);
-        assertEquals(2445352.8, Astro.julian_date(gc), 0);
+        GregorianCalendar gc1 = new GregorianCalendar(
+            TimeZone.getTimeZone("UTC"));
+        gc1.set(1983, 1 - 1, 18, 7, 12, 0);
+        assertEquals(2445352.8, Astro.julian_date(gc1), 0);
+
+        GregorianCalendar gc2 = new GregorianCalendar(
+            TimeZone.getTimeZone("America/Los_Angeles"));
+        gc2.set(1983, 1 - 1, 18, 7, 12, 0);
+        assertEquals(2445353.1333333333, Astro.julian_date(gc2), 0);
+
+        GregorianCalendar gc3 = new GregorianCalendar(
+            TimeZone.getTimeZone("America/Los_Angeles"));
+        gc3.set(1983, 7 - 1, 18, 7, 12, 0);
+        assertEquals(2445534.091666667, Astro.julian_date(gc3), 0);
     }
 
     @Test
@@ -154,11 +167,101 @@ public class AstroTest
     @Test
     public void positionSun()
     {
-        double ra, dec;
         double[] raDec;
         raDec = Astro.calcPositionSun(Astro.julian_date(2020, 1, 1, 12));
         assertEquals(281.44595, raDec[0], 0.00005);
         assertEquals(-23.0221, raDec[1], 0.00005);
     }
 
+    @Test
+    public void positionMoon()
+    {
+        double[] raDec;
+        raDec = Astro.calcPositionMoon(Astro.julian_date(2020, 1, 1, 18));
+        assertEquals(357.511, raDec[0],0.1);
+        assertEquals(-6.686, raDec[1], 0.1);
+    }
+
+    @Test
+    public void riseSetStar()
+    {
+        Calendar rise, set;
+        final double rigelRa = 78.63458333333332 / 15;
+        final double rigelDec = -8.201666666666666;
+
+        // date is UTC
+        GregorianCalendar date1 = new GregorianCalendar(
+            TimeZone.getTimeZone("UTC"));
+        date1.clear();
+        date1.set(Calendar.YEAR, 2020);
+        date1.set(Calendar.MONTH, 0); // 0 = Jan
+        date1.set(Calendar.DAY_OF_MONTH, 1);
+        rise = Astro.calcRiseSet_star(15, 50, date1, rigelRa, rigelDec, true);
+        assertEquals(2020, rise.get(Calendar.YEAR));
+        assertEquals(0,    rise.get(Calendar.MONTH));
+        assertEquals(1,    rise.get(Calendar.DAY_OF_MONTH));
+        assertEquals(16,   rise.get(Calendar.HOUR_OF_DAY));
+        assertEquals(7,    rise.get(Calendar.MINUTE));
+        assertEquals(21,   rise.get(Calendar.SECOND));
+        set = Astro.calcRiseSet_star(15, 50, date1, rigelRa, rigelDec, false);
+        assertEquals(2020, set.get(Calendar.YEAR));
+        assertEquals(0,    set.get(Calendar.MONTH));
+        assertEquals(2,    set.get(Calendar.DAY_OF_MONTH));
+        assertEquals(2,    set.get(Calendar.HOUR_OF_DAY));
+        assertEquals(53,   set.get(Calendar.MINUTE));
+        assertEquals(40,   set.get(Calendar.SECOND));
+
+        // date with timezone and DST
+        TimeZone.setDefault(TimeZone.getTimeZone("America/Los_Angeles"));
+        GregorianCalendar date2 = new GregorianCalendar();
+        date2.set(2020, 7 - 1, 15, 0, 0, 0);
+        rise = Astro.calcRiseSet_star(-118, 34, date2, rigelRa, rigelDec, true);
+        assertEquals(2020, rise.get(Calendar.YEAR));
+        assertEquals(7 -1, rise.get(Calendar.MONTH));
+        assertEquals(15,   rise.get(Calendar.DAY_OF_MONTH));
+        assertEquals(11,   rise.get(Calendar.HOUR_OF_DAY));
+        assertEquals(50,   rise.get(Calendar.MINUTE));
+        assertEquals(53,   rise.get(Calendar.SECOND));
+        set = Astro.calcRiseSet_star(-118, 34, date2, rigelRa, rigelDec, false);
+        assertEquals(2020, set.get(Calendar.YEAR));
+        assertEquals(7 -1, set.get(Calendar.MONTH));
+        assertEquals(15,   set.get(Calendar.DAY_OF_MONTH));
+        assertEquals(23,   set.get(Calendar.HOUR_OF_DAY));
+        assertEquals(9,    set.get(Calendar.MINUTE));
+        assertEquals(57,   set.get(Calendar.SECOND));
+
+        // convert UTC to default timezone and DST
+        rise.setTimeZone(TimeZone.getDefault());
+        assertEquals(2020, rise.get(Calendar.YEAR));
+        assertEquals(7 -1, rise.get(Calendar.MONTH));
+        assertEquals(15,   rise.get(Calendar.DAY_OF_MONTH));
+        assertEquals(4,    rise.get(Calendar.HOUR_OF_DAY));
+        assertEquals(50,   rise.get(Calendar.MINUTE));
+        assertEquals(53,   rise.get(Calendar.SECOND));
+    }
+
+    @Test
+    public void riseSetSun()
+    {
+        Calendar rise, set;
+        GregorianCalendar date1 = new GregorianCalendar(
+                TimeZone.getTimeZone("UTC"));
+        date1.set(2020, 7 - 1, 3, 18, 0, 0);
+
+        rise = Astro.calcRiseSet_sun(9.49, 51.31, date1, true);
+        assertEquals(2020, rise.get(Calendar.YEAR));
+        assertEquals(7 -1, rise.get(Calendar.MONTH));
+        assertEquals(3,    rise.get(Calendar.DAY_OF_MONTH));
+        assertEquals(3,    rise.get(Calendar.HOUR_OF_DAY));
+        assertEquals(11,   rise.get(Calendar.MINUTE));
+        assertEquals(55,   rise.get(Calendar.SECOND));
+
+        set  = Astro.calcRiseSet_sun(9.49, 51.31, date1, false);
+        assertEquals(2020, set.get(Calendar.YEAR));
+        assertEquals(7 -1, set.get(Calendar.MONTH));
+        assertEquals(3,    set.get(Calendar.DAY_OF_MONTH));
+        assertEquals(19,   set.get(Calendar.HOUR_OF_DAY));
+        assertEquals(40,   set.get(Calendar.MINUTE));
+        assertEquals(26,   set.get(Calendar.SECOND));
+    }
 }

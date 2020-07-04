@@ -77,6 +77,10 @@
     <string name="planet">Planet</string>
     <string name="unknown">unknown</string>
     <string name="onlyVisiblePlanets">Only show visible planets</string>
+    <string name="rise">Rise (local time)</string>
+    <string name="riseUtc">Rise (UTC)</string>
+    <string name="set">Set (local time)</string>
+    <string name="setUtc">Set (UTC)</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphere</h1>

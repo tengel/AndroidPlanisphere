@@ -22,6 +22,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
 import java.util.Locale;
+import java.util.TimeZone;
 import java.util.Vector;
 
 public class Engine {
@@ -187,4 +188,88 @@ public class Engine {
         return objects.toArray(new ChartObject[0]);
     }
 
+    public String calcRise(Catalog.Entry ce, boolean localTime)
+    {
+        Calendar c = Astro.calcRiseSet_star(mLongitude, mLatitude, mTime,
+                                            ce.rightAscension, ce.declination,
+                                            true);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+
+    public String calcSet(Catalog.Entry ce, boolean localTime)
+    {
+        Calendar c = Astro.calcRiseSet_star(mLongitude, mLatitude, mTime,
+                                            ce.rightAscension, ce.declination,
+                                            false);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+
+    public String calcRise(Planet p, boolean localTime)
+    {
+        Calendar c = Kepler.calcRiseSet_planet(mLongitude, mLatitude, mTime,
+                                               p, true);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+
+    public String calcSet(Planet p, boolean localTime)
+    {
+        Calendar c = Kepler.calcRiseSet_planet(mLongitude, mLatitude, mTime,
+                                               p, false);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+    public String calcRiseSun(boolean localTime)
+    {
+        Calendar c = Astro.calcRiseSet_sun(mLongitude, mLatitude, mTime, true);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+
+    public String calcSetSun(boolean localTime)
+    {
+        Calendar c = Astro.calcRiseSet_sun(mLongitude, mLatitude, mTime, false);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+
+    public String calcRiseMoon(boolean localTime)
+    {
+        Calendar c = Astro.calcRiseSet_moon(mLongitude, mLatitude, mTime, true);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
+
+    public String calcSetMoon(boolean localTime)
+    {
+        Calendar c = Astro.calcRiseSet_moon(mLongitude, mLatitude, mTime, false);
+        if (localTime && c != null)
+        {
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return Astro.formatCal(c);
+    }
 }
