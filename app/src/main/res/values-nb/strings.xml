@@ -53,7 +53,7 @@
     <string name="lang_chinese">Kinesisk</string>
     <string name="lang_spanish">Spansk</string>
     <string name="lang_norwegian">Norsk</string>
-    <string name="lang_french">French</string>
+    <string name="lang_french">Fransk</string>
     <string name="keep_screen_on">Hold skjermen på</string>
     <string name="time_auto_update">Hold stjernekart oppdatert til gjeldende tid</string>
     <string name="direction_n">N</string>
@@ -77,10 +77,10 @@
     <string name="planet">Planet</string>
     <string name="unknown">ukjent</string>
     <string name="onlyVisiblePlanets">Vis bare synlige planeter</string>
-    <string name="rise">Rise (local time)</string>
-    <string name="riseUtc">Rise (UTC)</string>
-    <string name="set">Set (local time)</string>
-    <string name="setUtc">Set (UTC)</string>
+    <string name="rise">Oppgang (lokal tid)</string>
+    <string name="riseUtc">Oppgang (UTC)</string>
+    <string name="set">Nedgang (lokal tid)</string>
+    <string name="setUtc">Nedgang (UTC)</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisfære</h1>
@@ -89,7 +89,8 @@
     og planeter.
     <br/><br/>
 
-    Enkelttrykk viser eller skjuler verktøylinjen. Bruk alternativer-menyen for å
+    Enkelttrykk viser eller skjuler verktøylinjen. Langt trykk viser mer
+    informasjon om et valgt himmelobjekt. Bruk alternativer-menyen for å
     stille inn <em>Dato / Klokkeslett</em> og <em>Sted</em>, eller bruk stedet gitt av
     enheten. <em>Visningsalternativer</em> tillater deg å aktivere eller deaktivere
     elementene på kartet:
