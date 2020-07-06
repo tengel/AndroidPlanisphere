@@ -89,13 +89,14 @@
     and planets.
     <br/><br/>
 
-    Single tap shows or hides the toolbar. Use the options menu, to set
+    Single tap shows or hides the toolbar. Long press shows additional
+    information of a selected celestial object. Use the options menu, to set
     <em>Date / Time</em> and <em>Location</em>, or use the location provided by
     the device. The <em>Display options</em> allows you to enable or disable the
     elements of the chart:
     <ul>
     <li>horizon (with cardinal directions)</li>
-    <li>celestical equator</li>
+    <li>celestial equator</li>
     <li>ecliptic</li>
     <li>azimuthal grid</li>
     <li>equatorial grid</li>
@@ -167,6 +168,8 @@
     <dt>Calculations based on</dt>
     <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
     </dd>
+    <dt>Translations</dt>
+    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
     </dl>
 
      ]]></string>

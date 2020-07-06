@@ -1,3 +1,4 @@
 * Show rise and set times of celestial objects.
 * Show time in local time and UTC.
 * French translation.
+* Several bugfixes.

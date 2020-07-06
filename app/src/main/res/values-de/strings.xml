@@ -89,11 +89,12 @@
     Planeten zeigt.
     <br/><br/>
 
-    Ein einfacher Fingertipp blendet die Toolbar ein oder aus. Im Menü kann
-    <em>Datum / Uhrzeit</em> und der <em>Standort</em> eingestellt werden. Es
-    kann auch der aktuelle Standort verwendet werden, der vom Gerät ermittelt
-    wurde. Unter <em>Anzeigeoptionen</em> können folgende Elemente aktiviert
-    oder deaktiviert werden:
+    Ein einfacher Fingertipp blendet die Toolbar ein oder aus. Langes Drücken
+    zeigt zusätzliche Informationen über ein ausgewähltes Himmelsobjekt an. Im
+    Menü kann <em>Datum / Uhrzeit</em> und der <em>Standort</em> eingestellt
+    werden. Es kann auch der aktuelle Standort verwendet werden, der vom Gerät
+    ermittelt wurde. Unter <em>Anzeigeoptionen</em> können folgende Elemente
+    aktiviert oder deaktiviert werden:
     <ul>
     <li>Horizont (mit Himmelsrichtungen)</li>
     <li>Himmelsqäuator</li>
@@ -169,6 +170,8 @@
     <dt>Berechnungen basierend auf</dt>
     <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
     </dd>
+    <dt>Übersetzungen</dt>
+    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
     </dl>
 
      ]]></string>

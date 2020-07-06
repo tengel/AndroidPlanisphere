@@ -88,8 +88,9 @@
    呈現太陽、月亮、恆星、星座和行星的簡易星座盤。
     <br/><br/>
 
-    點一下顯示或隱藏工具列。使用功能表設定
-    <em>日期 / 時間</em> 和 <em>地點</em>，也可由裝置提供定位服務。 使用者可透過<em>顯示項目</em> 選擇是否顯示：
+    點一下顯示或隱藏工具列，長按顯示所選天體的其他資訊。使用功能表設定
+    <em>日期 / 時間</em> 和 <em>地點</em>，也可由裝置提供定位服務。
+    使用者可透過<em>顯示項目</em> 選擇是否顯示：
     <ul>
     <li>地平線（含羅盤方位）</li>
     <li>天球赤道</li>
@@ -152,6 +153,9 @@
     <dt>Calculations based on</dt>
     <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
     </dd>
+    <dt>翻譯</dt>
+    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+    </dl>
     </dl>
 
     ]]></string>
