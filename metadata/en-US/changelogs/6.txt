@@ -1,0 +1,2 @@
+* Show position of comet "C/2020 F3 (NEOWISE)" on star chart.
+* Norwegian translation update.

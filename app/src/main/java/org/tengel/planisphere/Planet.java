@@ -129,17 +129,20 @@ abstract class PlanetCsv extends Planet
     private ArrayList<OrbitalElements> mElements;
 
     private static HashMap<String, ArrayList<OrbitalElements>> sPlanetOrbitalElements = new HashMap<>();
+
     public static void init(InputStream jupiterStream, InputStream saturnStream,
-                            InputStream uranusStream, InputStream neptuneStream) throws IOException
+                            InputStream uranusStream, InputStream neptuneStream,
+                            InputStream c2020f3Stream) throws IOException
     {
         sPlanetOrbitalElements.put(Jupiter.sName, readElements(jupiterStream));
         sPlanetOrbitalElements.put(Saturn.sName, readElements(saturnStream));
         sPlanetOrbitalElements.put(Uranus.sName, readElements(uranusStream));
         sPlanetOrbitalElements.put(Neptune.sName, readElements(neptuneStream));
+        sPlanetOrbitalElements.put(C2020F3.sName, readElements(c2020f3Stream));
 
         Planet.sPlanets = new Planet[] {new Mercury(), new Venus(), new Mars(),
                                         new Jupiter(), new Saturn(), new Uranus(),
-                                        new Neptune()};
+                                        new Neptune(), new C2020F3()};
         Planet.sEarth = new Earth();
     }
 
@@ -345,5 +348,14 @@ class Neptune extends PlanetCsv
     public Neptune()
     {
         super(sName, 7.78, "Q332");
+    }
+}
+
+class C2020F3 extends PlanetCsv
+{
+    public static final String sName = "C_2020_F3";
+    public C2020F3()
+    {
+        super(sName, -5, "Q90776919");
     }
 }
