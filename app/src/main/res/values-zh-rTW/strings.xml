@@ -81,6 +81,12 @@
     <string name="riseUtc">升起 (世界協調時間)</string>
     <string name="set">設定 (當地時間)</string>
     <string name="setUtc">設定 (世界協調時間)</string>
+    <string name="astroDawn">天文曙暮光開始</string>
+    <string name="nauticalDawn">航海曙暮光開始</string>
+    <string name="civilDawn">民用曙暮光開始</string>
+    <string name="civilDusk">民用曙暮光結束</string>
+    <string name="nauticalDusk">航海曙暮光結束</string>
+    <string name="astroDusk">天文曙暮光結束</string>
 
     <string name="about_text"><![CDATA[
     <h1>星座盤</h1>

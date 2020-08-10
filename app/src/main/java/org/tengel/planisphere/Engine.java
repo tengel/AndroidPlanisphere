@@ -233,19 +233,10 @@ public class Engine {
         }
         return Astro.formatCal(c);
     }
-    public String calcRiseSun(boolean localTime)
-    {
-        Calendar c = Astro.calcRiseSet_sun(mLongitude, mLatitude, mTime, true);
-        if (localTime && c != null)
-        {
-            c.setTimeZone(TimeZone.getDefault());
-        }
-        return Astro.formatCal(c);
-    }
 
-    public String calcSetSun(boolean localTime)
+    public String calcRiseSetSun(boolean localTime, RiseSetType type)
     {
-        Calendar c = Astro.calcRiseSet_sun(mLongitude, mLatitude, mTime, false);
+        Calendar c = Astro.calcRiseSet_sun(mLongitude, mLatitude, mTime, type);
         if (localTime && c != null)
         {
             c.setTimeZone(TimeZone.getDefault());

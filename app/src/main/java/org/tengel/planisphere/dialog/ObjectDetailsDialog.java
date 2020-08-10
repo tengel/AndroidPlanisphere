@@ -22,6 +22,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
+import android.view.Gravity;
+import android.view.WindowManager;
 import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;

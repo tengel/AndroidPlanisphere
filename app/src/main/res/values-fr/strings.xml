@@ -81,6 +81,12 @@
     <string name="riseUtc">Rise (UTC)</string>
     <string name="set">Set (local time)</string>
     <string name="setUtc">Set (UTC)</string>
+    <string name="astroDawn">Begin morning astronomical twilight</string>
+    <string name="nauticalDawn">Begin morning nautical twilight</string>
+    <string name="civilDawn">Begin morning civil twilight</string>
+    <string name="civilDusk">End evening civil twilight</string>
+    <string name="nauticalDusk">End evening nautical twilight</string>
+    <string name="astroDusk">End evening astronomical twilight</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphère</h1>

@@ -42,6 +42,18 @@ class Degree
     double s;
 }
 
+enum RiseSetType
+{
+    ASTRO_DAWN,
+    NAUTICAL_DAWN,
+    CIVIL_DAWN,
+    RISE,
+    SET,
+    CIVIL_DUSK,
+    NAUTICAL_DUSK,
+    ASTRO_DUSK,
+}
+
 /**
  * The ObjectPositionCalculator is used for calculating rise/set times of
  * celestial objects. The function is called with the julian date as parameter
@@ -493,20 +505,55 @@ class Astro
     }
 
     /**
-     * Calculate the rise time (if calcRise is True) or the set time (if
-     * calcRise is False) of of the Sun.
+     * Calculate rise, set, and twilight of the sun.
      *
      * :param double longitude: Geographical longitude of observer (degree).
      * :param double latitude: Geographical latitude of observer (degree).
      * :param GregorianCalendar date: Date of rise/set.
-     * :param boolean calcRise: True to calculate rise time, False for set time.
+     * :param RiseSetType type: Choose what kind of rise or set to calculate.
      * :return: Returns the rise time or set time as Calendar set to UTC.
      */
     static Calendar calcRiseSet_sun(double longitude, double latitude,
-                                    GregorianCalendar date, boolean calcRise)
+                                    GregorianCalendar date, RiseSetType type)
     {
         String objType = "sun";
-        double elevation = -0.83333;
+        boolean calcRise = true;
+        double elevation = 0;
+        switch (type)
+        {
+            case ASTRO_DAWN:
+                calcRise  = true;
+                elevation = -18;
+                break;
+            case NAUTICAL_DAWN:
+                calcRise  = true;
+                elevation = -12;
+                break;
+            case CIVIL_DAWN:
+                calcRise  = true;
+                elevation = -6;
+                break;
+            case RISE:
+                calcRise  = true;
+                elevation = -0.83333;
+                break;
+            case SET:
+                calcRise  = false;
+                elevation = -0.83333;
+                break;
+            case CIVIL_DUSK:
+                calcRise  = false;
+                elevation = -6;
+                break;
+            case NAUTICAL_DUSK:
+                calcRise  = false;
+                elevation = -12;
+                break;
+            case ASTRO_DUSK:
+                calcRise  = false;
+                elevation = -18;
+                break;
+        }
         ObjectPositionCalculator objPosCalc = new ObjectPositionCalculator()
         {
             @Override
@@ -517,7 +564,7 @@ class Astro
             }
         };
         return calcRiseSet(objType, elevation, longitude, latitude, objPosCalc,
-                           date,  calcRise ? 6 : 18, calcRise, 2);
+                           date, calcRise ? 6 : 18, calcRise, 2);
     }
 
     /**
@@ -664,11 +711,12 @@ class Astro
     {
         if (gc != null)
         {
-            return String.format(Locale.US, "%04d-%02d-%02d %02d:%02d:%02d",
-                                 gc.get(Calendar.YEAR), gc.get(Calendar.MONTH) + 1,
+            return String.format(Locale.US, "%04d-%02d-%02d  %02d:%02d",
+                                 gc.get(Calendar.YEAR),
+                                 gc.get(Calendar.MONTH) + 1,
                                  gc.get(Calendar.DAY_OF_MONTH),
                                  gc.get(Calendar.HOUR_OF_DAY),
-                                 gc.get(Calendar.MINUTE), gc.get(Calendar.SECOND));
+                                 gc.get(Calendar.MINUTE));
         }
         else
         {

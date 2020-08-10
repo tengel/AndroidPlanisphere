@@ -391,13 +391,25 @@ public class MainActivity extends AppCompatActivity
         else if (chartObject.getType() == ObjectType.SUN)
         {
             keys.add(getString(R.string.riseUtc));
-            values.add(mEngine.calcRiseSun(false));
+            values.add(mEngine.calcRiseSetSun(false, RiseSetType.RISE));
             keys.add(getString(R.string.setUtc));
-            values.add(mEngine.calcSetSun(false));
+            values.add(mEngine.calcRiseSetSun(false, RiseSetType.SET));
+            keys.add(getString(R.string.astroDawn));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.ASTRO_DAWN));
+            keys.add(getString(R.string.nauticalDawn));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.NAUTICAL_DAWN));
+            keys.add(getString(R.string.civilDawn));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.CIVIL_DAWN));
             keys.add(getString(R.string.rise));
-            values.add(mEngine.calcRiseSun(true));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.RISE));
             keys.add(getString(R.string.set));
-            values.add(mEngine.calcSetSun(true));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.SET));
+            keys.add(getString(R.string.civilDusk));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.CIVIL_DUSK));
+            keys.add(getString(R.string.nauticalDusk));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.NAUTICAL_DUSK));
+            keys.add(getString(R.string.astroDusk));
+            values.add(mEngine.calcRiseSetSun(true, RiseSetType.ASTRO_DUSK));
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     Sun.sWikidataId));

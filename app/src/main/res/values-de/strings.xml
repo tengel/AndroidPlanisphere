@@ -81,6 +81,12 @@
     <string name="riseUtc">Aufgang (UTC)</string>
     <string name="set">Untergang (Ortszeit)</string>
     <string name="setUtc">Untergang (UTC)</string>
+    <string name="astroDawn">Beginn astronomische Dämmerung</string>
+    <string name="nauticalDawn">Beginn nautische Dämmerung</string>
+    <string name="civilDawn">Beginn bürgerliche Dämmerung</string>
+    <string name="civilDusk">Ende bürgerliche Dämmerung</string>
+    <string name="nauticalDusk">Ende nautische Dämmerung</string>
+    <string name="astroDusk">Ende astronomische Dämmerung</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphäre</h1>
