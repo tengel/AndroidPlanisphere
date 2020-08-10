@@ -93,8 +93,7 @@ public class MainActivity extends AppCompatActivity
             PlanetCsv.init(getResources().openRawResource(R.raw.horizons_jupiter),
                            getResources().openRawResource(R.raw.horizons_saturn),
                            getResources().openRawResource(R.raw.horizons_uranus),
-                           getResources().openRawResource(R.raw.horizons_neptune),
-                           getResources().openRawResource(R.raw.horizons_c2020f3));
+                           getResources().openRawResource(R.raw.horizons_neptune));
 
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                                  WindowManager.LayoutParams.FLAG_FULLSCREEN);

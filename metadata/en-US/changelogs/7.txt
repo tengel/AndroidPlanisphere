@@ -1,0 +1,2 @@
+* Calculate civil, nautical and astronomical twilight.
+* Remove "C/2020 F3 (NEOWISE)" because it is not visible anymore.

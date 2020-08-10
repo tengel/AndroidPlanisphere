@@ -107,7 +107,6 @@ public class Settings
         mTranslations.put(Neptune.sName, context.getString(R.string.planet_neptune));
         mTranslations.put("Sun", context.getString(R.string.sun));
         mTranslations.put("Moon", context.getString(R.string.moon));
-        mTranslations.put("C_2020_F3", "C/2020 F3 (NEOWISE)");
 
         mLanguage = context.getResources().getConfiguration().locale.getLanguage();
         mCurrentTime = new GregorianCalendar();

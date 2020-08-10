@@ -248,7 +248,7 @@ public class AstroTest
                 TimeZone.getTimeZone("UTC"));
         date1.set(2020, 7 - 1, 3, 18, 0, 0);
 
-        rise = Astro.calcRiseSet_sun(9.49, 51.31, date1, true);
+        rise = Astro.calcRiseSet_sun(9.49, 51.31, date1, RiseSetType.RISE);
         assertEquals(2020, rise.get(Calendar.YEAR));
         assertEquals(7 -1, rise.get(Calendar.MONTH));
         assertEquals(3,    rise.get(Calendar.DAY_OF_MONTH));
@@ -256,7 +256,7 @@ public class AstroTest
         assertEquals(11,   rise.get(Calendar.MINUTE));
         assertEquals(55,   rise.get(Calendar.SECOND));
 
-        set  = Astro.calcRiseSet_sun(9.49, 51.31, date1, false);
+        set  = Astro.calcRiseSet_sun(9.49, 51.31, date1, RiseSetType.SET);
         assertEquals(2020, set.get(Calendar.YEAR));
         assertEquals(7 -1, set.get(Calendar.MONTH));
         assertEquals(3,    set.get(Calendar.DAY_OF_MONTH));
