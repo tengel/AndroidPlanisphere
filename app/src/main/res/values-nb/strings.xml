@@ -81,12 +81,12 @@
     <string name="riseUtc">Oppgang (UTC)</string>
     <string name="set">Nedgang (lokal tid)</string>
     <string name="setUtc">Nedgang (UTC)</string>
-    <string name="astroDawn">Begin morning astronomical twilight</string>
-    <string name="nauticalDawn">Begin morning nautical twilight</string>
-    <string name="civilDawn">Begin morning civil twilight</string>
-    <string name="civilDusk">End evening civil twilight</string>
-    <string name="nauticalDusk">End evening nautical twilight</string>
-    <string name="astroDusk">End evening astronomical twilight</string>
+    <string name="astroDawn">Start astronomisk tussmørke (morgen)</string>
+    <string name="nauticalDawn">Start nautisk tussmørke (morgen)</string>
+    <string name="civilDawn">Start alminnelig tussmørke (morgen)</string>
+    <string name="civilDusk">Slutt alminnelig tussmørke (kveld)</string>
+    <string name="nauticalDusk">Slutt nautisk tussmørke (kveld)</string>
+    <string name="astroDusk">Slutt astronomisk tussmørke (kveld)</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisfære</h1>
