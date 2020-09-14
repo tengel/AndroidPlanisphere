@@ -42,6 +42,8 @@ public class Settings
     private boolean mGpsEnabled;
     private float mLatitude;
     private float mLongitude;
+    private float mLastGpsLatitude;
+    private float mLastGpsLongitude;
     private HashMap<String, String> mTranslations = new HashMap<>();
     private String mLanguage;
     private int mConstLanguage;
@@ -92,6 +94,8 @@ public class Settings
         mGpsEnabled = mPref.getBoolean("gps-enabled", true);
         mLatitude = mPref.getFloat("latitude", 51.31f);
         mLongitude = mPref.getFloat("longitude", 9.49f);
+        mLastGpsLatitude = mPref.getFloat("gps-latitude", 51.31f);
+        mLastGpsLongitude = mPref.getFloat("gps-longitude", 9.49f);
         mConstLanguage = mPref.getInt("constLanguage", 8);
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
@@ -131,6 +135,8 @@ public class Settings
         spe.putBoolean("gps-enabled", mGpsEnabled);
         spe.putFloat("latitude", mLatitude);
         spe.putFloat("longitude", mLongitude);
+        spe.putFloat("gps-latitude", mLastGpsLatitude);
+        spe.putFloat("gps-longitude", mLastGpsLongitude);
         spe.putInt("constLanguage", mConstLanguage);
         spe.putBoolean("keepScreenOn", mKeepScreenOn);
         spe.putBoolean("autoUpdate", mAutoUpdate);
@@ -430,5 +436,22 @@ public class Settings
     {
         mOnlyVisiblePlanets = onlyVisiblePlanets;
         store();
+    }
+
+    public void setLastGpsLatLon(float latitude, float longitude)
+    {
+        mLastGpsLatitude = latitude;
+        mLastGpsLongitude = longitude;
+        store();
+    }
+
+    public float getLastGpsLatitude()
+    {
+        return mLastGpsLatitude;
+    }
+
+    public float getLastGpsLongitude()
+    {
+        return mLastGpsLongitude;
     }
 }

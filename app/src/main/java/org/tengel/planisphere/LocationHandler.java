@@ -23,17 +23,23 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
 import android.widget.Toast;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
 import androidx.core.content.ContextCompat;
+
+enum GpsStatus {UNKNOWN, NO_PERMISSION, DISABLED, WAITING, RECEIVED}
 
 public class LocationHandler
 {
     private static LocationHandler sInstance = null;
-    private LocationListener mLocListener;
+    private LocationListener mLocListener = null;
     private android.location.LocationManager mLocManager = null;
     private double mLatitude;
     private double mLongitude;
     private boolean mIsGpsPosition;
-
+    private GpsStatus mStatus;
+    private long mGpsRxTime;
+    private HashMap<GpsStatus, String> mStatusStrings = new HashMap<>();
 
     public static LocationHandler instance() throws NullPointerException
     {
@@ -53,6 +59,16 @@ public class LocationHandler
         else if (sInstance == null)
         {
             sInstance = new LocationHandler();
+            sInstance.mStatusStrings.put(GpsStatus.UNKNOWN,
+                                         mainActivity.getString(R.string.gps_status_unknown));
+            sInstance.mStatusStrings.put(GpsStatus.NO_PERMISSION,
+                                         mainActivity.getString(R.string.gps_status_nopermission));
+            sInstance.mStatusStrings.put(GpsStatus.DISABLED,
+                                         mainActivity.getString(R.string.gps_status_disabled));
+            sInstance.mStatusStrings.put(GpsStatus.WAITING,
+                                         mainActivity.getString(R.string.gps_status_waiting));
+            sInstance.mStatusStrings.put(GpsStatus.RECEIVED,
+                                         mainActivity.getString(R.string.gps_status_received));
             if (Settings.instance().isGpsEnabled())
             {
                 sInstance.enableGps(mainActivity);
@@ -63,32 +79,40 @@ public class LocationHandler
     private LocationHandler()
     {
         mIsGpsPosition = false;
+        mStatus = GpsStatus.UNKNOWN;
         mLatitude = Settings.instance().getLatitude();
         mLongitude = Settings.instance().getLongitude();
     }
 
     public void enableGps(MainActivity context)
     {
+        mLatitude = Settings.instance().getLastGpsLatitude();
+        mLongitude = Settings.instance().getLastGpsLongitude();
         mIsGpsPosition = false;
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED)
         {
+            mStatus = GpsStatus.NO_PERMISSION;
             Toast toast = Toast.makeText(context, R.string.gps_no_permission,
                                          Toast.LENGTH_LONG);
             toast.show();
             return;
         }
-        mLocListener = new LocationListener(context);
+
         mLocManager = (android.location.LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
         boolean isGpsEnabled = mLocManager.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER);
         if (!isGpsEnabled)
         {
+            mStatus = GpsStatus.DISABLED;
             Toast toast = Toast.makeText(context, R.string.gps_disabled, Toast.LENGTH_LONG);
             toast.show();
         }
-        mLocManager.requestLocationUpdates(android.location.LocationManager.GPS_PROVIDER,
-                                           1200000, 10000, mLocListener);
-                                           // 20 min , 10 km
+        if (mLocListener == null)
+        {
+            mLocListener = new LocationListener(context);
+            mLocManager.requestLocationUpdates(android.location.LocationManager.GPS_PROVIDER,
+                                               1200000, 10000, mLocListener);
+        }                                      //20 min, 10 km
         Location loc = mLocManager.getLastKnownLocation(android.location.LocationManager.GPS_PROVIDER);
         if (loc != null)
         {
@@ -96,10 +120,14 @@ public class LocationHandler
             toast.show();
             mLatitude = loc.getLatitude();
             mLongitude = loc.getLongitude();
+            mGpsRxTime = loc.getTime();
             mIsGpsPosition = true;
+            mStatus = GpsStatus.RECEIVED;
+            Settings.instance().setLastGpsLatLon((float) mLatitude, (float) mLongitude);
         }
         else if (isGpsEnabled)
         {
+            mStatus = GpsStatus.WAITING;
             Toast toast = Toast.makeText(context, R.string.gps_waiting, Toast.LENGTH_LONG);
             toast.show();
         }
@@ -107,13 +135,15 @@ public class LocationHandler
 
     public void disableGps(double settingsLatitude, double settingsLongitude)
     {
-        if (mLocManager != null)
+        if (mLocListener != null)
         {
             mLocManager.removeUpdates(mLocListener);
+            mLocListener = null;
         }
         mLatitude = settingsLatitude;
         mLongitude = settingsLongitude;
         mIsGpsPosition = false;
+        mStatus = GpsStatus.UNKNOWN;
     }
 
     public double getLatitude()
@@ -131,6 +161,24 @@ public class LocationHandler
         return mIsGpsPosition;
     }
 
+    public String getStatus()
+    {
+        return mStatusStrings.get(mStatus);
+    }
+
+    public String getGpsTimestamp()
+    {
+        if (mStatus == GpsStatus.RECEIVED)
+        {
+            GregorianCalendar gc = new GregorianCalendar();
+            gc.setTimeInMillis(mGpsRxTime);
+            return Astro.formatCal(gc);
+        }
+        else
+        {
+            return "-";
+        }
+    }
 
     class LocationListener implements android.location.LocationListener
     {
@@ -152,6 +200,8 @@ public class LocationHandler
             }
             mLatitude = location.getLatitude();
             mLongitude = location.getLongitude();
+            mGpsRxTime = location.getTime();
+            Settings.instance().setLastGpsLatLon((float) mLatitude, (float) mLongitude);
             mIsGpsPosition = true;
             mMainActivity.update();
         }

@@ -29,4 +29,8 @@
         <item>@string/lang_french</item>
         <item>@string/lang_sysdefault</item>
     </string-array>
+    <string-array name="location_source">
+        <item>@string/loc_src_gps</item>
+        <item>@string/loc_src_fixed</item>
+    </string-array>
 </resources>
