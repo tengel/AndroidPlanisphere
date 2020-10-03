@@ -147,6 +147,7 @@ class Horizon extends ChartObject
         super(e);
         mPaint.setColor(sColor);
         mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(e.getActivity().getResources().getDimension(R.dimen.horizon_width));
         mPaintText.setColor(sColor);
         mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
         mH = mPaintText.ascent() + mPaintText.descent();

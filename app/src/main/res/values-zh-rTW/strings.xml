@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">星座盤</string>
     <string name="action_time">日期 / 時間</string>
-    <string name="action_location">地點</string>
+    <string name="action_location">位置</string>
     <string name="action_about">關於</string>
     <string name="action_magnitude">最亮視星等</string>
     <string name="action_theme">主題</string>
@@ -99,81 +99,127 @@
     <string name="astroDusk">天文曙暮光結束</string>
 
     <string name="about_text"><![CDATA[
-    <h1>星座盤</h1>
+<h1>星座盤</h1>
 
-   呈現太陽、月亮、恆星、星座和行星的簡易星座盤。
-    <br/><br/>
+此簡易星座盤標示出太陽、月亮、恆星、星座和行星的位置。
 
-    點一下顯示或隱藏工具列，長按顯示所選天體的其他資訊。使用功能表設定
-    <em>日期 / 時間</em> 和 <em>地點</em>，也可由裝置提供定位服務。
-    使用者可透過<em>顯示項目</em> 選擇是否顯示：
-    <ul>
-    <li>地平線（含羅盤方位）</li>
-    <li>天球赤道</li>
-    <li>黃道</li>
-    <li>地平坐標格線</li>
-    <li>赤道坐標格線</li>
-    <li>星座線</li>
-    <li>星座界線</li>
-    <li>星座名稱（語言可在<em>設定</em>中更改）</li>
-    <li>太陽系（太陽、月亮、行星）</li>
-    <li>太陽系名稱（行星名稱等等）</li>
-    <li>恆星</li>
-    </ul>
+<h2>使用方式</h2>
+此星座盤顯示的是觀察者上方的天空。綠色圓圈為地平線。只有在綠色圓圈內的天體才能在
+天空中看見。地平線圓圈的中心是天頂。天頂是在觀察者頭頂正上方虛構的一個點。<br/>
+基本方向看起來和真實方向顛倒，那是因為星座盤呈現的是觀察者上方天空的景象。您可以
+想像自己躺著往上看。當您的腳朝向南方，右手的一那邊是西方，左手的那一邊是東方。觀
+察天空時應轉動裝置，直到觀察的方向位在螢幕下方。<br/>
+星座盤可用兩指放大和縮小。點一下顯示或隱藏工具列。長按會顯示選取天體的額外資訊。
 
+<h2>顯示項目</h2>
+您可在選單中的 <b>顯示項目</b> 中顯示或隱藏星座盤中下列項目：
+<ul>
+  <li>地平線（含羅盤方位）</li>
+  <li>天球赤道</li>
+  <li>黃道</li>
+  <li>地平坐標格線</li>
+  <li>赤道坐標格線</li>
+  <li>星座線</li>
+  <li>星座界線</li>
+  <li>星座名稱（語言可在</b>設定</b>中更改）</li>
+  <li>太陽系（太陽、月亮、行星）</li>
+  <li>太陽系名稱（行星名稱等等）</li>
+  <li>恆星</li>
+</ul>
 
-    <br/>
-    版本： {VERSION}
-    <br/><br/>
-    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
-    <br/><br/>
+<h2>日期和時間</h2>
+您可在選單中的 <b>日期 / 時間</b> 設定星座盤顯示的日期和時間。星座盤會根據當下
+時間即時更新，或是顯示特定時間點的天空。選單中的時間是當地時間。並採用系統設定中
+的時區。
 
+<h2>最亮視星等</h2>
+您可在選單中設定 <b>最亮視星等</b> ，只有達到此視星等亮度的天體才會顯示。未達
+到最低視星等亮度的天體不會在星座盤上顯示。數值是觀察者從地球上看到的亮度（mag）。
+<br/> (0 mag: 非常亮; 8 mag: 非常暗)
 
-    <h2>Privacy</h2>
-    此應用程式可取得使用者位置，以此位置計算星座盤。此程式不會搜集、儲存使用者裝置上的位置資訊，亦不會將此資訊分享給任何人。顯示選項和設定是唯一會儲存在使用者裝置上的資訊。沒有任何資訊會傳出裝置。此應用程式完全不會連上網路。
+<h2>位置</h2>
+您可在選單中的 <b>位置</b> 設定觀察者在地球上的位置。位置來源為 <b>固定位置
+</b> 或 <b>GPS 定位</b>。若選擇 <b>固定位置</b>，則需輸入經度和緯度。北緯及
+東經為正數。南緯及西經為負數。<br/>若選擇 <b>GPS 定位</b> 作為位置來源，此應用
+程式會透過作業系統取得位置。由於一般需透過其他衛星導航系統取得 GPS，因此使用者的
+所在地必須能直視天空。另外使用者必須開啟裝置的定位，並授權此應用程式取得裝置的定
+位。一旦此應用程式接收到定位、位置的經緯度和定位時間，<b>位置</b> 的對話框就會
+顯示。若是 <b>GPS 狀態</b> 未顯示 <b>收到</b>，則此應用程式會顯示最後一個已
+知地點的位置。
 
+<h2>資訊列</h2>
+資訊列位於螢幕的最上方，顯示目前星座盤的資訊。例如，若資訊列顯示：
+<pre>2020-09-15  22:30 Europe/Amsterdam  20:30 UTC  51.31; 9.49 GPS: 1  Mag: 5</pre>
+意即：
+<dl>
+  <dt><tt>2020-09-15 22:30</tt></dt>
+  <dd>當地的日期和時間。</dd>
+  <dt><tt>Europe/Amsterdam</tt></dt>
+  <dd>採用的時區。</dd>
+  <dt><tt>20:30 UTC</tt></dt>
+  <dd>格林威治零度子午線的時間。</dd>
+  <dt><tt>51.31; 9.49</tt></dt>
+  <dd>位置的緯度和經度（北緯及東經為正數。南緯及西經為負數）。<dd>
+  <dt><tt>GPS: 1</tt></dt>
+  <dd><b>GPS: 1</b> 意即，此應用程式接收到裝置上 GPS 定位的位置。
+  <b>GPS: 0</b> 意即，此應用程式（尚）未接收到定位或使用中的位置。</dd>
+  <dt><tt>Mag: 5</tt></dt>
+  <dd>目前設定的最亮視星等 (mag)。</dd>
+</dl>
 
-    <h2>授權條款</h2>
-    Copyright (C) 2020 Timo Engel
-    <br/><br/>
-    此程式是自由軟體：散布或／和修改此程式須根據由自由軟體基金會發布的GNU通用公眾授權條款第三版或更新版本之規範。
-    <br/><br/>
-    此程式公開之目的是希望能提供協助，但不提供任何保證；亦不提供默示擔保中的可銷售性擔保和適用性擔保。詳情請參閱GNU通用公眾授權條款。
-    <br/><br/>
-    您應該已收到隨程式附上的GNU通用公眾授權條款，若未收到，請前往：
-    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+<h2>法律注意事項</h2>
 
-    <h2>Credits</h2>
-    此軟體包含了以下所列之第三方元件：
-    <dl>
-    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
-    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
-        (Astronomical Data Center, NSSDC/ADC, 1991)
-        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
-    </dd>
-    <dt>constellation_lines.dat</dt>
-    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
-        CC BY-SA 4.0,
-        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
-    </dd>
-    <dt>constellation_names.txt</dt>
-    <dd>The Constellations, International Astronomical Union,
-        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
-        Wikipedia, Liste der Sternbilder,
-        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
-    </dd>
-    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
-    <dd>Jet Propulsion Laboratory, HORIZONS System,
-        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
-    </dd>
-    <dt>Calculations based on</dt>
-    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
-    </dd>
-    <dt>翻譯</dt>
-    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
-    </dl>
-    </dl>
+星座盤版本: {VERSION}
+<br/><br/>
+<a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+<br/>
 
+<h3>隱私權</h3>
+此應用程式可取得使用者位置，以此位置計算星座盤。此程式不會搜集、儲存使用者裝置上
+的位置資訊，亦不會將此資訊分享給任何人。只有顯示項目和設定會儲存在使用者的裝置上。
+不會有任何資訊會傳出裝置。此應用程式完全不會連上網路。
+
+<h3>授權條款</h3>
+Copyright (C) 2020 Timo Engel
+<br/><br/>
+此程式是自由軟體：散布或／和修改此程式須根據由自由軟體基金會發布的GNU通用公眾授
+權條款第三版或更新版本之規範。
+<br/><br/>
+此程式公開之目的是希望能提供協助，但不提供任何保證；亦不提供默示擔保中的可銷售性
+擔保和適用性擔保。詳情請參閱GNU通用公眾授權條款。
+<br/><br/>
+您應該已收到隨程式附上的GNU通用公眾授權條款，若未收到，請前往：
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+<h3>Credits</h3>
+此軟體包含了以下所列之第三方元件：
+<dl>
+<dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+<dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+    (Astronomical Data Center, NSSDC/ADC, 1991)
+    <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+</dd>
+<dt>constellation_lines.dat</dt>
+<dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+    CC BY-SA 4.0,
+    <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+</dd>
+<dt>constellation_names.txt</dt>
+<dd>The Constellations, International Astronomical Union,
+    <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+    Wikipedia, Liste der Sternbilder,
+    <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+</dd>
+<dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+<dd>Jet Propulsion Laboratory, HORIZONS System,
+    <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+</dd>
+<dt>計算來源為</dt>
+<dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+</dd>
+<dt>翻譯</dt>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+</dl>
     ]]></string>
 
 </resources>

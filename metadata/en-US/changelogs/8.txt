@@ -1,0 +1,3 @@
+- New dialog for location settings.
+- Update help text.
+- Increase visibility of horizon.

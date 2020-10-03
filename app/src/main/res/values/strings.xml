@@ -99,95 +99,153 @@
     <string name="astroDusk">End evening astronomical twilight</string>
 
     <string name="about_text"><![CDATA[
-    <h1>Planisphere</h1>
+<h1>Planisphere</h1>
 
-    A simple star chart that shows sun, moon and stars as well as constellations
-    and planets.
-    <br/><br/>
+This is a simple star chart that shows sun, moon and stars as well as
+constellations and planets.
 
-    Single tap shows or hides the toolbar. Long press shows additional
-    information of a selected celestial object. Use the options menu, to set
-    <em>Date / Time</em> and <em>Location</em>, or use the location provided by
-    the device. The <em>Display options</em> allows you to enable or disable the
-    elements of the chart:
-    <ul>
-    <li>horizon (with cardinal directions)</li>
-    <li>celestial equator</li>
-    <li>ecliptic</li>
-    <li>azimuthal grid</li>
-    <li>equatorial grid</li>
-    <li>constellation lines</li>
-    <li>constellation boundaries</li>
-    <li>constellation names (language can be changed in <em>Settings</em>)</li>
-    <li>solar system (sun, moon and planets)</li>
-    <li>solar system names (names of planets, etc)</li>
-    <li>stars</li>
-    </ul>
+<h2>Usage</h2>
+The star chart shows the sky above the observer. The green circle is the
+horizon. Only objects within the green circle are visible in the sky. The center
+of the horizon circle is the zenith. The zenith is the imaginary point directly
+above the observer.<br/>
+The cardinal directions seem to be swapped, because the star chart shows the
+view towards the sky above you. You can imagine laying on your back and looking
+upwards. When your feet are oriented to the south, on your right hand side is
+west and on your left hand side is east. When observing the sky, turn the device
+until the viewing direction is at the bottom of the screen.<br/>
+The star chart can be zoomed in and out with two fingers. A single tap shows or
+hides the toolbar. Long press shows additional information of a selected
+celestial object.
 
+<h2>Display Options</h2>
+The menu item <em>Display options</em> allows you to enable or disable the
+elements of the chart:
+<ul>
+  <li>horizon (with cardinal directions)</li>
+  <li>celestial equator</li>
+  <li>ecliptic</li>
+  <li>azimuthal grid</li>
+  <li>equatorial grid</li>
+  <li>constellation lines</li>
+  <li>constellation boundaries</li>
+  <li>constellation names (language can be changed in <em>Settings</em>)</li>
+  <li>solar system (sun, moon and planets)</li>
+  <li>solar system names (names of planets, etc)</li>
+  <li>stars</li>
+</ul>
 
-    <br/>
-    Version: {VERSION}
-    <br/><br/>
-    <a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
-    <br/><br/>
+<h2>Date and Time</h2>
+The menu item <em>Date / Time</em> sets the date and time used to draw the star
+chart. The star chart is either continuously updated with the current time, or
+shows the sky for a specified fixed point in time. The time in this menu is
+always local time. The time zone is always the time zone of the operating
+system.
 
+<h2>Maximum Magnitude</h2>
+The menu item <em>Max. magnitude</em> sets a lower limit of brightness for
+objects displayed on the star chart. Objects darker than the maximum magnitude
+are not shown on the star chart. The value is the apparent magnitude for an
+observer on the earth (mag). <br/>
+(0 mag: very bright; 8 mag: very dark)
 
-    <h2>Privacy</h2>
-    This App can access your location. The location is used to calculate the star
-    chart. Location information is not collected or stored on your device and is
-    not shared with anyone. Display options and settings are the only
-    information stored locally on your device. No information does ever leave
-    your device. This app does not connect to the Internet at all.
+<h2>Location</h2>
+The menu item <em>Location</em> sets the location of the observer on earth. The
+location source is either a <em>fixed location</em> or <em>GPS</em>. When you
+choose <em>fixed location</em>, you have to enter latitude and longitude. North
+latitudes and east longitudes are positive.<br/>
+When you choose <em>GPS</em> as the location source, the App tries to get the
+location from the operating system. Because this usually involves the usage of
+GPS or another navigation satellite system, a clear view to the sky is
+necessary. Of course you have to turn on location for the device and the app
+needs the permission to use the device&apos;s location. The <em>Location</em> dialog
+shows if the App received a location fix, the location latitude/longitude and
+the time of the fix. As long as the <em>GPS status</em> did not turn to
+<em>received</em>, the App uses the last known location.
 
+<h2>Info Line</h2>
+The info line is at the top of the display. The text shows information about the
+current star chart. As an example, the info line could show:
+<pre>2020-09-15  22:30 Europe/Amsterdam  20:30 UTC  51.31; 9.49 GPS: 1  Mag: 5</pre>
+The meaning of the fields are:
+<dl>
+  <dt><tt>2020-09-15 22:30</tt></dt>
+  <dd>Date and time displayed in local time.</dd>
+  <dt><tt>Europe/Amsterdam</tt></dt>
+  <dd>The time zone used for the local time.</dd>
+  <dt><tt>20:30 UTC</tt></dt>
+  <dd>The time at the zero meridian in Greenwich.</dd>
+  <dt><tt>51.31; 9.49</tt></dt>
+  <dd>The location as latitude and longitude (north latitudes and east
+      longitudes are positive).<dd>
+  <dt><tt>GPS: 1</tt></dt>
+  <dd><em>GPS: 1</em> means, the App received a GPS location fix from the
+      device. <em>GPS: 0</em> means, the App did not (yet) receive a location
+      fix or a fixed location is used.</dd>
+  <dt><tt>Mag: 5</tt></dt>
+  <dd>Current setting of the maximum apparent magnitude (mag).</dd>
+</dl>
 
-    <h2>License</h2>
-    Copyright (C) 2020 Timo Engel
-    <br/><br/>
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-    <br/><br/>
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-    GNU General Public License for more details.
-    <br/><br/>
-    You should have received a copy of the GNU General Public License
-    along with this program. If not, see
-    <a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+<h2>Legal Notice</h2>
 
+Planisphere version: {VERSION}
+<br/><br/>
+<a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+<br/>
 
-    <h2>Credits</h2>
-    This software incorporates the following third-party components:
-    <dl>
-    <dt>bs_catalog.txt, bs_notes, bs_readme</dt>
-    <dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
-        (Astronomical Data Center, NSSDC/ADC, 1991)
-        <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
-    </dd>
-    <dt>constellation_lines.dat</dt>
-    <dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
-        CC BY-SA 4.0,
-        <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
-    </dd>
-    <dt>constellation_names.txt</dt>
-    <dd>The Constellations, International Astronomical Union,
-        <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
-        Wikipedia, Liste der Sternbilder,
-        <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
-    </dd>
-    <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
-    <dd>Jet Propulsion Laboratory, HORIZONS System,
-        <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
-    </dd>
-    <dt>Calculations based on</dt>
-    <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
-    </dd>
-    <dt>Translations</dt>
-    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
-    </dl>
+<h3>Privacy</h3>
+This App can access your location. The location is used to calculate the star
+chart. Location information is not collected or stored on your device and is not
+shared with anyone. Display options and settings are the only information stored
+locally on your device. No information does ever leave your device. This app
+does not connect to the Internet at all.
 
-     ]]></string>
+<h3>License</h3>
+Copyright (C) 2020 Timo Engel
+<br/><br/>
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+<br/><br/>
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+<br/><br/>
+You should have received a copy of the GNU General Public License
+along with this program. If not, see
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+<h3>Credits</h3>
+This software incorporates the following third-party components:
+<dl>
+<dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+<dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+    (Astronomical Data Center, NSSDC/ADC, 1991)
+    <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+</dd>
+<dt>constellation_lines.dat</dt>
+<dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+    CC BY-SA 4.0,
+    <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+</dd>
+<dt>constellation_names.txt</dt>
+<dd>The Constellations, International Astronomical Union,
+    <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+    Wikipedia, Liste der Sternbilder,
+    <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+</dd>
+<dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+<dd>Jet Propulsion Laboratory, HORIZONS System,
+    <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+</dd>
+<dt>Calculations based on</dt>
+<dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+</dd>
+<dt>Translations</dt>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+</dl>
+    ]]></string>
 
 </resources>
