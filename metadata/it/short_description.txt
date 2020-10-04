@@ -1,0 +1,2 @@
+Una semplice mappa stellare che mostra stelle, costellazioni e pianeti.
+
