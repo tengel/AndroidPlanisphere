@@ -266,6 +266,7 @@ public class MainActivity extends AppCompatActivity
         super.onPause();
         mIsRunning = false;
         stopTimer();
+        mLocHandler.pauseGps();
     }
 
     @Override
@@ -278,6 +279,10 @@ public class MainActivity extends AppCompatActivity
             mSettings.setCurrentTime(new GregorianCalendar());
             update();
             startTimer();
+        }
+        if (Settings.instance().isGpsEnabled())
+        {
+            mLocHandler.enableGps(this);
         }
     }
 

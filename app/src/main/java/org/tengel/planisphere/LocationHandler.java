@@ -69,10 +69,6 @@ public class LocationHandler
                                          mainActivity.getString(R.string.gps_status_waiting));
             sInstance.mStatusStrings.put(GpsStatus.RECEIVED,
                                          mainActivity.getString(R.string.gps_status_received));
-            if (Settings.instance().isGpsEnabled())
-            {
-                sInstance.enableGps(mainActivity);
-            }
         }
     }
 
@@ -116,8 +112,11 @@ public class LocationHandler
         Location loc = mLocManager.getLastKnownLocation(android.location.LocationManager.GPS_PROVIDER);
         if (loc != null)
         {
-            Toast toast = Toast.makeText(context, R.string.gps_received, Toast.LENGTH_LONG);
-            toast.show();
+            if (mStatus != GpsStatus.RECEIVED)
+            {
+                Toast toast = Toast.makeText(context, R.string.gps_received, Toast.LENGTH_LONG);
+                toast.show();
+            }
             mLatitude = loc.getLatitude();
             mLongitude = loc.getLongitude();
             mGpsRxTime = loc.getTime();
@@ -133,13 +132,18 @@ public class LocationHandler
         }
     }
 
-    public void disableGps(double settingsLatitude, double settingsLongitude)
+    public void pauseGps()
     {
         if (mLocListener != null)
         {
             mLocManager.removeUpdates(mLocListener);
-            mLocListener = null;
         }
+    }
+
+    public void disableGps(double settingsLatitude, double settingsLongitude)
+    {
+        pauseGps();
+        mLocListener = null;
         mLatitude = settingsLatitude;
         mLongitude = settingsLongitude;
         mIsGpsPosition = false;
@@ -192,7 +196,7 @@ public class LocationHandler
         @Override
         public void onLocationChanged(Location location)
         {
-            if (mMainActivity.isRunning())
+            if (mMainActivity.isRunning() && mStatus != GpsStatus.RECEIVED)
             {
                 Toast toast = Toast.makeText(mMainActivity, R.string.gps_received_new,
                         Toast.LENGTH_LONG);
@@ -203,6 +207,7 @@ public class LocationHandler
             mGpsRxTime = location.getTime();
             Settings.instance().setLastGpsLatLon((float) mLatitude, (float) mLongitude);
             mIsGpsPosition = true;
+            mStatus = GpsStatus.RECEIVED;
             mMainActivity.update();
         }
 
