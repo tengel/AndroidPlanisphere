@@ -1,0 +1,2 @@
+- show phase of moon and planets
+- disable gps search in background
