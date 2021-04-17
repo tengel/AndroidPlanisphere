@@ -76,6 +76,9 @@ abstract class Planet
     public double mApparentMagnitude = 0;
     public String mWikidataId = "";
 
+    // phase
+    public double mPhase = 0;
+
     Planet(String name, double apparentMagnitude, String wikidataId)
     {
         mName = name;
@@ -118,6 +121,8 @@ abstract class Planet
         double[] ad = Astro.geoEcl2geoEqua(bld[0], bld[1]);
         mRa = ad[0];
         mDeclination = ad[1];
+
+        mPhase = Astro.calcPhase(mDistance_earth, mDistance_sun, earth.mDistance_sun);
     }
 
     protected abstract void calcHeliocentric(GregorianCalendar date);

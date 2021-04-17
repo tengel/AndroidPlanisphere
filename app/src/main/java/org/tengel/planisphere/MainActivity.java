@@ -388,6 +388,8 @@ public class MainActivity extends AppCompatActivity
             values.add(mEngine.calcRise(p, true));
             keys.add(getString(R.string.set));
             values.add(mEngine.calcSet(p, true));
+            keys.add(getString(R.string.phase));
+            values.add(String.format(Locale.getDefault(), "%.1f %%", p.mPhase));
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     p.mWikidataId));
@@ -420,6 +422,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (chartObject.getType() == ObjectType.MOON)
         {
+            Moon m = ((Moon) chartObject);
             keys.add(getString(R.string.riseUtc));
             values.add(mEngine.calcRiseMoon(false));
             keys.add(getString(R.string.setUtc));
@@ -428,6 +431,12 @@ public class MainActivity extends AppCompatActivity
             values.add(mEngine.calcRiseMoon(true));
             keys.add(getString(R.string.set));
             values.add(mEngine.calcSetMoon(true));
+            keys.add(getString(R.string.distance_sun));
+            values.add(String.format(Locale.getDefault(), "%.6f AU", m.mDistance_sun));
+            keys.add(getString(R.string.distance_earth));
+            values.add(String.format(Locale.getDefault(), "%.6f AU", m.mDistance_earth));
+            keys.add(getString(R.string.phase));
+            values.add(String.format(Locale.getDefault(), "%.1f %%", m.mPhase));
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     Moon.sWikidataId));

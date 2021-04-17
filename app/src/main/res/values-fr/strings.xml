@@ -97,6 +97,7 @@
     <string name="civilDusk">End evening civil twilight</string>
     <string name="nauticalDusk">End evening nautical twilight</string>
     <string name="astroDusk">End evening astronomical twilight</string>
+    <string name="phase">Phase</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisphère</h1>

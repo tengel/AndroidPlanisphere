@@ -111,6 +111,10 @@ public class AstroTest
         assertEquals("beta", 1.4692, v[0], 0.00005);
         assertEquals("lamda", 90.0258, v[1], 0.00005);
         assertEquals("delta", 4.424226, v[2], 0.0000005);
+        v = Astro.geoEcl2helioEcl(150, 0, 1, v[1], v[0], v[2]);
+        assertEquals("b(lat)", 1.300, v[0], 0.001);
+        assertEquals("l(lon)", 100.000, v[1], 0.001);
+        assertEquals("r(dist)", 5.000, v[2], 0.001);
     }
 
     @Test
@@ -176,10 +180,15 @@ public class AstroTest
     @Test
     public void positionMoon()
     {
-        double[] raDec;
-        raDec = Astro.calcPositionMoon(Astro.julian_date(2020, 1, 1, 18));
+        double[] bld, raDec;
+        bld = Astro.calcPositionMoon(Astro.julian_date(2020, 1, 1, 18));
+        raDec = Astro.geoEcl2geoEqua(bld[0], bld[1]);
         assertEquals(357.511, raDec[0],0.1);
         assertEquals(-6.686, raDec[1], 0.1);
+        bld = Astro.calcPositionMoon(Astro.julian_date(2005, 8, 2, 0));
+        assertEquals(4.9504, bld[0], 0.0001);
+        assertEquals(95.5624, bld[1], 0.0001);
+        assertEquals(0.002697, bld[2], 0.000001);
     }
 
     @Test
@@ -263,5 +272,15 @@ public class AstroTest
         assertEquals(19,   set.get(Calendar.HOUR_OF_DAY));
         assertEquals(40,   set.get(Calendar.MINUTE));
         assertEquals(26,   set.get(Calendar.SECOND));
+    }
+
+    @Test
+    public void testPhase()
+    {
+        double delta = 1.3135;
+        double r = 1.4030;
+        double R = 0.9852;
+        double i = Astro.calcPhase(delta, r, R);
+        assertEquals(87, i, 0.1);
     }
 }

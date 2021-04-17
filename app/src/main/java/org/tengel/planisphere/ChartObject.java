@@ -344,11 +344,21 @@ class Moon extends RoundObject
     public static int sColor;
     public static int sTextColor;
     public static final String sWikidataId = "Q405";
+    public double mPhase;
+    public double mDistance_sun;
+    public double mDistance_earth;
 
     public Moon(Engine e, boolean showName)
     {
         super(e);
-        double[] raDec = Astro.calcPositionMoon(Astro.julian_date(mEngine.getTime()));
+        double[] geoEclPos;   // beta (lat), lambda (lon), Delta (earth distance)
+        double[] helioEclPos; // b (lat), l (lon), r (distance sun)
+        double[] raDec;
+
+        geoEclPos = Astro.calcPositionMoon(Astro.julian_date(mEngine.getTime()));
+        mDistance_earth = geoEclPos[2];
+        raDec = Astro.geoEcl2geoEqua(geoEclPos[0], geoEclPos[1]);
+
         mAzEle = mEngine.equatorial2horizontal(raDec[0] / 15, raDec[1]);
         mApparentMagnitude = -12.7;
         mText = Settings.instance().translateName("Moon");
@@ -356,6 +366,12 @@ class Moon extends RoundObject
         mPaint.setColor(sColor);
         mPaintText.setColor(sTextColor);
         mType = ObjectType.MOON;
+
+        helioEclPos = Astro.geoEcl2helioEcl(
+                Planet.sEarth.mHelio_lon, Planet.sEarth.mHelio_lat, Planet.sEarth.mDistance_sun,
+                geoEclPos[1], geoEclPos[0], geoEclPos[2]);
+        mDistance_sun = helioEclPos[2];
+        mPhase = Astro.calcPhase(mDistance_earth, mDistance_sun, Planet.sEarth.mDistance_sun);
     }
 }
 

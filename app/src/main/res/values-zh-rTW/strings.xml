@@ -97,6 +97,7 @@
     <string name="civilDusk">民用曙暮光結束</string>
     <string name="nauticalDusk">航海曙暮光結束</string>
     <string name="astroDusk">天文曙暮光結束</string>
+    <string name="phase">相</string>
 
     <string name="about_text"><![CDATA[
 <h1>星座盤</h1>
