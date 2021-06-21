@@ -1,0 +1,15 @@
+L'applicazione mostra il cielo in un preciso momento definito dall'utente e una posizione arbitraria sulla terra:
+
+- Sole e Luna
+- oltre 9000 stelle
+- linee di costellazione
+- nomi delle costellazioni in inglese, latino o abbreviazioni
+- confini delle costellazioni
+- tutti gli otto pianeti del sistema solare
+- griglia azimutale
+- griglia equatoriale
+- orizzonte
+- eclittica
+- equatore celeste
+
+La posizione può essere inserita manualmente o viene fornita dal dispositivo. Ci sono diverse opzioni per abilitare o disabilitare gli elementi della mappa, selezionare la magnitudine massima apparente o scegliere il tema del colore. Non è richiesta alcuna connessione a Internet.

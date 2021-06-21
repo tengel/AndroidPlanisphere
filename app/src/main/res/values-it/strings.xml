@@ -1,0 +1,240 @@
+<resources>
+    <string name="app_name">Planisfero</string>
+    <string name="action_time">Data / ora</string>
+    <string name="action_location">Posizione</string>
+    <string name="action_about">Informazioni</string>
+    <string name="action_magnitude">Magnitudine massima</string>
+    <string name="action_theme">Tema</string>
+    <string name="action_settings">Impostazioni</string>
+    <string name="display_options">Opzioni visualizzazione</string>
+    <string name="theme">Tema</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Annulla</string>
+    <string name="max_magnitude">Massima magnitudine apparente (mag)</string>
+    <string name="set_to_now">Usa ora corrente</string>
+    <string name="loc_src_gps">GPS</string>
+    <string name="loc_src_fixed">Posizione fissa</string>
+    <string name="location_src">Fonte della posizione:</string>
+    <string name="location_url">Posizione:</string>
+    <string name="gps_status">Stato del GPS:</string>
+    <string name="gps_fix_time">Tempo di correzione:</string>
+    <string name="gps_status_unknown">sconosciuto</string>
+    <string name="gps_status_nopermission">nessun permesso</string>
+    <string name="gps_status_disabled">disattivato</string>
+    <string name="gps_status_waiting">In attesa</string>
+    <string name="gps_status_received">ricevuta</string>
+    <string name="gps_no_permission">L\'app non ha il permesso di accedere al GPS. È in uso l\'ultima posizione nota. </string>
+    <string name="gps_disabled">Il dispositivo ha il GPS disabilitato. È in uso l\'ultima posizione nota. </string>
+    <string name="gps_waiting">In attesa di posizione dal GPS. È in uso l\'ultima posizione nota. </string>
+    <string name="gps_received">Posizione GPS ricevuta</string>
+    <string name="gps_received_new">Ricevuta nuova posizione GPS</string>
+    <string name="latitude">Latitudine (-90..90):</string>
+    <string name="longitude">Longitudine (-180..180):</string>
+    <string name="theme_light">Chiaro</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="theme_night">Notte</string>
+    <string name="horizon">Orizzonte</string>
+    <string name="equator">Equatore celeste</string>
+    <string name="ecliptic">Eclittica</string>
+    <string name="azimuthal_grid">Griglia azimutale</string>
+    <string name="equatorial_grid">Griglia equatoriale</string>
+    <string name="constellation_lines">Linee costellazioni</string>
+    <string name="constellation_boundaries">Confini costellazioni</string>
+    <string name="constellation_names">Nomi costellazioni</string>
+    <string name="solar_system">Sistema Solare</string>
+    <string name="solar_names">Nomi del Sistema Solare</string>
+    <string name="stars">Stelle</string>
+    <string name="sun">Sole</string>
+    <string name="moon">Luna</string>
+    <string name="planet_mercury">Mercurio</string>
+    <string name="planet_venus">Venere</string>
+    <string name="planet_earth">Terra</string>
+    <string name="planet_mars">Marte</string>
+    <string name="planet_jupiter">Giove</string>
+    <string name="planet_saturn">Saturno</string>
+    <string name="planet_uranus">Urano</string>
+    <string name="planet_neptune">Nettuno</string>
+    <string name="const_language">Lingua per i nomi delle costellazioni:</string>
+    <string name="lang_abr">Abbreviazione</string>
+    <string name="lang_latin">Latino</string>
+    <string name="lang_sysdefault">Lingua di sistema</string>
+    <string name="lang_english">Inglese</string>
+    <string name="lang_german">Tedesco</string>
+    <string name="lang_chinese">Cinese</string>
+    <string name="lang_spanish">Spagnolo</string>
+    <string name="lang_norwegian">Norvegese</string>
+    <string name="lang_french">Francese</string>
+    <string name="keep_screen_on">Mantieni lo schermo acceso</string>
+    <string name="time_auto_update">Mantieni la mappa aggiornata all\'ora corrente</string>
+    <string name="direction_n">N</string>
+    <string name="direction_e">E</string>
+    <string name="direction_s">S</string>
+    <string name="direction_w">O</string>
+    <string name="objects_nearby">Oggetti nelle vicinanze</string>
+    <string name="azimuth">Azimut</string>
+    <string name="elevation">Elevazione</string>
+    <string name="type">Tipo</string>
+    <string name="apparent_magnitude">Magnitudine apparente</string>
+    <string name="RA">Ascensione retta</string>
+    <string name="DEC">Declinazione</string>
+    <string name="helio_ecliptic_lat">Latitudine eclittica eliocentrica</string>
+    <string name="helio_ecliptic_lon">Longitudine eclittica eliocentrica</string>
+    <string name="distance_sun">Distanza dal Sole</string>
+    <string name="geo_ecliptic_lat">Latitudine eclittica geocentrica</string>
+    <string name="geo_ecliptic_lon">Longitudine eclittica geocentrica</string>
+    <string name="distance_earth">Distanza dalla Terra</string>
+    <string name="star">Stella</string>
+    <string name="planet">Pianeta</string>
+    <string name="unknown">sconosciuto</string>
+    <string name="onlyVisiblePlanets">Mostra solo i pianeti visibili</string>
+    <string name="rise">Sorgere (ora locale)</string>
+    <string name="riseUtc">Sorgere (UTC)</string>
+    <string name="set">Imposta (ora locale)</string>
+    <string name="setUtc">Imposta (UTC)</string>
+    <string name="astroDawn">Inizio del crepuscolo astronomico mattutino</string>
+    <string name="nauticalDawn">Inizio del crepuscolo nautico mattutino</string>
+    <string name="civilDawn">Inizio del crepuscolo civile mattutino</string>
+    <string name="civilDusk">Fine del crepuscolo civile serale</string>
+    <string name="nauticalDusk">Fine del crepuscolo nautico serale</string>
+    <string name="astroDusk">Fine del crepuscolo astronomico serale</string>
+    <string name="phase">Fase</string>
+
+    <string name="about_text"><![CDATA[
+<h1>Planisfero</h1>
+
+Questa è una semplice mappa stellare che mostra anche il Sole, la Luna, le stelle,
+le costellazioni e i pianeti.
+
+<h2>Utilizzo</h2>
+La mappa stellare mostra il cielo sopra l\'osservatore. Il cerchio verde è
+l\' orizzonte. Nel cielo sono visibili solo gli oggetti all\'interno del cerchio verde. Il centro
+del cerchio dell\'orizzonte è lo zenit. Lo zenit è il punto immaginario direttamente
+sopra l\'osservatore.<br/>Le direzioni cardinali sembrano essere invertite, perché la mappa stellare mostra la
+vista del cielo sopra di te. Immagina di sdraiarti sulla schiena e guardare
+verso l\'alto. Quando i tuoi piedi sono orientati a sud, alla tua destra c\'è
+l\'ovest e alla tua sinistra c\'è l\'est. Quando osservi il cielo, gira il dispositivo
+finché la direzione di osservazione si trova nella parte inferiore dello schermo.<br/>La mappa stellare può essere ingrandita e rimpicciolita con due dita. Un singolo tocco mostra o
+nasconde la barra degli strumenti. Selezionare e tenere premuto un oggetto celeste per
+maggiori informazioni.
+
+<h2>Opzioni visualizzazione</h2>
+La voce di menu <em>Opzioni visualizzazione</em> consente di abilitare o disabilitare gli
+elementi della mappa:
+<ul>
+  <li>orizzonte (con direzioni cardinali)</li>
+  <li>equatore celeste</li>
+  <li>eclittica</li>
+  <li>griglia azimutale</li>
+  <li>griglia equatoriale</li>
+  <li>linee costellazioni</li>
+  <li>confini costellazioni</li>
+  <li>nomi delle costellazioni (la lingua può essere modificata in <em>Impostazioni</em>)</li>
+  <li>Sistema Solare (Sole, Luna e pianeti)</li>
+  <li>nomi del Sistema Solare (nomi di pianeti, ecc.)</li>
+  <li>stelle</li>
+</ul>
+
+<h2>Data e Ora</h2>
+La voce di menu <em>Data / Ora</em> imposta la data e l\'ora per la visualizzazione della 
+mappa. La mappa stellare viene continuamente aggiornata con l\'ora corrente, oppure
+ mostra il cielo in un preciso momento nel tempo. L\'ora in questo menu è
+sempre l\'ora locale. Il fuso orario è sempre il fuso orario del sistema
+operativo.
+
+<h2>Magnitudo massima</h2>
+La voce di menu <em>Massima magnitudine</em> imposta un limite inferiore di luminosità per
+gli oggetti visualizzati sulla mappa stellare. Oggetti più scuri della magnitudine massima
+non sono mostrati sulla mappa stellare. Il valore è la magnitudine apparente per un
+ osservatore sulla terra (mag).<br/>
+(0 mag: molto luminoso; 8 mag: molto scuro)<h2>Posizione</h2>
+La voce di menu <em>Posizione</em> imposta la posizione dell\'osservatore sulla Terra. La
+fonte della posizione può essere una <em>posizione fissa</em> o un <em>GPS</em>. Quando
+scegli la <em>posizione fissa</em>, devi inserire latitudine e longitudine. Le latitudini
+nord e le longitudini est sono positive.<br/>
+Quando scegli il <em>GPS</em> come fonte di localizzazione, l\'app cerca di ottenere la
+posizione dal sistema operativo. Dato che questo di solito comporta l\'uso di
+GPS o un altro sistema di navigazione satellitare, una visione chiara del cielo è
+necessaria. Ovviamente devi attivare la posizione per il dispositivo e l\'app
+necessita dell\'autorizzazione per utilizzare la posizione del dispositivo. La finestra di dialogo <em>Posizione</em> 
+mostra se l\'app ha ricevuto una correzione della posizione, la latitudine/longitudine della posizione e
+il tempo della correzione. Finché <em>lo stato del GPS</em> non diventa
+<em>ricevuto</em>, l\'App utilizza l\'ultima posizione nota.
+
+<h2>Linea informativa</h2>
+La riga delle informazioni si trova nella parte superiore del display. Il testo mostra informazioni sull\'attuale
+mappa stellare. Ad esempio, la riga delle informazioni potrebbe mostrare:
+<pre>2020-09-15 22:30 Europa/Amsterdam 20:30 UTC 51.31; 9.49 GPS: 1 Mag: 5</pre>
+Il significato dei campi è:
+<dl>
+  <dt><tt>2020-09-15 22:30</tt></dt>
+  <dd>Data e ora visualizzate nell\'ora locale.</dd>
+  <dt><tt>Europa/Amsterdam</tt></dt>
+  <dd>Il fuso orario utilizzato per l\'ora locale.</dd>
+  <dt><tt>20:30 UTC</tt></dt>
+  <dd>L\'ora al meridiano zero di Greenwich.</dd>
+  <dt><tt>51.31; 9.49</tt></dt>
+  <dd>La posizione come latitudine e longitudine (le latitudini nord e le longitudini est
+sono positive).<dd>
+  <dt><tt>GPS: (1)</tt></dt>
+  <dd><em>GPS: 1</em> significa che l\'app ha ricevuto una correzione di posizione GPS dal
+dispositivo. <em>GPS: 0</em> significa che l\'app non ha (ancora) ricevuto una correzione
+di posizione o viene utilizzata una posizione fissa.</dd>
+  <dt><tt>Mag: 5</tt></dt>
+  <dd>Impostazione attuale della magnitudine apparente massima (mag).</dd>
+</dl>
+
+<h2>Note legali</h2>
+
+Versione planisfero: {VERSION}
+<br/><br/>
+<a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+<br/>
+
+<h3>Privacy</h3>
+Questa app può accedere alla tua posizione. La posizione viene utilizzata per elaborare la mappa
+stellare. Le informazioni sulla posizione non vengono raccolte o memorizzate sul dispositivo e non sono
+condivise con nessuno. Le opzioni di visualizzazione e le impostazioni sono le uniche informazioni memorizzate
+localmente sul tuo dispositivo. Nessuna informazione uscirà mai dal il tuo dispositivo. Questa app
+non si connette assolutamente a Internet.
+
+<h3>Licenza</h3>
+Copyright (C) 2020 Timo Engel
+<br/><br/>
+Questo programma è un software gratuito: puoi ridistribuirlo e/o modificarlo
+secondo i termini della GNU General Public License come pubblicata dalla
+Free Software Foundation, sia la versione 3 della licenza, oppure
+(a tua scelta) qualsiasi versione successiva.
+<br/><br/>
+Questo programma è distribuito nella speranza che che sia utile, ma SENZA ALCUNA GARANZIA; senza neppure la garanzia implicita di COMMERCIABILITÀ o APPLICABILITÀ PER UN PARTICOLARE SCOPO. Vedi il
+GNU General Public License per maggiori dettagli.
+<br/><br/>
+Dovresti aver ricevuto una copia della GNU General Public License
+insieme a questo programma. In caso contrario, vedi
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a><h3>Riconoscimenti</h3>
+Questo software incorpora i seguenti componenti di terze parti:
+<dl>
+<dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+<dd>The Bright Star Catalogue, 5th Revised Ed. (Versione preliminare), Hoffleit D., Warren Jr WH
+Centro dati astronomici, NSSDC/ADC, 1991)
+<a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a></dd>
+<dt>costellation_lines.dat</dt>
+<dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a> ,
+ CC BY-SA 4.0,
+ <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a></dd>
+<dt>costellation_names.txt</dt>
+<dd>The Constellations, International Astronomical Union,
+ <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+Wikipedia, Liste der Sternbilder,
+ <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a></dd>
+<dt>Horizons_jupiter.csv, Horizons_neptune.csv, Horizons_saturn.csv, Horizons_uranus.csv</dt>
+<dd>Jet Propulsion Laboratory, HORIZONS System,
+<a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a></dd>
+<dt>Calcoli basati su</dt>
+<dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, Monaco, 7. Auflage (2005)
+</dd>
+<dt>Traduzioni</dt>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
+</dl>
+    ]]></string>
+
+</resources>

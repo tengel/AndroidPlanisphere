@@ -1,0 +1,56 @@
+<resources>
+
+    <style name="AppThemeLight" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="gridAz">@color/colorGray</item>
+        <item name="star">@color/colorBlack</item>
+        <item name="gridEq">@color/colorOrange</item>
+        <item name="horizon">@color/colorDarkGreen</item>
+        <item name="equator">@color/colorBlue</item>
+        <item name="ecliptic">@color/colorRed</item>
+        <item name="const_lines">@color/colorLightBlue</item>
+        <item name="const_bounds">@color/colorLightGray</item>
+        <item name="infotext">@color/colorDarkGray</item>
+        <item name="planet">@color/colorBlack</item>
+        <item name="planetText">@color/colorDarkGray</item>
+    </style>
+
+    <style name="AppThemeDark" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="gridAz">@color/colorLightBlue</item>
+        <item name="star">@color/colorYellow</item>
+        <item name="gridEq">@color/colorOrange</item>
+        <item name="horizon">@color/colorGreen</item>
+        <item name="equator">@color/colorCyan</item>
+        <item name="ecliptic">@color/colorRed</item>
+        <item name="const_lines">@color/colorGray</item>
+        <item name="const_bounds">@color/colorDarkGray</item>
+        <item name="infotext">@color/colorLightGray</item>
+        <item name="planet">@color/colorYellow</item>
+        <item name="planetText">@color/colorLightGray</item>
+        <item name="android:windowBackground">@color/colorDarkBlue</item>
+    </style>
+
+    <style name="AppThemeNight" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="gridAz">@color/colorLightRed</item>
+        <item name="star">@color/colorRed</item>
+        <item name="gridEq">@color/colorDarkRed</item>
+        <item name="horizon">@color/colorLightRed</item>
+        <item name="equator">@color/colorRed</item>
+        <item name="ecliptic">@color/colorRed</item>
+        <item name="const_lines">@color/colorDarkRed</item>
+        <item name="const_bounds">@color/colorVeryDarkRed</item>
+        <item name="infotext">@color/colorDarkRed</item>
+        <item name="planet">@color/colorRed</item>
+        <item name="planetText">@color/colorDarkRed</item>
+        <item name="android:windowBackground">@color/colorBlack</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+</resources>

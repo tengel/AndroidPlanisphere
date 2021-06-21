@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textsize">15sp</dimen>
+    <dimen name="textsizeSmall">11sp</dimen>
+    <dimen name="starsize">1dp</dimen>
+    <dimen name="horizon_width">1dp</dimen>
+</resources>
