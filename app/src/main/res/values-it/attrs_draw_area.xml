@@ -1,0 +1,16 @@
+<resources>
+    <declare-styleable name="DrawArea">
+        <attr name="gridAz" format="reference"/>
+        <attr name="gridAzText" format="reference"/>
+        <attr name="star" format="reference"/>
+        <attr name="gridEq" format="reference"/>
+        <attr name="horizon" format="reference"/>
+        <attr name="equator" format="reference"/>
+        <attr name="ecliptic" format="reference"/>
+        <attr name="const_lines" format="reference"/>
+        <attr name="const_bounds" format="reference"/>
+        <attr name="infotext" format="reference"/>
+        <attr name="planet" format="reference"/>
+        <attr name="planetText" format="reference"/>
+    </declare-styleable>
+</resources>

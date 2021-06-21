@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="themes">
+        <item>@string/theme_light</item>
+        <item>@string/theme_dark</item>>
+        <item>@string/theme_night</item>>
+    </string-array>
+    <string-array name="display_options">
+        <item>@string/horizon</item>
+        <item>@string/equator</item>>
+        <item>@string/ecliptic</item>>
+        <item>@string/azimuthal_grid</item>
+        <item>@string/equatorial_grid</item>
+        <item>@string/constellation_lines</item>
+        <item>@string/constellation_boundaries</item>
+        <item>@string/constellation_names</item>
+        <item>@string/solar_system</item>
+        <item>@string/solar_names</item>>
+        <item>@string/stars</item>
+    </string-array>
+    <string-array name="const_language">
+        <item>@string/lang_abr</item>
+        <item>@string/lang_latin</item>
+        <item>@string/lang_english</item>
+        <item>@string/lang_german</item>
+        <item>@string/lang_chinese</item>
+        <item>@string/lang_spanish</item>
+        <item>@string/lang_norwegian</item>
+        <item>@string/lang_french</item>
+        <item>@string/lang_sysdefault</item>
+    </string-array>
+    <string-array name="location_source">
+        <item>@string/loc_src_gps</item>
+        <item>@string/loc_src_fixed</item>
+    </string-array>
+</resources>
