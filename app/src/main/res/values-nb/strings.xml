@@ -64,6 +64,7 @@
     <string name="lang_spanish">Spansk</string>
     <string name="lang_norwegian">Norsk</string>
     <string name="lang_french">Fransk</string>
+    <string name="lang_italian">Italian</string>
     <string name="keep_screen_on">Hold skjermen på</string>
     <string name="time_auto_update">Hold stjernekart oppdatert til gjeldende tid</string>
     <string name="direction_n">N</string>
@@ -186,7 +187,7 @@
     <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
     </dd>
     <dt>Translations</dt>
-    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
     </dl>
 
      ]]></string>

@@ -64,6 +64,7 @@
     <string name="lang_spanish">西班牙文</string>
     <string name="lang_norwegian">挪威文</string>
     <string name="lang_french">法文</string>
+    <string name="lang_italian">義大利文</string>
     <string name="keep_screen_on">螢幕保持開啟</string>
     <string name="time_auto_update">即時更新此圖</string>
     <string name="direction_n">北</string>
@@ -219,7 +220,7 @@ Copyright (C) 2020 Timo Engel
 <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
 </dd>
 <dt>翻譯</dt>
-<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
 </dl>
     ]]></string>
 

@@ -96,7 +96,7 @@ public class Settings
         mLongitude = mPref.getFloat("longitude", 9.49f);
         mLastGpsLatitude = mPref.getFloat("gps-latitude", 51.31f);
         mLastGpsLongitude = mPref.getFloat("gps-longitude", 9.49f);
-        mConstLanguage = mPref.getInt("constLanguage", 8);
+        mConstLanguage = mPref.getInt("constLanguage", 9);
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
         mOnlyVisiblePlanets = mPref.getBoolean("onlyVisiblePlanets", false);

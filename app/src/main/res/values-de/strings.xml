@@ -64,6 +64,7 @@
     <string name="lang_spanish">Spanisch</string>
     <string name="lang_norwegian">Norwegisch</string>
     <string name="lang_french">Französisch</string>
+    <string name="lang_italian">Italienisch</string>
     <string name="keep_screen_on">Display nicht ausschalten</string>
     <string name="time_auto_update">Sternkarte automatisch auf aktuelle Zeit nachführen</string>
     <string name="direction_n">N</string>
@@ -249,7 +250,7 @@ Diese Software verwendet die folgenden Komponenten:
 <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
 </dd>
 <dt>Übersetzungen</dt>
-<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
 </dl>
     ]]></string>
 

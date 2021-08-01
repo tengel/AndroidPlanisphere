@@ -64,6 +64,7 @@
     <string name="lang_spanish">Spanish</string>
     <string name="lang_norwegian">Norwegian</string>
     <string name="lang_french">French</string>
+    <string name="lang_italian">Italian</string>
     <string name="keep_screen_on">Keep screen on</string>
     <string name="time_auto_update">Keep chart updated to current time</string>
     <string name="direction_n">N</string>
@@ -245,7 +246,7 @@ This software incorporates the following third-party components:
 <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
 </dd>
 <dt>Translations</dt>
-<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
 </dl>
     ]]></string>
 

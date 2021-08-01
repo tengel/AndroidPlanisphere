@@ -64,6 +64,7 @@
     <string name="lang_spanish">Espagnol</string>
     <string name="lang_norwegian">Norvégien</string>
     <string name="lang_french">Français</string>
+    <string name="lang_italian">Italian</string>
     <string name="keep_screen_on">Garder l\'écran allumé</string>
     <string name="time_auto_update">Conserver la carte à jour pour l\'heure courante</string>
     <string name="direction_n">N</string>
@@ -186,7 +187,7 @@
     <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
     </dd>
     <dt>Translations</dt>
-    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW)</dd>
+    <dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
     </dl>
 
      ]]></string>

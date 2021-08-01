@@ -27,6 +27,7 @@
         <item>@string/lang_spanish</item>
         <item>@string/lang_norwegian</item>
         <item>@string/lang_french</item>
+        <item>@string/lang_italian</item>
         <item>@string/lang_sysdefault</item>
     </string-array>
     <string-array name="location_source">
