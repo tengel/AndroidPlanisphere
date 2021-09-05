@@ -53,6 +53,8 @@ public class Settings
     private boolean mAutoUpdate;
     private double[] mNearbyAzEle = null;
     private boolean mOnlyVisiblePlanets;
+    private static final int LANG_SYSDEFAULT_INTERNAL = 9999; // stored in SharedPreferences
+    private static final int LANG_SYSDEFAULT_IDX = 9;
 
     public static Settings instance() throws NullPointerException
     {
@@ -96,10 +98,22 @@ public class Settings
         mLongitude = mPref.getFloat("longitude", 9.49f);
         mLastGpsLatitude = mPref.getFloat("gps-latitude", 51.31f);
         mLastGpsLongitude = mPref.getFloat("gps-longitude", 9.49f);
-        mConstLanguage = mPref.getInt("constLanguage", 9);
+        mConstLanguage = mPref.getInt("constLanguage", LANG_SYSDEFAULT_INTERNAL);
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
         mOnlyVisiblePlanets = mPref.getBoolean("onlyVisiblePlanets", false);
+
+        String storedVersion = mPref.getString("version", "");
+        String currentVersion = BuildConfig.VERSION_NAME;
+        if (!storedVersion.equals(currentVersion))
+        {
+            // convert sysdefault language from 1.8.0
+            if (mConstLanguage == 8)
+            {
+                mConstLanguage = LANG_SYSDEFAULT_INTERNAL;
+            }
+            store();
+        }
 
         mTranslations.put(Mercury.sName, context.getString(R.string.planet_mercury));
         mTranslations.put(Venus.sName, context.getString(R.string.planet_venus));
@@ -141,6 +155,7 @@ public class Settings
         spe.putBoolean("keepScreenOn", mKeepScreenOn);
         spe.putBoolean("autoUpdate", mAutoUpdate);
         spe.putBoolean("onlyVisiblePlanets", mOnlyVisiblePlanets);
+        spe.putString("version", BuildConfig.VERSION_NAME);
         spe.apply();
     }
 
@@ -356,12 +371,26 @@ public class Settings
 
     public int getConstLanguage()
     {
-        return mConstLanguage;
+        if (mConstLanguage == LANG_SYSDEFAULT_INTERNAL)
+        {
+            return LANG_SYSDEFAULT_IDX;
+        }
+        else
+        {
+            return mConstLanguage;
+        }
     }
 
     public void setConstLanguage(int constLanguage)
     {
-        mConstLanguage = constLanguage;
+        if (constLanguage == LANG_SYSDEFAULT_IDX)
+        {
+            mConstLanguage = LANG_SYSDEFAULT_INTERNAL;
+        }
+        else
+        {
+            mConstLanguage = constLanguage;
+        }
         store();
     }
 
