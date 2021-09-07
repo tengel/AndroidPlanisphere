@@ -312,7 +312,8 @@ public class MainActivity extends AppCompatActivity
         ArrayList<String> nameArray = new ArrayList<>();
         for (ChartObject co : mNearbyObjects)
         {
-            nameArray.add(co.getText());
+            nameArray.add(String.format(Locale.getDefault(), "%s;  %.1f mag",
+                                        co.getText(), co.getApparentMagnitude()));
         }
         Bundle data = new Bundle();
         data.putStringArrayList("nameArray", nameArray);
