@@ -99,6 +99,7 @@
     <string name="nauticalDusk">Ende nautische Dämmerung</string>
     <string name="astroDusk">Ende astronomische Dämmerung</string>
     <string name="phase">Phase</string>
+    <string name="textScalingFactor">Skalierungsfaktor Text:</string>
 
     <string name="about_text"><![CDATA[
 <h1>Planisphäre</h1>

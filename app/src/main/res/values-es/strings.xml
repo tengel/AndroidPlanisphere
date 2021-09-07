@@ -99,6 +99,7 @@
   <string name="nauticalDusk">End evening nautical twilight</string>
   <string name="astroDusk">End evening astronomical twilight</string>
   <string name="phase">Phase</string>
+  <string name="textScalingFactor">Text Scaling Factor:</string>
 
   <string name="about_text"><![CDATA[
     <h1>Planisferio</h1>

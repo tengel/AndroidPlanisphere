@@ -40,11 +40,13 @@ abstract class ChartObject implements ChartObjectInterface
     protected boolean mShowText = false;
     protected ObjectType mType;
     protected double mApparentMagnitude;
+    protected float mFontScale;
 
     ChartObject(Engine e)
     {
         mEngine = e;
         mPaintText.setTextAlign(Paint.Align.CENTER);
+        mFontScale = Settings.instance().getFontScale();
     }
 
     public double getAzimuth()
@@ -107,7 +109,8 @@ class AzGrid extends ChartObject
         mPaint.setColor(sColor);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize) *
+                               mFontScale);
         mAlignY = (mPaintText.ascent() + mPaintText.descent()) / 2;
         mType = ObjectType.OTHER;
     }
@@ -149,7 +152,8 @@ class Horizon extends ChartObject
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(e.getActivity().getResources().getDimension(R.dimen.horizon_width));
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize) *
+                               mFontScale);
         mH = mPaintText.ascent() + mPaintText.descent();
         mAlignY = mH / 2;
         mType = ObjectType.OTHER;
@@ -187,7 +191,8 @@ class InfoText extends ChartObject
         mText = text;
         mShowText = true;
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall) *
+                               mFontScale);
         mPaintText.setTextAlign(Paint.Align.LEFT);
         mType = ObjectType.OTHER;
     }
@@ -210,7 +215,8 @@ abstract class RoundObject extends ChartObject
         super(e);
         mBaseSize = mEngine.getActivity().getResources().getDimension(R.dimen.starsize);
         mPaintText.setTextAlign(Paint.Align.LEFT);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall) *
+                               mFontScale);
     }
 
     @Override
@@ -433,7 +439,8 @@ class EqGrid extends LineObject
         mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize) *
+                               mFontScale);
         ArrayList<Double[]> line;
         for (int dec = -30; dec < 90; dec+=30)
         {
@@ -515,7 +522,8 @@ class ConstLines extends LineObject
         mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall));
+        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall) *
+                               mFontScale);
         Double[] azEle;
         boolean isVisible;
         for (ConstellationDb.Constellation constellation : db.get())

@@ -1,0 +1,5 @@
+- Italian translation.
+- New option: Text scaling factor.
+- Show magnitude in objects nearby list.
+- Fix color themes.
+- Fix layout of Date/Time dialog.

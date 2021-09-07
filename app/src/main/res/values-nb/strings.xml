@@ -99,6 +99,7 @@
     <string name="nauticalDusk">Slutt nautisk tussmørke (kveld)</string>
     <string name="astroDusk">Slutt astronomisk tussmørke (kveld)</string>
     <string name="phase">Fase</string>
+    <string name="textScalingFactor">Text Scaling Factor:</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisfære</h1>

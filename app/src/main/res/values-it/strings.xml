@@ -99,6 +99,7 @@
     <string name="nauticalDusk">Fine del crepuscolo nautico serale</string>
     <string name="astroDusk">Fine del crepuscolo astronomico serale</string>
     <string name="phase">Fase</string>
+    <string name="textScalingFactor">Text Scaling Factor:</string>
 
     <string name="about_text"><![CDATA[
 <h1>Planisfero</h1>

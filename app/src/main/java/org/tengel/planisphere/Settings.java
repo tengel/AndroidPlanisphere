@@ -53,6 +53,7 @@ public class Settings
     private boolean mAutoUpdate;
     private double[] mNearbyAzEle = null;
     private boolean mOnlyVisiblePlanets;
+    private float mFontScale;
     private static final int LANG_SYSDEFAULT_INTERNAL = 9999; // stored in SharedPreferences
     private static final int LANG_SYSDEFAULT_IDX = 9;
 
@@ -102,6 +103,7 @@ public class Settings
         mKeepScreenOn = mPref.getBoolean("keepScreenOn", false);
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
         mOnlyVisiblePlanets = mPref.getBoolean("onlyVisiblePlanets", false);
+        mFontScale = mPref.getFloat("fontScale", 1.0f);
 
         String storedVersion = mPref.getString("version", "");
         String currentVersion = BuildConfig.VERSION_NAME;
@@ -155,6 +157,7 @@ public class Settings
         spe.putBoolean("keepScreenOn", mKeepScreenOn);
         spe.putBoolean("autoUpdate", mAutoUpdate);
         spe.putBoolean("onlyVisiblePlanets", mOnlyVisiblePlanets);
+        spe.putFloat("fontScale", mFontScale);
         spe.putString("version", BuildConfig.VERSION_NAME);
         spe.apply();
     }
@@ -482,5 +485,16 @@ public class Settings
     public float getLastGpsLongitude()
     {
         return mLastGpsLongitude;
+    }
+
+    public float getFontScale()
+    {
+        return mFontScale;
+    }
+
+    public void setFontScale(float fontScale)
+    {
+        mFontScale = fontScale;
+        store();
     }
 }
