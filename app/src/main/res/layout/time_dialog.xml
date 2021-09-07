@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <CheckBox
-        android:id="@+id/timeAutoUpdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/time_auto_update" />
-    <Button
-        android:id="@+id/setToNow"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/set_to_now" />
-    <DatePicker
-        android:id="@+id/datePicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:calendarViewShown="false"
-        android:datePickerMode="spinner"/>
-    <TimePicker
-        android:id="@+id/timePicker"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:timePickerMode="spinner"/>
-</LinearLayout>
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:id="@+id/timeAutoUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/time_auto_update" />
+        <Button
+            android:id="@+id/setToNow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/set_to_now" />
+        <DatePicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"/>
+        <TimePicker
+            android:id="@+id/timePicker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"/>
+    </LinearLayout>
+</ScrollView>
