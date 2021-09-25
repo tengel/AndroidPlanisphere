@@ -145,7 +145,7 @@ public class ConstellationDb
             String lang = Settings.instance().getLanguage();
             if (lang.equals("en"))
             {
-                langIdx = 2;
+                langIdx = 1;
             }
             else if (lang.equals("de"))
             {
