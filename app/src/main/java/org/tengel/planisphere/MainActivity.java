@@ -232,7 +232,7 @@ public class MainActivity extends AppCompatActivity
     {
         if (useGps)
         {
-            mLocHandler.enableGps(this);
+            mLocHandler.enableGps(this, true);
         }
         else
         {
@@ -279,7 +279,7 @@ public class MainActivity extends AppCompatActivity
         }
         if (Settings.instance().isGpsEnabled())
         {
-            mLocHandler.enableGps(this);
+            mLocHandler.enableGps(this, false);
         }
     }
 

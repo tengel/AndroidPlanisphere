@@ -40,6 +40,7 @@ public class LocationHandler
     private GpsStatus mStatus;
     private long mGpsRxTime;
     private HashMap<GpsStatus, String> mStatusStrings = new HashMap<>();
+    private boolean mStartUp = true;
 
     public static LocationHandler instance() throws NullPointerException
     {
@@ -80,18 +81,23 @@ public class LocationHandler
         mLongitude = Settings.instance().getLongitude();
     }
 
-    public void enableGps(MainActivity context)
+    public void enableGps(MainActivity context, boolean isRestart)
     {
         mLatitude = Settings.instance().getLastGpsLatitude();
         mLongitude = Settings.instance().getLastGpsLongitude();
         mIsGpsPosition = false;
+        boolean showInfo = mStartUp || isRestart;
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED)
         {
             mStatus = GpsStatus.NO_PERMISSION;
-            Toast toast = Toast.makeText(context, R.string.gps_no_permission,
-                                         Toast.LENGTH_LONG);
-            toast.show();
+            if (showInfo)
+            {
+                Toast toast = Toast.makeText(context, R.string.gps_no_permission,
+                                             Toast.LENGTH_LONG);
+                toast.show();
+            }
+            mStartUp = false;
             return;
         }
 
@@ -100,8 +106,11 @@ public class LocationHandler
         if (!isGpsEnabled)
         {
             mStatus = GpsStatus.DISABLED;
-            Toast toast = Toast.makeText(context, R.string.gps_disabled, Toast.LENGTH_LONG);
-            toast.show();
+            if (showInfo)
+            {
+                Toast toast = Toast.makeText(context, R.string.gps_disabled, Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
         if (mLocListener == null)
         {
@@ -112,7 +121,7 @@ public class LocationHandler
         Location loc = mLocManager.getLastKnownLocation(android.location.LocationManager.GPS_PROVIDER);
         if (loc != null)
         {
-            if (mStatus != GpsStatus.RECEIVED)
+            if (showInfo)
             {
                 Toast toast = Toast.makeText(context, R.string.gps_received, Toast.LENGTH_LONG);
                 toast.show();
@@ -123,13 +132,19 @@ public class LocationHandler
             mIsGpsPosition = true;
             mStatus = GpsStatus.RECEIVED;
             Settings.instance().setLastGpsLatLon((float) mLatitude, (float) mLongitude);
+            context.update();
         }
         else if (isGpsEnabled)
         {
             mStatus = GpsStatus.WAITING;
-            Toast toast = Toast.makeText(context, R.string.gps_waiting, Toast.LENGTH_LONG);
-            toast.show();
+            if (showInfo)
+            {
+                Toast toast = Toast.makeText(context, R.string.gps_waiting,
+                                             Toast.LENGTH_LONG);
+                toast.show();
+            }
         }
+        mStartUp = false;
     }
 
     public void pauseGps()
@@ -148,6 +163,7 @@ public class LocationHandler
         mLongitude = settingsLongitude;
         mIsGpsPosition = false;
         mStatus = GpsStatus.UNKNOWN;
+        mStartUp = true;
     }
 
     public double getLatitude()
