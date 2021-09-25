@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity
     private Catalog mCatalog;
     private LocationHandler mLocHandler;
     private boolean mIsRunningUpdateTask = false;
-    private ChartObject[] mNearbyObjects = null;
     private boolean mIsRunning = false;
     private Handler mTimerHandler = new Handler(Looper.getMainLooper());
     private Runnable mAutoUpdateTask = new Runnable() {
@@ -139,13 +138,8 @@ public class MainActivity extends AppCompatActivity
             Moon.sTextColor = typedValue.data;
 
             update();
-
-            double[] nearbyAzEle = Settings.instance().getNearbyAzEle();
-            if (nearbyAzEle != null)
-            {
-                mNearbyObjects = mEngine.findObjectsNear(nearbyAzEle);
-            }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
             Log.e(LOG_TAG, Log.getStackTraceString(e));
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -305,16 +299,17 @@ public class MainActivity extends AppCompatActivity
         return mIsRunning;
     }
 
-    public void showNearbyObjects(double[] azEle)
+    public void showNearbyObjects(float chartX, float chartY)
     {
-        Settings.instance().setNearbyAzEle(azEle);
-        mNearbyObjects = mEngine.findObjectsNear(azEle);
+        ChartObject[] nearbyObjects = mEngine.findObjectsNear(chartX, chartY);
+        Settings.instance().setNearbyObjects(nearbyObjects);
         ArrayList<String> nameArray = new ArrayList<>();
-        for (ChartObject co : mNearbyObjects)
+        for (ChartObject co : nearbyObjects)
         {
             nameArray.add(String.format(Locale.getDefault(), "%s;  %.1f mag",
                                         co.getText(), co.getApparentMagnitude()));
         }
+        double azEle[] = mDrawArea.area2horizontal(chartX, chartY);
         Bundle data = new Bundle();
         data.putStringArrayList("nameArray", nameArray);
         data.putDouble("azimuth", azEle[0]);
@@ -327,7 +322,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void showObjectDetails(int idx)
     {
-        ChartObject chartObject = mNearbyObjects[idx];
+        ChartObject chartObject = mSettings.getNearbyObjects()[idx];
         Bundle data = new Bundle();
         ArrayList<String> links = new ArrayList<>();
         ArrayList<String> keys = new ArrayList<>();

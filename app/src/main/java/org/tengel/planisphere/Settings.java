@@ -51,7 +51,7 @@ public class Settings
     private boolean mToolbarIsVisible = true;
     private boolean mKeepScreenOn;
     private boolean mAutoUpdate;
-    private double[] mNearbyAzEle = null;
+    private ChartObject[] mNearbyObjects = null;
     private boolean mOnlyVisiblePlanets;
     private float mFontScale;
     private static final int LANG_SYSDEFAULT_INTERNAL = 9999; // stored in SharedPreferences
@@ -449,14 +449,14 @@ public class Settings
         store();
     }
 
-    public double[] getNearbyAzEle()
+    public ChartObject[] getNearbyObjects()
     {
-        return mNearbyAzEle;
+        return mNearbyObjects;
     }
 
-    public void setNearbyAzEle(double[] azEle)
+    public void setNearbyObjects(ChartObject[] objects)
     {
-        mNearbyAzEle = azEle;
+        mNearbyObjects = objects;
     }
 
     public boolean getOnlyVisiblePlanets()

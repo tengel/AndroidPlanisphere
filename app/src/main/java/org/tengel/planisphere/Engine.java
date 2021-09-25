@@ -18,6 +18,7 @@
 package org.tengel.planisphere;
 
 import android.app.Activity;
+import android.graphics.Point;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashSet;
@@ -166,24 +167,28 @@ public class Engine {
         return mActivity;
     }
 
-    public ChartObject[] findObjectsNear(double[] azEle)
+    public ChartObject[] findObjectsNear(float chartX, float chartY)
     {
+        Point displaySize = new Point();
+        mActivity.getWindowManager().getDefaultDisplay().getSize(displaySize);
+        int distanceMax = Math.max(displaySize.x, displaySize.y) / 2;
+        int distanceInc = distanceMax / 200;
         LinkedHashSet<ChartObject> objects = new LinkedHashSet<>();
-        double distance = 1;
-        while (objects.size() < 10 && distance < 90)
+        double distance = distanceInc;
+        while (objects.size() < 10 && distance < distanceMax)
         {
             for (ChartObject co : mObjects)
             {
                 if (co.getType() != ObjectType.OTHER &&
-                    azEle[0] >= co.getAzimuth() - distance &&
-                    azEle[0] <= co.getAzimuth() + distance &&
-                    azEle[1] >= co.getElevation() - distance &&
-                    azEle[1] <= co.getElevation() + distance)
+                    co.getChartX() >= chartX - distance &&
+                    co.getChartX() <= chartX + distance &&
+                    co.getChartY() >= chartY - distance &&
+                    co.getChartY() <= chartY + distance)
                 {
                     objects.add(co);
                 }
             }
-            distance += 1;
+            distance += distanceInc;
         }
         return objects.toArray(new ChartObject[0]);
     }

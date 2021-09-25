@@ -41,6 +41,8 @@ abstract class ChartObject implements ChartObjectInterface
     protected ObjectType mType;
     protected double mApparentMagnitude;
     protected float mFontScale;
+    protected float mChartX;
+    protected float mChartY;
 
     ChartObject(Engine e)
     {
@@ -93,6 +95,16 @@ abstract class ChartObject implements ChartObjectInterface
     public double getApparentMagnitude()
     {
         return mApparentMagnitude;
+    }
+
+    public float getChartX()
+    {
+        return mChartX;
+    }
+
+    public float getChartY()
+    {
+        return mChartY;
     }
 }
 
@@ -223,6 +235,8 @@ abstract class RoundObject extends ChartObject
     public void draw(DrawArea da, Canvas canvas)
     {
         int[] center = da.horizontal2area(mAzEle[0], mAzEle[1]);
+        mChartX = center[0];
+        mChartY = center[1];
         float radius;
 
         if (mApparentMagnitude <= -20)

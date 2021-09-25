@@ -198,7 +198,7 @@ public class DrawArea extends View
         {
             if (mMainActivity != null)
             {
-                mMainActivity.showNearbyObjects(area2horizontal(e.getX(), e.getY()));
+                mMainActivity.showNearbyObjects(e.getX(), e.getY());
             }
         }
 
