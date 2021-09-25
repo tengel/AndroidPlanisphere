@@ -31,6 +31,7 @@ class Catalog
     {
         int hr;
         String name;
+        String bayerFlamsteed;
         String DM;
         String HD;
         String SAO;
@@ -81,7 +82,8 @@ class Catalog
         public Entry(String s)
         {
             hr = Integer.valueOf(substr(s, 0, 4).trim());
-            name = substr(s, 5, 14).trim().replaceAll(" +", " ");
+            name = mNames.get(hr);
+            bayerFlamsteed = substr(s, 5, 14).trim().replaceAll(" +", " ");
             DM = substr(s, 14, 25);
             HD = substr(s, 25, 31);
             SAO = substr(s, 31 ,37);
@@ -155,6 +157,7 @@ class Catalog
     }
 
     private HashMap<Integer, Entry> mEntires = new HashMap<>();
+    private HashMap<Integer, String> mNames = new HashMap<>();
     private static Catalog sInstance = null;
 
     public static Catalog instance() throws NullPointerException
@@ -166,7 +169,8 @@ class Catalog
         return sInstance;
     }
 
-    public synchronized static void init(InputStream catalogStream) throws IOException
+    public synchronized static void init(InputStream catalogStream,
+                                         InputStream nameStream) throws IOException
     {
         if (catalogStream == null)
         {
@@ -174,12 +178,26 @@ class Catalog
         }
         else if (sInstance == null)
         {
-            sInstance = new Catalog(catalogStream);
+            sInstance = new Catalog(catalogStream, nameStream);
         }
     }
 
-    private Catalog(InputStream catalogStream) throws IOException
+    private Catalog(InputStream catalogStream,
+                    InputStream namesStream) throws IOException
     {
+        BufferedReader nameReader = new BufferedReader(new InputStreamReader(
+                                                           namesStream));
+        while (true)
+        {
+            String line = nameReader.readLine();
+            if (line == null)
+            {
+                break;
+            }
+            String[] lItems = line.split("\t");
+            mNames.put(Integer.valueOf(lItems[1].trim()), lItems[0].trim());
+        }
+
         BufferedReader catalogReader = new BufferedReader(new InputStreamReader(catalogStream));
         while (true)
         {

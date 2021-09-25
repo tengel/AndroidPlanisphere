@@ -17,6 +17,7 @@
         <item>@string/solar_system</item>
         <item>@string/solar_names</item>>
         <item>@string/stars</item>
+        <item>@string/starNames</item>
     </string-array>
     <string-array name="const_language">
         <item>@string/lang_abr</item>

@@ -57,7 +57,7 @@ public class DisplayOptionsDialog extends DialogFragment
                       s.isEqGridEnabled(), s.isConstLinesEnabled(),
                       s.isConstBoundEnabled(), s.isConstNamesEnabled(),
                       s.isSolarSystemEnabled(), s.isSolarNamesEnabled(),
-                      s.isStarsEnabled()};
+                      s.isStarsEnabled(), s.isStarNamesEnabled()};
 
         builder.setMultiChoiceItems(R.array.display_options, mSelection,
                 new DialogInterface.OnMultiChoiceClickListener() {
@@ -83,6 +83,7 @@ public class DisplayOptionsDialog extends DialogFragment
                    s.setSolarSystemEnabled(mSelection[8]);
                    s.setSolarNamesEnabled(mSelection[9]);
                    s.setStarsEnabled(mSelection[10]);
+                   s.setStarNamesEnabled(mSelection[11]);
                    mListener.update();
                }
            });

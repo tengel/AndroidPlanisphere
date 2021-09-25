@@ -38,6 +38,7 @@ public class Settings
     private boolean mSolarSystemEnabled;
     private boolean mSolarNamesEnabled;
     private boolean mStarsEnabled;
+    private boolean mStarNamesEnabled;
     private int mMaxMagnitude;
     private boolean mGpsEnabled;
     private float mLatitude;
@@ -93,6 +94,7 @@ public class Settings
         mSolarSystemEnabled = mPref.getBoolean("solarSystem-enabled", true);
         mSolarNamesEnabled = mPref.getBoolean("solarNames-enabled", true);
         mStarsEnabled = mPref.getBoolean("stars-enabled", true);
+        mStarNamesEnabled = mPref.getBoolean("starNames-enabled", false);
         mMaxMagnitude = mPref.getInt("magnitude-max", 6);
         mGpsEnabled = mPref.getBoolean("gps-enabled", true);
         mLatitude = mPref.getFloat("latitude", 51.31f);
@@ -147,6 +149,7 @@ public class Settings
         spe.putBoolean("solarSystem-enabled", mSolarSystemEnabled);
         spe.putBoolean("solarNames-enabled", mSolarNamesEnabled);
         spe.putBoolean("stars-enabled", mStarsEnabled);
+        spe.putBoolean("starNames-enabled", mStarNamesEnabled);
         spe.putInt("magnitude-max", mMaxMagnitude);
         spe.putBoolean("gps-enabled", mGpsEnabled);
         spe.putFloat("latitude", mLatitude);
@@ -495,6 +498,17 @@ public class Settings
     public void setFontScale(float fontScale)
     {
         mFontScale = fontScale;
+        store();
+    }
+
+    public boolean isStarNamesEnabled()
+    {
+        return mStarNamesEnabled;
+    }
+
+    public void setStarNamesEnabled(boolean starNamesEnabled)
+    {
+        mStarNamesEnabled = starNamesEnabled;
         store();
     }
 }

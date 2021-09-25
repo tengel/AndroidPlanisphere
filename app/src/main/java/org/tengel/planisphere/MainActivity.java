@@ -80,7 +80,8 @@ public class MainActivity extends AppCompatActivity
             Settings.init(getApplicationContext());
             mSettings = Settings.instance();
 
-            Catalog.init(getResources().openRawResource(R.raw.bs_catalog));
+            Catalog.init(getResources().openRawResource(R.raw.bs_catalog),
+                         getResources().openRawResource(R.raw.star_names));
             mCatalog = Catalog.instance();
 
             ConstellationDb.init(getResources().openRawResource(R.raw.constellation_lines),
@@ -114,6 +115,8 @@ public class MainActivity extends AppCompatActivity
             AzGrid.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.star, typedValue, true);
             Star.sColor = typedValue.data;
+            theme.resolveAttribute(R.attr.starText, typedValue, true);
+            Star.sTextColor = typedValue.data;
             theme.resolveAttribute(R.attr.gridEq, typedValue, true);
             EqGrid.sColor = typedValue.data;
             theme.resolveAttribute(R.attr.horizon, typedValue, true);
@@ -306,8 +309,9 @@ public class MainActivity extends AppCompatActivity
         ArrayList<String> nameArray = new ArrayList<>();
         for (ChartObject co : nearbyObjects)
         {
-            nameArray.add(String.format(Locale.getDefault(), "%s;  %.1f mag",
-                                        co.getText(), co.getApparentMagnitude()));
+            nameArray.add(
+                String.format(Locale.getDefault(), "%s;  %.1f mag",
+                              co.getTextLong(), co.getApparentMagnitude()));
         }
         double azEle[] = mDrawArea.area2horizontal(chartX, chartY);
         Bundle data = new Bundle();
@@ -338,6 +342,10 @@ public class MainActivity extends AppCompatActivity
         if (chartObject.getType() == ObjectType.STAR)
         {
             Catalog.Entry ce = ((Star) chartObject).getCatalogEntry();
+            keys.add(getString(R.string.bayerFlamsteed));
+            values.add(ce.bayerFlamsteed);
+            keys.add(getString(R.string.brightStarCatalogue));
+            values.add(String.format(Locale.US, "HR %d", ce.hr));
             keys.add(getString(R.string.RA));
             values.add(String.format(Locale.getDefault(), "%.4f°", ce.rightAscension));
             keys.add(getString(R.string.DEC));
@@ -437,7 +445,7 @@ public class MainActivity extends AppCompatActivity
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     Moon.sWikidataId));
         }
-        data.putString("name", chartObject.getText());
+        data.putString("name", chartObject.getTextLong());
         data.putStringArrayList("keys", keys);
         data.putStringArrayList("values", values);
         data.putStringArrayList("links", links);

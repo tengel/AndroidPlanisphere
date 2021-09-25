@@ -57,6 +57,10 @@ This software incorporates the following third-party components:
   https://www.iau.org/public/themes/constellations/  
   Wikipedia, Liste der Sternbilder, https://de.wikipedia.org/wiki/Liste_der_Sternbilder
 
+* star_names.txt  
+  Naming Stars, International Astronomical Union,
+  https://www.iau.org/public/themes/naming_stars/
+
 * horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv  
   Jet Propulsion Laboratory, HORIZONS System, https://ssd.jpl.nasa.gov/?horizons
 

@@ -37,6 +37,7 @@ abstract class ChartObject implements ChartObjectInterface
     protected Engine mEngine;
     protected Double[] mAzEle = {0.0, 0.0};
     protected String mText = null;
+    protected String mTextLong = null;
     protected boolean mShowText = false;
     protected ObjectType mType;
     protected double mApparentMagnitude;
@@ -64,6 +65,18 @@ abstract class ChartObject implements ChartObjectInterface
     public String getText()
     {
         return mText;
+    }
+
+    public String getTextLong()
+    {
+        if (mTextLong == null)
+        {
+            return getText();
+        }
+        else
+        {
+            return mTextLong;
+        }
     }
 
     public ObjectType getType()
@@ -285,19 +298,35 @@ abstract class RoundObject extends ChartObject
 class Star extends RoundObject
 {
     public static int sColor;
+    public static int sTextColor;
     private Catalog.Entry mEntry;
 
-    public Star(Engine engine, Catalog.Entry ce)
+    public Star(Engine engine, Catalog.Entry ce, boolean isNamesEnabled)
     {
         super(engine);
         mEntry = ce;
         mAzEle = mEngine.equatorial2horizontal(ce.rightAscension, ce.declination);
         mApparentMagnitude = ce.apparentMagnitude;
         mPaint.setColor(sColor);
-        mText = "HR " + mEntry.hr;
-        if (mEntry.name.length() > 0)
+        mPaintText.setColor(sTextColor);
+
+        if (mEntry.name != null)
         {
-            mText += " (" + mEntry.name + ")";
+            mText = mEntry.name;
+            mTextLong = mEntry.name;
+            if (mEntry.bayerFlamsteed.length() > 0)
+            {
+                mTextLong += " (" + mEntry.bayerFlamsteed + ")";
+            }
+            mShowText = isNamesEnabled;
+        }
+        else
+        {
+            mText = "HR " + mEntry.hr;
+            if (mEntry.bayerFlamsteed.length() > 0)
+            {
+                mText += " (" + mEntry.bayerFlamsteed + ")";
+            }
         }
         mType = ObjectType.STAR;
     }

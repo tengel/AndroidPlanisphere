@@ -100,6 +100,9 @@
     <string name="astroDusk">End evening astronomical twilight</string>
     <string name="phase">Phase</string>
     <string name="textScalingFactor">Text Scaling Factor:</string>
+    <string name="brightStarCatalogue">Bright Star Catalogue</string>
+    <string name="bayerFlamsteed">Bayer/Flamsteed</string>
+    <string name="starNames">Star names</string>
     <string name="textScalingHint" translatable="false">1.0</string>
 
     <string name="about_text"><![CDATA[
@@ -239,6 +242,10 @@ This software incorporates the following third-party components:
     <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
     Wikipedia, Liste der Sternbilder,
     <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+</dd>
+<dt>star_names.txt</dt>
+<dd>Naming Stars, International Astronomical Union,
+    <a href="https://www.iau.org/public/themes/naming_stars/">https://www.iau.org/public/themes/naming_stars/</a>
 </dd>
 <dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
 <dd>Jet Propulsion Laboratory, HORIZONS System,

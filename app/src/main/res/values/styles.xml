@@ -5,6 +5,7 @@
         <item name="windowNoTitle">true</item>
         <item name="gridAz">@color/colorGray</item>
         <item name="star">@color/colorBlack</item>
+        <item name="starText">@color/colorDarkGray</item>
         <item name="gridEq">@color/colorOrange</item>
         <item name="horizon">@color/colorDarkGreen</item>
         <item name="equator">@color/colorBlue</item>
@@ -21,6 +22,7 @@
         <item name="windowNoTitle">true</item>
         <item name="gridAz">@color/colorLightBlue</item>
         <item name="star">@color/colorYellow</item>
+        <item name="starText">@color/colorLightGray</item>
         <item name="gridEq">@color/colorOrange</item>
         <item name="horizon">@color/colorGreen</item>
         <item name="equator">@color/colorCyan</item>
@@ -38,6 +40,7 @@
         <item name="windowNoTitle">true</item>
         <item name="gridAz">@color/colorLightRed</item>
         <item name="star">@color/colorRed</item>
+        <item name="starText">@color/colorDarkRed</item>
         <item name="gridEq">@color/colorDarkRed</item>
         <item name="horizon">@color/colorLightRed</item>
         <item name="equator">@color/colorRed</item>

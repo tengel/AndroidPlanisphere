@@ -104,7 +104,7 @@ public class Engine {
                 {
                     continue;
                 }
-                mObjects.add(new Star(this, e));
+                mObjects.add(new Star(this, e, mSettings.isStarNamesEnabled()));
             }
         }
         if (mSettings.isSolarSystemEnabled())

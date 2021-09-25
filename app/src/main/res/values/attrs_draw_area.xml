@@ -3,6 +3,7 @@
         <attr name="gridAz" format="reference"/>
         <attr name="gridAzText" format="reference"/>
         <attr name="star" format="reference"/>
+        <attr name="starText" format="reference"/>
         <attr name="gridEq" format="reference"/>
         <attr name="horizon" format="reference"/>
         <attr name="equator" format="reference"/>
