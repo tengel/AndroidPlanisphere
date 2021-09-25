@@ -26,6 +26,7 @@ import android.view.ScaleGestureDetector;
 import android.view.View;
 import java.util.Vector;
 import androidx.appcompat.app.ActionBar;
+import androidx.core.math.MathUtils;
 
 public class DrawArea extends View
 {
@@ -38,8 +39,11 @@ public class DrawArea extends View
     private double mScrollOffsetY = 0;
     private ActionBar mActionBar;
     private MainActivity mMainActivity;
+    private double mScrollMin = 0;
+    private double mScrollMax = 0;
 
-    private static int BORDER = 10;
+    private static final int BORDER = 10;
+    private static final double SCALE_FACTOR_MAX = 10.0;
 
     public DrawArea(Context context)
     {
@@ -70,6 +74,8 @@ public class DrawArea extends View
     {
         super.onDraw(canvas);
         mSize = Math.min(getWidth(), getHeight()) - (2 * BORDER);
+        mScrollMin = (mSize / -2.0) * mScaleFactor;
+        mScrollMax = (mSize / 2.0) * mScaleFactor;
         if (mObjects != null)
         {
             for (ChartObject co : mObjects)
@@ -98,8 +104,7 @@ public class DrawArea extends View
         double yoff = Math.cos(Math.toRadians(azimuth)) * (90 - elevation) * hpixel;
         int x = (int) Math.round((contentWidth / 2.0) + xoff - mScrollOffsetX);
         int y = (int) Math.round((contentHeight / 2.0) + yoff - mScrollOffsetY);
-        int[] rc = {x, y};
-        return rc;
+        return new int[]{x, y};
     }
 
     public int[] horizontal2area(Double[] azEle)
@@ -129,8 +134,7 @@ public class DrawArea extends View
             az = 360 + az;
         }
         double ele = (90 - (hy / hpixel));
-        double [] rc = {az, ele};
-        return rc;
+        return new double[]{az, ele};
     }
 
     public int size()
@@ -175,8 +179,14 @@ public class DrawArea extends View
         @Override
         public boolean onScale(ScaleGestureDetector detector)
         {
-            mScaleFactor *= detector.getScaleFactor();
-            mScaleFactor = Math.max(1.0, Math.min(mScaleFactor, 10.0));
+            double factor = detector.getScaleFactor();
+            mScaleFactor = MathUtils.clamp(mScaleFactor * factor,
+                                           1.0, SCALE_FACTOR_MAX);
+            if (mScaleFactor < SCALE_FACTOR_MAX)
+            {
+                mScrollOffsetX = mScrollOffsetX * factor;
+                mScrollOffsetY = mScrollOffsetY * factor;
+            }
             invalidate();
             return true;
         }
@@ -213,12 +223,10 @@ public class DrawArea extends View
         public boolean onScroll(MotionEvent e1, MotionEvent e2,
                                 float distanceX, float distanceY)
         {
-            mScrollOffsetX += distanceX;
-            mScrollOffsetX = Math.max((mSize / -2) * mScaleFactor,
-                                      Math.min(mScrollOffsetX, (mSize / 2) * mScaleFactor));
-            mScrollOffsetY += distanceY;
-            mScrollOffsetY = Math.max((mSize / -2) * mScaleFactor,
-                                      Math.min(mScrollOffsetY, (mSize / 2) * mScaleFactor));
+            mScrollOffsetX = MathUtils.clamp(mScrollOffsetX + distanceX,
+                                             mScrollMin, mScrollMax);
+            mScrollOffsetY = MathUtils.clamp(mScrollOffsetY + distanceY,
+                                             mScrollMin, mScrollMax);
             invalidate();
             return true;
         }
