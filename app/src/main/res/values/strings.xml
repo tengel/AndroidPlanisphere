@@ -140,6 +140,7 @@ elements of the chart:
   <li>solar system (sun, moon and planets)</li>
   <li>solar system names (names of planets, etc)</li>
   <li>stars</li>
+  <li>star names</li>
 </ul>
 
 <h2>Date and Time</h2>
@@ -192,6 +193,14 @@ The meaning of the fields are:
   <dt><tt>Mag: 5</tt></dt>
   <dd>Current setting of the maximum apparent magnitude (mag).</dd>
 </dl>
+
+<h2>Object Details</h2>
+Long press at a position on the chart shows a list of objects around this
+position. The list contains only objects visible on the chart and is ordered by
+distance from the long press position. Objects close to the position are at the
+top of the list. By selecting an object from the list, the App shows information
+about the object, for example rise and set times, phase and different
+coordinates.
 
 <h2>Legal Notice</h2>
 

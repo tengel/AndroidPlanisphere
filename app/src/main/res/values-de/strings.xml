@@ -139,6 +139,7 @@ deaktiviert werden:
   <li>Sonnensystem (Sonne, Mond und Planeten)</li>
   <li>Namen Sonnensystem (Namen der Planeten, etc)</li>
   <li>Sterne</li>
+  <li>Sternnamen</li>
 </ul>
 
 <h2>Datum und Uhrzeit</h2>
@@ -194,6 +195,14 @@ Die einzelnen Felder in der Zeile bedeuten:
   <dt><tt>Mag: 5</tt></dt>
   <dd>Das eingestellte Helligkeitslimit (scheinbare Helligkeit, mag).</dd>
 </dl>
+
+<h2>Informationen über Himmelsobjekte</h2>
+Langes Drücken auf einer Position auf der Karte zeigt eine Liste von Objekten um
+diese Position herum an. Die Liste enthält nur Objekte, die auf der Karte
+sichtbar sind und ist sortiert nach der Entfernung von der Position. Objekte in
+der Nähe der Position stehen oben in der Liste. Mit der Auswahl eines Objektes
+von der Liste zeigt die App Informationen über das Objekt an, zum Beispiel Auf-
+und Untergangszeiten, Phase und verschiedene Koordinaten.
 
 <h2>Rechtliche Hinweise</h2>
 

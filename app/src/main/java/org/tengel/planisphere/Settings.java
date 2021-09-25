@@ -111,12 +111,6 @@ public class Settings
         String currentVersion = BuildConfig.VERSION_NAME;
         if (!storedVersion.equals(currentVersion))
         {
-            // convert sysdefault language from 1.8.0
-            if (mConstLanguage == 8)
-            {
-                mConstLanguage = LANG_SYSDEFAULT_INTERNAL;
-            }
-            store();
         }
 
         mTranslations.put(Mercury.sName, context.getString(R.string.planet_mercury));

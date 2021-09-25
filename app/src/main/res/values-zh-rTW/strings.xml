@@ -90,8 +90,8 @@
     <string name="onlyVisiblePlanets">僅顯示可見行星</string>
     <string name="rise">升起 (當地時間)</string>
     <string name="riseUtc">升起 (世界協調時間)</string>
-    <string name="set">設定 (當地時間)</string>
-    <string name="setUtc">設定 (世界協調時間)</string>
+    <string name="set">降下 (當地時間)</string>
+    <string name="setUtc">降下 (世界協調時間)</string>
     <string name="astroDawn">天文曙暮光開始</string>
     <string name="nauticalDawn">航海曙暮光開始</string>
     <string name="civilDawn">民用曙暮光開始</string>
@@ -102,7 +102,7 @@
     <string name="textScalingFactor">文字縮放比例</string>
     <string name="brightStarCatalogue">Bright Star Catalogue</string>
     <string name="bayerFlamsteed">Bayer/Flamsteed</string>
-    <string name="starNames">Star names</string>
+    <string name="starNames">恆星名稱</string>
 
     <string name="about_text"><![CDATA[
 <h1>星座盤</h1>
@@ -131,6 +131,7 @@
   <li>太陽系（太陽、月亮、行星）</li>
   <li>太陽系名稱（行星名稱等等）</li>
   <li>恆星</li>
+  <li>恆星名稱</li>
 </ul>
 
 <h2>日期和時間</h2>
@@ -172,6 +173,11 @@
   <dt><tt>Mag: 5</tt></dt>
   <dd>目前設定的最亮視星等 (mag)。</dd>
 </dl>
+
+<h2>天體資訊</h2>
+在圖上的任何一點長按將出現一個表，列出在這個點附近的所有天體。表中僅列出可見的天
+體。排列順序為天體與長按點的距離，靠近這個點的天體會在表格的最上方。點選表上的任
+一天體，就可以看到這個天體的相關資訊，例如升降時間、位相及各種相對位置。
 
 <h2>法律注意事項</h2>
 

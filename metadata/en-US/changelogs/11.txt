@@ -1,0 +1,6 @@
+- Show star names on chart and in the object details dialog.
+- Improve the position of the constellation name on the chart.
+- Several fixes for GPS location search.
+- Fix pinch-to-zoom scaling of the chart.
+- Fix search of nearby objects.
+- Use Latin as default for constellation names, if the system language is English.
