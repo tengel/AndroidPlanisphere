@@ -431,6 +431,8 @@ abstract class LineObject extends ChartObject
     protected ArrayList<ArrayList<Double[]>> mLines = new ArrayList<>();
     protected ArrayList<Double[]> mTextCoords = new ArrayList<Double[]>();
     protected ArrayList<String> mTexts = new ArrayList<String>();
+    protected ArrayList<String> mTextsCenter = new ArrayList<String>();
+    protected boolean mShowLines = true;
 
     public LineObject(Engine e)
     {
@@ -440,9 +442,12 @@ abstract class LineObject extends ChartObject
     @Override
     public void draw(DrawArea da, Canvas canvas)
     {
-        for (ArrayList<Double[]> line : mLines)
+        if (mShowLines)
         {
-            drawLine(da, canvas, line);
+            for (ArrayList<Double[]> line : mLines)
+            {
+                drawLine(da, canvas, line);
+            }
         }
 
         int[] pxy;
@@ -452,6 +457,25 @@ abstract class LineObject extends ChartObject
         {
             pxy = da.horizontal2area(coordIter.next());
             canvas.drawText(textIter.next(), pxy[0], pxy[1], mPaintText);
+        }
+
+        Iterator<ArrayList<Double[]>> lineIter = mLines.iterator();
+        Iterator<String> textCenterIter = mTextsCenter.iterator();
+        while (lineIter.hasNext() && textCenterIter.hasNext())
+        {
+            float xMax = 0, xMin = Float.MAX_VALUE;
+            float yMax = 0, yMin = Float.MAX_VALUE;
+            for (Double[] point : lineIter.next())
+            {
+                int[] pointXy = da.horizontal2area(point);
+                xMax = Math.max(xMax, pointXy[0]);
+                xMin = Math.min(xMin, pointXy[0]);
+                yMax = Math.max(yMax, pointXy[1]);
+                yMin = Math.min(yMin, pointXy[1]);
+            }
+            canvas.drawText(textCenterIter.next(),
+                            xMin + ((xMax - xMin) / 2),
+                            yMin + ((yMax - yMin) / 2), mPaintText);
         }
     }
 
@@ -580,14 +604,11 @@ class ConstLines extends LineObject
             {
                 constLine.add(mEngine.equatorial2horizontal(ce.rightAscension, ce.declination));
             }
-            if (isLinesEnabled)
-            {
-                mLines.add(constLine);
-            }
+            mShowLines = isLinesEnabled;
+            mLines.add(constLine);
             if (isNamesEnabled)
             {
-                mTextCoords.add(constLine.get(1));
-                mTexts.add(db.getName(constellation.mName));
+                mTextsCenter.add(db.getName(constellation.mName));
             }
         }
     }
