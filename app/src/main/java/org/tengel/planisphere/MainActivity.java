@@ -441,6 +441,14 @@ public class MainActivity extends AppCompatActivity
             values.add(String.format(Locale.getDefault(), "%.6f AU", m.mDistance_earth));
             keys.add(getString(R.string.phase));
             values.add(String.format(Locale.getDefault(), "%.1f %%", m.mPhase));
+            keys.add(getString(R.string.previousFullMoon));
+            values.add(mEngine.prevFullMoon());
+            keys.add(getString(R.string.previousNewMoon));
+            values.add(mEngine.prevNewMoon());
+            keys.add(getString(R.string.nextFullMoon));
+            values.add(mEngine.nextFullMoon());
+            keys.add(getString(R.string.nextNewMoon));
+            values.add(mEngine.nextNewMoon());
             links.add(String.format(Locale.US,
                     "<a href=\"https://m.wikidata.org/wiki/%s\">&#8599; Wikidata</a>",
                     Moon.sWikidataId));

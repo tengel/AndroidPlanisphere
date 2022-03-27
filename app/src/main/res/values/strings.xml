@@ -104,6 +104,10 @@
     <string name="bayerFlamsteed">Bayer/Flamsteed</string>
     <string name="starNames">Star names</string>
     <string name="textScalingHint" translatable="false">1.0</string>
+    <string name="previousFullMoon">Previous Full Moon</string>
+    <string name="previousNewMoon">Previous New Moon</string>
+    <string name="nextFullMoon">Next Full Moon</string>
+    <string name="nextNewMoon">Next New Moon</string>
 
     <string name="about_text"><![CDATA[
 <h1>Planisphere</h1>

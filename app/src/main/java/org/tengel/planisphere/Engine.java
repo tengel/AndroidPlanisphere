@@ -268,4 +268,27 @@ public class Engine {
         }
         return Astro.formatCal(c);
     }
+
+    public String nextFullMoon()
+    {
+        double jd = Astro.nextFullMoon(Astro.julian_date(mTime));
+        return Astro.jd2str(jd, true);
+    }
+
+    public String nextNewMoon()
+    {
+        double jd = Astro.nextNewMoon(Astro.julian_date(mTime));
+        return Astro.jd2str(jd, true);
+    }
+    public String prevFullMoon()
+    {
+        double jd = Astro.prevFullMoon(Astro.julian_date(mTime));
+        return Astro.jd2str(jd, true);
+    }
+
+    public String prevNewMoon()
+    {
+        double jd = Astro.prevNewMoon(Astro.julian_date(mTime));
+        return Astro.jd2str(jd, true);
+    }
 }

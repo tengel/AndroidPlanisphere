@@ -103,6 +103,10 @@
     <string name="brightStarCatalogue">Bright-Star-Katalog</string>
     <string name="bayerFlamsteed">Bayer/Flamsteed</string>
     <string name="starNames">Sternnamen</string>
+    <string name="previousFullMoon">Vorheriger Vollmond</string>
+    <string name="previousNewMoon">Vorheriger Neumond</string>
+    <string name="nextFullMoon">Nächster Vollmond</string>
+    <string name="nextNewMoon">Nächster Neumond</string>
 
     <string name="about_text"><![CDATA[
 <h1>Planisphäre</h1>

@@ -176,6 +176,61 @@ class Astro
     }
 
     /**
+     * Convert a julian date to a string.
+     */
+    static String jd2str(double jd, boolean localtime)
+    {
+        Calendar c = jd2calendar(jd);
+        if (localtime)
+        {
+            c.getTime();
+            c.setTimeZone(TimeZone.getDefault());
+        }
+        return formatCal(c);
+    }
+
+    /**
+     * Convert a julian date to a Calendar object.
+     */
+    static Calendar jd2calendar(double jd)
+    {
+        int[] t = jd2tuple(jd);
+        Calendar c = new GregorianCalendar(TimeZone.getTimeZone("UTC"));
+        c.set(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
+        return c;
+    }
+
+    /**
+     * Convert a julian date to a tuple with year, month, day, hour, minute,
+     * second.
+     */
+    static int[] jd2tuple(double jd)
+    {
+        double a, c, b, d, e, f, M, Y, D, h, m, s;
+        a = Math.floor(jd + 0.5);
+        if (a < 2299161)
+        {
+            c = a + 1524;
+        }
+        else
+        {
+            b = Math.floor((a - 1867216.25) / 36524.25);
+            c = a + b - Math.floor(b / 4) + 1525;
+        }
+        d = Math.floor((c - 122.1) / 365.25);
+        e = Math.floor(365.25 * d);
+        f = Math.floor((c - e ) / 30.6001);
+        M = f - 1 - 12 * Math.floor(f / 14);
+        Y = d - 4715 - Math.floor((7 + M) / 10);
+        D = c - e - Math.floor(30.6001 * f) + (jd + 0.5 - a);
+        h = (D - Math.floor(D)) * 24;
+        m = (h - Math.floor(h)) * 60;
+        s = (m - Math.floor(m)) * 60;
+        return new int[]{(int)Y, (int)M, (int)Math.floor(D), (int)Math.floor(h),
+                         (int)Math.floor(m), (int)Math.round(s)};
+    }
+
+    /**
      * Return centuries since J2000.0 (as float) from a python datetime object.
      */
     static double julian_century(Calendar c)
@@ -419,22 +474,35 @@ class Astro
     }
 
     /**
-     * Calculate the geocentric, equatorial position (ra, dec) of the sun for a
-     * julian date.
+     * Calculate the geocentric, ecliptic position of the sun for a julian date.
      * Source: https://en.wikipedia.org/wiki/Position_of_the_Sun
      *
      * :param float jd: Julian date
-     * :return: Geocentric, equatorial coordinates
-     *          (right ascension alpha, declination delta) in degree
+     * :return: Geocentric, ecliptic coordinates
+     *          beta (ecliptic lat), lambda (ecliptic lon),
+     *          Delta (earth distance)
      */
-    static double[] calcPositionSun(double jd)
+    static double[] calcPositionSunEcliptic(double jd)
     {
         double n, L, g, lamb;
         n = jd - 2451545.0;
         L = (280.460 + 0.9856474 * n) % 360;
         g = (357.528 + 0.9856003 * n) % 360;
         lamb = L + 1.915 * sin(g) + 0.020 * sin(2 * g); // geoc., ecliptic lon
-        return geoEcl2geoEqua(0, lamb); // ra, dec
+        return new double[]{0, lamb, 1};
+    }
+
+    /**
+     * Calculate the geocentric, equatorial position (ra, dec) of the sun for a
+     * julian date.
+     * :param float jd: Julian date
+     * :return: Geocentric, equatorial coordinates
+     *          (right ascension alpha, declination delta) in degree
+     */
+    static double[] calcPositionSun(double jd)
+    {
+        double[] latLonDist = calcPositionSunEcliptic(jd);
+        return geoEcl2geoEqua(latLonDist[0], latLonDist[1]); // ra, dec
     }
 
     /**
@@ -777,4 +845,67 @@ class Astro
         return k * 100;
     }
 
+    /**
+     * Finds the previous or next date of a moon phase. The moon phase is
+     * specified by the difference of the geocentric, ecliptic longitude of
+     * moon and sun.
+     *
+     * :param float jdStart: Start date for search (julian date).
+     * :param int direction: Search direction: 1=forward; -1=backward.
+     * :param float lonDiff: Target difference of the ecliptic longitudes of
+     *                       sun and moon. (0=new moon; 180=full moon)
+     * :return: Julian date of next or previous moon phase.
+     */
+    static double findMoonPhaseDate(double jdStart, int direction,
+                                    double lonDiff)
+    {
+        double yStart = lonDiffFunc(jdStart, lonDiff);
+        double angleStart = mod((- yStart), (360 * direction));
+        double x0 = jdStart + 29.53 * angleStart / 360;
+        double y0 = lonDiffFunc(x0, lonDiff);
+        double x1 = x0 + 1.0 / 24; // + 1 h;
+        double y1 = lonDiffFunc(x1, lonDiff);
+        double x2;
+        while (Math.abs(y1) > 0.0001)
+        {
+            x2 = x1 - ((x1 - x0) / (y1 - y0)) * y1;
+            x0 = x1;
+            x1 = x2;
+            y0 = y1;
+            y1 = lonDiffFunc(x1, lonDiff);
+        }
+        return x1;
+    }
+
+    /**
+     * Helper function for findMoonPhaseDate(). Function becomes 0 when the
+     * difference of the longitudes of sun and moon reaches targetDiff.
+     */
+    private static double lonDiffFunc(double jdate, double targetDiff)
+    {
+        double moonLon = calcPositionMoon(jdate)[1];
+        double sunLon = calcPositionSunEcliptic(jdate)[1];
+        double r = (mod((moonLon - sunLon - 180 - targetDiff), 360) - 180);
+        return r;
+    };
+
+    static double nextNewMoon(double jdate)
+    {
+        return findMoonPhaseDate(jdate, 1, 0);
+    }
+
+    static double nextFullMoon(double jdate)
+    {
+        return findMoonPhaseDate(jdate, 1, 180);
+    }
+
+    static double prevNewMoon(double jdate)
+    {
+        return findMoonPhaseDate(jdate, -1, 0);
+    }
+
+    static double prevFullMoon(double jdate)
+    {
+        return findMoonPhaseDate(jdate, -1, 180);
+    }
 }
