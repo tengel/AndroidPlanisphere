@@ -139,8 +139,6 @@ public class MainActivity extends AppCompatActivity
             ChartPlanet.sTextColor = typedValue.data;
             Sun.sTextColor = typedValue.data;
             Moon.sTextColor = typedValue.data;
-
-            update();
         }
         catch (Exception e)
         {
@@ -281,6 +279,7 @@ public class MainActivity extends AppCompatActivity
         {
             mLocHandler.enableGps(this, false);
         }
+        update();
     }
 
     @Override
