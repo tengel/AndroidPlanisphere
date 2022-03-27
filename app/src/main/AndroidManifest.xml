@@ -3,12 +3,12 @@
     package="org.tengel.planisphere">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true">
         <activity
