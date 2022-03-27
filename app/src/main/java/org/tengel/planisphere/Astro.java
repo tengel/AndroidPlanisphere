@@ -266,7 +266,7 @@ class Astro
      * :return: Horizontal coordinates (azimuth, elevation) in degree
      * :rtype: list(float)
      */
-    static Double[] geoEqua2geoHori(double t, double phi, double delta)
+    static double[] geoEqua2geoHori(double t, double phi, double delta)
     {
         double x, y, z, r, p, beta, lambda_helper, lambda;
         x = sin(phi) * cos(delta) * cos(t) - cos(phi) * sin(delta);
@@ -297,7 +297,7 @@ class Astro
         {
             throw new RuntimeException("should not happen");
         }
-        return new Double[]{lambda, beta};
+        return new double[]{lambda, beta};
     }
 
     /**

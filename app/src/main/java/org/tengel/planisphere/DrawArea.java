@@ -41,6 +41,8 @@ public class DrawArea extends View
     private MainActivity mMainActivity;
     private double mScrollMin = 0;
     private double mScrollMax = 0;
+    private int mContentWidth = 0;
+    private int mContentHeight = 0;
 
     private static final int BORDER = 10;
     private static final double SCALE_FACTOR_MAX = 10.0;
@@ -73,7 +75,9 @@ public class DrawArea extends View
     protected void onDraw(Canvas canvas)
     {
         super.onDraw(canvas);
-        mSize = Math.min(getWidth(), getHeight()) - (2 * BORDER);
+        mContentWidth = getWidth();
+        mContentHeight = getHeight();
+        mSize = Math.min(mContentWidth, mContentHeight) - (2 * BORDER);
         mScrollMin = (mSize / -2.0) * mScaleFactor;
         mScrollMax = (mSize / 2.0) * mScaleFactor;
         if (mObjects != null)
@@ -97,17 +101,16 @@ public class DrawArea extends View
      */
     public int[] horizontal2area(double azimuth, double elevation)
     {
-        int contentWidth = getWidth();
-        int contentHeight = getHeight();
         double hpixel = (mSize * mScaleFactor) / 2.0 / 90.0;
-        double xoff = Math.sin(Math.toRadians(azimuth)) * (90 - elevation) * hpixel;
-        double yoff = Math.cos(Math.toRadians(azimuth)) * (90 - elevation) * hpixel;
-        int x = (int) Math.round((contentWidth / 2.0) + xoff - mScrollOffsetX);
-        int y = (int) Math.round((contentHeight / 2.0) + yoff - mScrollOffsetY);
+        double azimuthRad = Math.toRadians(azimuth);
+        double xoff = Math.sin(azimuthRad) * (90 - elevation) * hpixel;
+        double yoff = Math.cos(azimuthRad) * (90 - elevation) * hpixel;
+        int x = (int) ((mContentWidth / 2.0) + xoff - mScrollOffsetX);
+        int y = (int) ((mContentHeight / 2.0) + yoff - mScrollOffsetY);
         return new int[]{x, y};
     }
 
-    public int[] horizontal2area(Double[] azEle)
+    public int[] horizontal2area(double[] azEle)
     {
         return horizontal2area(azEle[0], azEle[1]);
     }
@@ -118,11 +121,9 @@ public class DrawArea extends View
      */
     public double[] area2horizontal(float x, float y)
     {
-        int contentWidth = getWidth();
-        int contentHeight = getHeight();
         double hpixel = (mSize * mScaleFactor) / 2.0 / 90.0;
-        double xoff = x - (contentWidth / 2.0) + mScrollOffsetX;
-        double yoff = y - (contentHeight / 2.0) + mScrollOffsetY;
+        double xoff = x - (mContentWidth / 2.0) + mScrollOffsetX;
+        double yoff = y - (mContentHeight / 2.0) + mScrollOffsetY;
         double hy = Math.sqrt(xoff*xoff + yoff*yoff);
         double az = Math.toDegrees(Math.asin(xoff / hy));
         if (yoff < 0)

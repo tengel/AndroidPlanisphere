@@ -63,7 +63,7 @@ public class Engine {
     /**
      * Return azimut, elevation
      */
-    public Double[] equatorial2horizontal(double rightAscension, double declination)
+    public double[] equatorial2horizontal(double rightAscension, double declination)
     {
         double hourAngle = (mLocalSiderealTime - rightAscension) * 15.0;
         return Astro.geoEqua2geoHori(hourAngle, mLatitude, declination);

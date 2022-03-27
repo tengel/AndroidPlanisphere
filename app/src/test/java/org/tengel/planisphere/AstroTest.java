@@ -91,7 +91,7 @@ public class AstroTest
     public void geoEqua2geoHori()
     {
         double t = (18 - 16) * 15.0;
-        Double[] ah = Astro.geoEqua2geoHori(t, 48, 20);
+        double[] ah = Astro.geoEqua2geoHori(t, 48, 20);
         assertEquals("azimuth", ah[0], 51.3375, 0.00005);
         assertEquals("elevation", ah[1], 53.0068, 0.00005);
     }

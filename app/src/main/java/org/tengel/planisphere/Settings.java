@@ -47,6 +47,9 @@ public class Settings
     private float mLastGpsLongitude;
     private HashMap<String, String> mTranslations = new HashMap<>();
     private String mLanguage;
+    private float mTextSize;
+    private float mStarSize;
+    private float mTextSizeSmall;
     private int mConstLanguage;
     private GregorianCalendar mCurrentTime;
     private boolean mToolbarIsVisible = true;
@@ -125,6 +128,9 @@ public class Settings
         mTranslations.put("Moon", context.getString(R.string.moon));
 
         mLanguage = context.getResources().getConfiguration().locale.getLanguage();
+        mTextSize = context.getResources().getDimension(R.dimen.textsize);
+        mStarSize = context.getResources().getDimension(R.dimen.starsize);
+        mTextSizeSmall = context.getResources().getDimension(R.dimen.textsizeSmall);
         mCurrentTime = new GregorianCalendar();
     }
 
@@ -504,5 +510,20 @@ public class Settings
     {
         mStarNamesEnabled = starNamesEnabled;
         store();
+    }
+
+    public float getTextSize()
+    {
+        return mTextSize;
+    }
+
+    public float getStarSize()
+    {
+        return mStarSize;
+    }
+
+    public float getTextSizeSmall()
+    {
+        return mTextSizeSmall;
     }
 }

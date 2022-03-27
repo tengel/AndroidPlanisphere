@@ -35,7 +35,7 @@ abstract class ChartObject implements ChartObjectInterface
     protected Paint mPaint = new Paint();
     protected Paint mPaintText = new Paint();
     protected Engine mEngine;
-    protected Double[] mAzEle = {0.0, 0.0};
+    protected double[] mAzEle = {0.0, 0.0};
     protected String mText = null;
     protected String mTextLong = null;
     protected boolean mShowText = false;
@@ -134,8 +134,7 @@ class AzGrid extends ChartObject
         mPaint.setColor(sColor);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize) *
-                               mFontScale);
+        mPaintText.setTextSize(Settings.instance().getTextSize() * mFontScale);
         mAlignY = (mPaintText.ascent() + mPaintText.descent()) / 2;
         mType = ObjectType.OTHER;
     }
@@ -177,8 +176,7 @@ class Horizon extends ChartObject
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(e.getActivity().getResources().getDimension(R.dimen.horizon_width));
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize) *
-                               mFontScale);
+        mPaintText.setTextSize(Settings.instance().getTextSize() * mFontScale);
         mH = mPaintText.ascent() + mPaintText.descent();
         mAlignY = mH / 2;
         mType = ObjectType.OTHER;
@@ -216,8 +214,7 @@ class InfoText extends ChartObject
         mText = text;
         mShowText = true;
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall) *
-                               mFontScale);
+        mPaintText.setTextSize(Settings.instance().getTextSizeSmall() * mFontScale);
         mPaintText.setTextAlign(Paint.Align.LEFT);
         mType = ObjectType.OTHER;
     }
@@ -238,10 +235,9 @@ abstract class RoundObject extends ChartObject
     RoundObject(Engine e)
     {
         super(e);
-        mBaseSize = mEngine.getActivity().getResources().getDimension(R.dimen.starsize);
+        mBaseSize = Settings.instance().getStarSize();
         mPaintText.setTextAlign(Paint.Align.LEFT);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall) *
-                               mFontScale);
+        mPaintText.setTextSize(Settings.instance().getTextSizeSmall() * mFontScale);
     }
 
     @Override
@@ -428,8 +424,8 @@ class Moon extends RoundObject
 
 abstract class LineObject extends ChartObject
 {
-    protected ArrayList<ArrayList<Double[]>> mLines = new ArrayList<>();
-    protected ArrayList<Double[]> mTextCoords = new ArrayList<Double[]>();
+    protected ArrayList<ArrayList<double[]>> mLines = new ArrayList<>();
+    protected ArrayList<double[]> mTextCoords = new ArrayList<double[]>();
     protected ArrayList<String> mTexts = new ArrayList<String>();
     protected ArrayList<String> mTextsCenter = new ArrayList<String>();
     protected boolean mShowLines = true;
@@ -444,14 +440,14 @@ abstract class LineObject extends ChartObject
     {
         if (mShowLines)
         {
-            for (ArrayList<Double[]> line : mLines)
+            for (ArrayList<double[]> line : mLines)
             {
                 drawLine(da, canvas, line);
             }
         }
 
         int[] pxy;
-        Iterator<Double[]> coordIter = mTextCoords.iterator();
+        Iterator<double[]> coordIter = mTextCoords.iterator();
         Iterator<String> textIter = mTexts.iterator();
         while(coordIter.hasNext() && textIter.hasNext())
         {
@@ -459,13 +455,13 @@ abstract class LineObject extends ChartObject
             canvas.drawText(textIter.next(), pxy[0], pxy[1], mPaintText);
         }
 
-        Iterator<ArrayList<Double[]>> lineIter = mLines.iterator();
+        Iterator<ArrayList<double[]>> lineIter = mLines.iterator();
         Iterator<String> textCenterIter = mTextsCenter.iterator();
         while (lineIter.hasNext() && textCenterIter.hasNext())
         {
             float xMax = 0, xMin = Float.MAX_VALUE;
             float yMax = 0, yMin = Float.MAX_VALUE;
-            for (Double[] point : lineIter.next())
+            for (double[] point : lineIter.next())
             {
                 int[] pointXy = da.horizontal2area(point);
                 xMax = Math.max(xMax, pointXy[0]);
@@ -479,11 +475,11 @@ abstract class LineObject extends ChartObject
         }
     }
 
-    private void drawLine(DrawArea da, Canvas canvas, ArrayList<Double[]> line)
+    private void drawLine(DrawArea da, Canvas canvas, ArrayList<double[]> line)
     {
         int[] pFrom;
         int[] pTo;
-        Iterator<Double[]> iterator = line.iterator();
+        Iterator<double[]> iterator = line.iterator();
         pFrom = da.horizontal2area(iterator.next());
         while (iterator.hasNext())
         {
@@ -506,9 +502,8 @@ class EqGrid extends LineObject
         mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsize) *
-                               mFontScale);
-        ArrayList<Double[]> line;
+        mPaintText.setTextSize(Settings.instance().getTextSize() * mFontScale);
+        ArrayList<double[]> line;
         for (int dec = -30; dec < 90; dec+=30)
         {
             line = new ArrayList<>();
@@ -545,7 +540,7 @@ class Equator extends LineObject
         super(e);
         mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
-        ArrayList<Double[]> line = new ArrayList<>();
+        ArrayList<double[]> line = new ArrayList<>();
         for (int ra = 0; ra <= 24; ra++)
         {
             line.add(mEngine.equatorial2horizontal(ra, 0));
@@ -566,7 +561,7 @@ class Ecliptic extends LineObject
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
         double[] raDec;
-        ArrayList<Double[]> line = new ArrayList<>();
+        ArrayList<double[]> line = new ArrayList<>();
         for (int lon = 0; lon <= 360; lon+=10)
         {
             raDec = Astro.geoEcl2geoEqua(0.0, lon);
@@ -589,8 +584,7 @@ class ConstLines extends LineObject
         mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
         mPaintText.setColor(sColor);
-        mPaintText.setTextSize(e.getActivity().getResources().getDimension(R.dimen.textsizeSmall) *
-                               mFontScale);
+        mPaintText.setTextSize(Settings.instance().getTextSizeSmall() * mFontScale);
         Double[] azEle;
         boolean isVisible;
         for (ConstellationDb.Constellation constellation : db.get())
@@ -599,7 +593,7 @@ class ConstLines extends LineObject
             {
                 continue;
             }
-            ArrayList<Double[]> constLine = new ArrayList<>();
+            ArrayList<double[]> constLine = new ArrayList<>();
             for (Catalog.Entry ce : constellation.mLine)
             {
                 constLine.add(mEngine.equatorial2horizontal(ce.rightAscension, ce.declination));
@@ -626,12 +620,12 @@ class ConstBoundaries extends LineObject
         super(e);
         mType = ObjectType.OTHER;
         mPaint.setColor(sColor);
-        Double[] azEle;
-        Double[] azEleFirst = null;
+        double[] azEle;
+        double[] azEleFirst = null;
         boolean isVisible;
         for (ConstellationDb.Constellation constellation : db.get())
         {
-            ArrayList<Double[]> boundLine = new ArrayList<>();
+            ArrayList<double[]> boundLine = new ArrayList<>();
             isVisible = false;
             azEleFirst = null;
             for (Double[] raDec : db.getBoundary(constellation.mName))
