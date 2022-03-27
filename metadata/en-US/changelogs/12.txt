@@ -1,0 +1,3 @@
+- Show date of previous and next full moon and new moon.
+- Several speed optimizations.
+- Fix use of last known location if GPS is not available.
