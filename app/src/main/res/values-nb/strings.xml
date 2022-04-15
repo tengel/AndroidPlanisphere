@@ -99,14 +99,14 @@
     <string name="nauticalDusk">Slutt nautisk tussmørke (kveld)</string>
     <string name="astroDusk">Slutt astronomisk tussmørke (kveld)</string>
     <string name="phase">Fase</string>
-    <string name="textScalingFactor">Text Scaling Factor:</string>
+    <string name="textScalingFactor">Tekstskaleringsfaktor:</string>
     <string name="brightStarCatalogue">Bright Star Catalogue</string>
     <string name="bayerFlamsteed">Bayer/Flamsteed</string>
-    <string name="starNames">Star names</string>
-    <string name="previousFullMoon">Previous Full Moon</string>
-    <string name="previousNewMoon">Previous New Moon</string>
-    <string name="nextFullMoon">Next Full Moon</string>
-    <string name="nextNewMoon">Next New Moon</string>
+    <string name="starNames">Stjernenavn</string>
+    <string name="previousFullMoon">Forrige fullmåne</string>
+    <string name="previousNewMoon">Forrige nymåne</string>
+    <string name="nextFullMoon">Neste fullmåne</string>
+    <string name="nextNewMoon">Neste nymåne</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisfære</h1>
