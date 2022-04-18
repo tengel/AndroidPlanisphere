@@ -6,8 +6,8 @@ android {
         applicationId "org.tengel.planisphere"
         minSdkVersion 15
         targetSdkVersion 31
-        versionCode 12
-        versionName "1.11.0"
+        versionCode 13
+        versionName "1.11.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
