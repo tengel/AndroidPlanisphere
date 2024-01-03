@@ -1,0 +1,2 @@
+- Increase maximum scaling factor.
+- Allow to adjust time with volume buttons.
