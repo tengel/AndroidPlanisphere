@@ -45,7 +45,7 @@ public class DrawArea extends View
     private int mContentHeight = 0;
 
     private static final int BORDER = 10;
-    private static final double SCALE_FACTOR_MAX = 10.0;
+    private static final double SCALE_FACTOR_MAX = 100.0;
 
     public DrawArea(Context context)
     {
