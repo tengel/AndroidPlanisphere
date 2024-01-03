@@ -54,6 +54,9 @@ public class SettingsDialog extends DialogFragment
         final CheckBox visiblePlanets = (CheckBox) view.findViewById(R.id.onlyVisiblePlanets);
         visiblePlanets.setChecked(Settings.instance().getOnlyVisiblePlanets());
 
+        final CheckBox adjustTime = (CheckBox) view.findViewById(R.id.adjustTimeVolume);
+        adjustTime.setChecked(Settings.instance().getAdjustTimeVolume());
+
         final EditText fontScale = (EditText) view.findViewById(R.id.fontScale);
         fontScale.setText(String.valueOf(Settings.instance().getFontScale()));
 
@@ -65,6 +68,7 @@ public class SettingsDialog extends DialogFragment
                 Settings.instance().setKeepScreenOn(keepScreen.isChecked());
                 Settings.instance().setOnlyVisiblePlanets(visiblePlanets.isChecked());
                 Settings.instance().setFontScale(Float.valueOf(fontScale.getText().toString()));
+                Settings.instance().setAdjustTimeVolume(adjustTime.isChecked());
                 mListener.update();
             }
         });

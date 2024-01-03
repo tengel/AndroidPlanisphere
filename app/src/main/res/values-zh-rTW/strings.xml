@@ -107,6 +107,7 @@
     <string name="previousNewMoon">前一次新月</string>
     <string name="nextFullMoon">下一次滿月</string>
     <string name="nextNewMoon">下一次新月</string>
+    <string name="adjustTimeVolume">用音量鍵調整時間</string>
 
     <string name="about_text"><![CDATA[
 <h1>星座盤</h1>

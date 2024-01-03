@@ -58,6 +58,7 @@ public class Settings
     private ChartObject[] mNearbyObjects = null;
     private boolean mOnlyVisiblePlanets;
     private float mFontScale;
+    private boolean mAdjustTimeVolume;
     private static final int LANG_SYSDEFAULT_INTERNAL = 9999; // stored in SharedPreferences
     private static final int LANG_SYSDEFAULT_IDX = 9;
 
@@ -109,6 +110,7 @@ public class Settings
         mAutoUpdate = mPref.getBoolean("autoUpdate", true);
         mOnlyVisiblePlanets = mPref.getBoolean("onlyVisiblePlanets", false);
         mFontScale = mPref.getFloat("fontScale", 1.0f);
+        mAdjustTimeVolume = mPref.getBoolean("adjustTimeVolume", false);
 
         String storedVersion = mPref.getString("version", "");
         String currentVersion = BuildConfig.VERSION_NAME;
@@ -161,6 +163,7 @@ public class Settings
         spe.putBoolean("autoUpdate", mAutoUpdate);
         spe.putBoolean("onlyVisiblePlanets", mOnlyVisiblePlanets);
         spe.putFloat("fontScale", mFontScale);
+        spe.putBoolean("adjustTimeVolume", mAdjustTimeVolume);
         spe.putString("version", BuildConfig.VERSION_NAME);
         spe.apply();
     }
@@ -525,5 +528,16 @@ public class Settings
     public float getTextSizeSmall()
     {
         return mTextSizeSmall;
+    }
+
+    public boolean getAdjustTimeVolume()
+    {
+        return mAdjustTimeVolume;
+    }
+
+    public void setAdjustTimeVolume(boolean adjustTimeVolume)
+    {
+        mAdjustTimeVolume = adjustTimeVolume;
+        store();
     }
 }

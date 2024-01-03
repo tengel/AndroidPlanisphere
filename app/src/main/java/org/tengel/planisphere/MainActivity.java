@@ -26,9 +26,11 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
+import android.widget.Toast;
 import org.tengel.planisphere.dialog.DisplayOptionsDialog;
 import org.tengel.planisphere.dialog.InfoDialog;
 import org.tengel.planisphere.dialog.LocationDialog;
@@ -42,7 +44,9 @@ import org.tengel.planisphere.dialog.SettingsDialog;
 import org.tengel.planisphere.dialog.ThemeDialog;
 import org.tengel.planisphere.dialog.TimeDialog;
 import org.tengel.planisphere.dialog.UpdateListener;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
@@ -60,6 +64,8 @@ public class MainActivity extends AppCompatActivity
     private LocationHandler mLocHandler;
     private boolean mIsRunningUpdateTask = false;
     private boolean mIsRunning = false;
+    private int mTimeOffsetVolume = 0;
+    private Toast mTimeOffsetVolumeToast = null;
     private Handler mTimerHandler = new Handler(Looper.getMainLooper());
     private Runnable mAutoUpdateTask = new Runnable() {
         public void run() {
@@ -149,6 +155,54 @@ public class MainActivity extends AppCompatActivity
                                e.getStackTrace()[0].toString());
             builder.create().show();
         }
+    }
+
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event)
+    {
+        if (mSettings.getAdjustTimeVolume() == false ||
+            event.getAction() != KeyEvent.ACTION_DOWN ||
+            (event.getKeyCode() != KeyEvent.KEYCODE_VOLUME_UP &&
+             event.getKeyCode() != KeyEvent.KEYCODE_VOLUME_DOWN))
+        {
+            return super.dispatchKeyEvent(event);
+        }
+
+        int hoursToAdd = 0;
+        if (event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_UP)
+        {
+            hoursToAdd = 1;
+        }
+        else if (event.getKeyCode() == KeyEvent.KEYCODE_VOLUME_DOWN)
+        {
+            hoursToAdd = -1;
+        }
+        mTimeOffsetVolume += hoursToAdd;
+
+        boolean autoUpdate = false;
+        if (mTimeOffsetVolume == 0)
+        {
+            autoUpdate = mSettings.getAutoUpdate();
+        }
+        changeAutoUpdate(autoUpdate);
+
+        GregorianCalendar gc = mSettings.getCurrentTime();
+        gc.add(Calendar.HOUR, hoursToAdd);
+        mSettings.setCurrentTime(gc);
+
+        if (mTimeOffsetVolumeToast != null)
+        {
+            mTimeOffsetVolumeToast.cancel();
+        }
+        DecimalFormat df = new DecimalFormat("+#;-#");
+        mTimeOffsetVolumeToast = Toast.makeText(this,
+            Astro.formatCal(gc) + "\n" +
+            df.format(mTimeOffsetVolume) + " h; update: " +
+            (autoUpdate ? "on" : "off"), Toast.LENGTH_SHORT);
+        mTimeOffsetVolumeToast.show();
+
+        update();
+        return true;
     }
 
     public void update()

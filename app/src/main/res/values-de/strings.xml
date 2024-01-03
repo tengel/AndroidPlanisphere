@@ -107,6 +107,7 @@
     <string name="previousNewMoon">Vorheriger Neumond</string>
     <string name="nextFullMoon">Nächster Vollmond</string>
     <string name="nextNewMoon">Nächster Neumond</string>
+    <string name="adjustTimeVolume">Uhrzeit mit Lautstärketasten einstellen</string>
 
     <string name="about_text"><![CDATA[
 <h1>Planisphäre</h1>

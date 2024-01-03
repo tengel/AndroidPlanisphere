@@ -107,6 +107,7 @@
     <string name="previousNewMoon">Forrige nymåne</string>
     <string name="nextFullMoon">Neste fullmåne</string>
     <string name="nextNewMoon">Neste nymåne</string>
+    <string name="adjustTimeVolume">Adjust time with volume buttons</string>
 
     <string name="about_text"><![CDATA[
     <h1>Planisfære</h1>

@@ -108,6 +108,7 @@
     <string name="previousNewMoon">Previous New Moon</string>
     <string name="nextFullMoon">Next Full Moon</string>
     <string name="nextNewMoon">Next New Moon</string>
+    <string name="adjustTimeVolume">Adjust time with volume buttons</string>
 
     <string name="about_text"><![CDATA[
 <h1>Planisphere</h1>
