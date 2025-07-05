@@ -65,6 +65,7 @@
     <string name="lang_norwegian">Norvegese</string>
     <string name="lang_french">Francese</string>
     <string name="lang_italian">Italian</string>
+    <string name="lang_russian">Russian</string>
     <string name="keep_screen_on">Mantieni lo schermo acceso</string>
     <string name="time_auto_update">Mantieni la mappa aggiornata all\'ora corrente</string>
     <string name="direction_n">N</string>
@@ -248,7 +249,7 @@ Wikipedia, Liste der Sternbilder,
 <dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, Monaco, 7. Auflage (2005)
 </dd>
 <dt>Traduzioni</dt>
-<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito and bonetti (it)</dd>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito, bonetti (it) and detorxis (ru)</dd>
 </dl>
     ]]></string>
 

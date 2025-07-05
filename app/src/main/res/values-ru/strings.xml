@@ -1,0 +1,276 @@
+<resources>
+    <string name="app_name">Планисфера</string>
+    <string name="action_time">Дата / Время</string>
+    <string name="action_location">Позиция</string>
+    <string name="action_about">Справка</string>
+    <string name="action_magnitude">Макс. величина</string>
+    <string name="action_theme">Тема</string>
+    <string name="action_settings">Настройки</string>
+    <string name="display_options">Параметры</string>
+    <string name="theme">Тема</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Отмена</string>
+    <string name="max_magnitude">Макс. звёздная величина (mag)</string>
+    <string name="set_to_now">Установить реальное время</string>
+    <string name="loc_src_gps">GPS</string>
+    <string name="loc_src_fixed">фикс. позиция</string>
+    <string name="location_src">Источник позиции:</string>
+    <string name="location_url">Координаты:</string>
+    <string name="gps_status">Состояние GPS:</string>
+    <string name="gps_fix_time">Последняя фиксация:</string>
+    <string name="gps_status_unknown">неизвестно</string>
+    <string name="gps_status_nopermission">нет разрешения</string>
+    <string name="gps_status_disabled">отключено</string>
+    <string name="gps_status_waiting">ожидание</string>
+    <string name="gps_status_received">получено</string>
+    <string name="gps_no_permission">Приложение не имеет разрешение на работу с GPS. Используется последнее местоположение.</string>
+    <string name="gps_disabled">На устройстве отключён GPS. Используется последнее местоположение.</string>
+    <string name="gps_waiting">Ожидается сигнал GPS. Используется последнее местоположение.</string>
+    <string name="gps_received">Получено GPS местоположение</string>
+    <string name="gps_received_new">Получено новое GPS местоположение</string>
+    <string name="latitude">Широта (-90..90):</string>
+    <string name="longitude">Долгота (-180..180):</string>
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_night">Ночная</string>
+    <string name="horizon">Горизонт</string>
+    <string name="equator">Небесный экватор</string>
+    <string name="ecliptic">Эклиптика</string>
+    <string name="azimuthal_grid">Азимутная сетка</string>
+    <string name="equatorial_grid">Экваториальная сетка</string>
+    <string name="constellation_lines">Линии созвездий</string>
+    <string name="constellation_boundaries">Границы созвездий</string>
+    <string name="constellation_names">Названия созвездий</string>
+    <string name="solar_system">Солнечная система</string>
+    <string name="solar_names">Названия планет</string>
+    <string name="stars">Звёзды</string>
+    <string name="sun">Солнце</string>
+    <string name="moon">Луна</string>
+    <string name="planet_mercury">Меркурий</string>
+    <string name="planet_venus">Венера</string>
+    <string name="planet_earth">Земля</string>
+    <string name="planet_mars">Марс</string>
+    <string name="planet_jupiter">Юпитер</string>
+    <string name="planet_saturn">Сатурн</string>
+    <string name="planet_uranus">Уран</string>
+    <string name="planet_neptune">Нептун</string>
+    <string name="const_language">Язык названий созвездий:</string>
+    <string name="lang_abr">Abbreviation</string>
+    <string name="lang_latin">Latin</string>
+    <string name="lang_sysdefault">System language</string>
+    <string name="lang_english">English</string>
+    <string name="lang_german">German</string>
+    <string name="lang_chinese">Chinese</string>
+    <string name="lang_spanish">Spanish</string>
+    <string name="lang_norwegian">Norwegian</string>
+    <string name="lang_french">French</string>
+    <string name="lang_italian">Italian</string>
+    <string name="lang_russian">Russian</string>
+    <string name="keep_screen_on">Поддерживать экран включённым</string>
+    <string name="time_auto_update">Обновление карты в реальном времени</string>
+    <string name="direction_n">С</string>
+    <string name="direction_e">В</string>
+    <string name="direction_s">Ю</string>
+    <string name="direction_w">З</string>
+    <string name="objects_nearby">Ближайшие объекты</string>
+    <string name="azimuth">Азимут</string>
+    <string name="elevation">Параллель</string>
+    <string name="type">Тип</string>
+    <string name="apparent_magnitude">Звездная величина</string>
+    <string name="RA">Прямое восхождение</string>
+    <string name="DEC">Склонение</string>
+    <string name="helio_ecliptic_lat">Широта гелиоцентрической эклиптики</string>
+    <string name="helio_ecliptic_lon">Долгота гелиоцентрической эклиптики</string>
+    <string name="distance_sun">Расстояние до Солнца</string>
+    <string name="geo_ecliptic_lat">Широта геоцентрической эклиптики</string>
+    <string name="geo_ecliptic_lon">Долгота геоцентрической эклиптики</string>
+    <string name="distance_earth">Расстояние до Земли</string>
+    <string name="star">Звезда</string>
+    <string name="planet">Планета</string>
+    <string name="unknown">неизвестно</string>
+    <string name="onlyVisiblePlanets">Отображать только видимые планеты</string>
+    <string name="rise">Восход (местное время)</string>
+    <string name="riseUtc">Восход (UTC)</string>
+    <string name="set">Закат (местное время)</string>
+    <string name="setUtc">Закат (UTC)</string>
+    <string name="astroDawn">Начало утренних астрономических сумерек</string>
+    <string name="nauticalDawn">Начало утренних морских сумерек</string>
+    <string name="civilDawn">Начало утренних гражданских сумерек</string>
+    <string name="civilDusk">Конец вечерних гражданских сумерек</string>
+    <string name="nauticalDusk">Конец вечерних морских сумерек</string>
+    <string name="astroDusk">Конец вечерних астрономических сумерек</string>
+    <string name="phase">Фаза</string>
+    <string name="textScalingFactor">Коэффициент масштабирования текста:</string>
+    <string name="brightStarCatalogue">Каталог ярких звёзд</string>
+    <string name="bayerFlamsteed">Байер/Флемстид</string>
+    <string name="starNames">Названия звезд</string>
+    <string name="textScalingHint" translatable="false">1.0</string>
+    <string name="previousFullMoon">Предыдущее полнолуние</string>
+    <string name="previousNewMoon">Предыдущее новолуние</string>
+    <string name="nextFullMoon">Следующее полнолуние</string>
+    <string name="nextNewMoon">Следующее новолуние</string>
+    <string name="adjustTimeVolume">Регулировка времени с помощью кнопок громкости</string>
+    <string name="viewDirection">Направление обзора (0° юг; 90° восток; 180° север):</string>
+
+    <string name="about_text"><![CDATA[
+<h1>Планисфера</h1>
+
+Это простая карта звездного неба, которая показывает Солнце, Луну и другие планеты, а также звёзды и созвездия.
+
+<h2>Использование</h2>
+Карта звездного неба показывает небосвод над наблюдателем. Зеленый круг —
+горизонт. На небе видны объекты находящиеся внутри этого круга. В центре круга
+находится точка зенита. Зенит – это воображаемая точка непосредственно над
+наблюдателем.<br/> Стороны света кажутся инвертированными, так как карта
+звёздного неба показывает изображение так, как если бы вы лежали на спине и
+смотрели на небо. Для большего понимания можете попробовать поднять телефон на
+головой экраном вниз, совместить любую из сторон света по компасу с аналогичным
+направлением в Планисфере. Полученная карта является аналогичной проекции
+небосвода над наблюдателем на двухмерную плоскость экрана.
+
+<h2>Параметры</h2>
+Пункт меню <em>Параметры</em> позволяет включить или отключить элементы карты:
+<ul>
+  <li>горизонт (с кардинальными направлениями)</li>
+  <li>небесный экватор</li>
+  <li>эклиптика</li>
+  <li>азимутальная сетка</li>
+  <li>экваториальная сетка</li>
+  <li>линии созвездий</li>
+  <li>границы созвездий</li>
+  <li>названия созвездий (язык можно изменить в <em>Настройки</em>)</li>
+  <li>солнечная система (Солнце, Луна и планеты)</li>
+  <li>названия планет солнечной системы</li>
+  <li>звёзды</li>
+  <li>названия звёзд</li>
+</ul>
+
+<h2>Дата и время</h2>
+Пункт меню <em>Дата / Время</em> устанавливает дату и время, используемые для
+построения звездной карты. Звездная карта либо постоянно обновляется по текущему
+времени, либо показывает небо в определенный фиксированный момент времени. Время
+в этом меню всегда местное. Часовой пояс всегда соответствует часовому поясу
+времени ОС.
+
+<h2>Максимальная величина</h2>
+Пункт меню <em>Макс. величина</em> устанавливает нижний предел яркости для
+объектов, отображаемых на карте неба. Объекты темнее звёздной величины не
+отображаются. Значение представляет собой видимую величину для наблюдателя на
+Земле (mag).<br/> (0 mag: очень ярко; 8 mag: очень тускло)
+
+<h2>Позиция</h2>
+Пункт меню <em>Позиция</em> задает местоположение наблюдателя на Земле. В
+качестве источника вы можете выбрать <em>фикс. позиция</em> или <em>GPS</em>.
+Если вы выберите <em>фикс. позиция</em>, вам будет предложено ввести широту и
+долготу вручную. Северное и восточное полушария имеют положительные
+координаты.<br/> Когда вы выбераете <em>GPS</em> как источник местоположения,
+приложение пытается получить информацию о позиции из ОС. Так как для
+автоматического определения местоположения используется навигационная
+спутниковая система, для работы необходим открытый вид на небо. Также необходимо
+включить функцию определения местоположения на устройстве. Приложению необходимо
+получить разрешение на использование местоположения устройства. Диалоговое окно
+<em>Позиция</em> показывает, получена ли приложением фиксация местоположения,
+широту/долготу местоположения и время фиксации. Если <em>Состояние GPS</em> не
+изменился на <em>получено</em>, приложение использует последнее известное
+местоположение.
+
+<h2>Строка с информацией</h2>
+Информационная строка находится в верхней части дисплея. Текст показывает
+информацию о текущей карте. Например, в информационной строке может быть
+показано: <pre>2020-09-15 22:30 Europe/Amsterdam 20:30 UTC 51.31; 9.49 GPS: 1
+Mag: 5</pre> Значения полей следующие:
+<dl>
+  <dt><tt>2020-09-15 22:30</tt></dt>
+  <dd>Дата и время отображаются в местном времени.</dd>
+  <dt><tt>Europe/Amsterdam</tt></dt>
+  <dd>Часовой пояс, используемый для местного времени.</dd>
+  <dt><tt>20:30 UTC</tt></dt>
+  <dd>Время на нулевом меридиане в Гринвиче.</dd>
+  <dt><tt>51.31; 9.49</tt></dt>
+  <dd>Местоположение в виде широты и долготы (северное и восточное
+      полушария имеют положительные координаты).<dd>
+  <dt><tt>GPS: 1</tt></dt>
+  <dd><em>GPS: 1</em> означает, что приложение получило от устройства
+      GPS-фиксацию местоположения устройства. <em>GPS: 0</em> означает, что
+      приложение не получило (еще не получило) местоположение или используется
+      фиксированное местоположение.</dd>
+  <dt><tt>Mag: 5</tt></dt>
+  <dd>Текущая настройка звёздной величины (mag).</dd>
+</dl>
+
+<h2>Космические объекты</h2>
+При длительном нажатии на позицию на графике отображается список объектов вокруг
+этой позиции. Список содержит только объекты, видимые на графике, и упорядочен
+по расстоянию от позиции выбранной точки. Объекты, расположенные близко к
+позиции, находятся в вверху списка. При выборе объекта из списка приложение
+отображает информацию об объекте, например, время восхода и заката, фазу и
+различные координаты.
+
+<h2>Юридическая справка</h2>
+
+Версия Планисферы: {VERSION}
+<br/><br/>
+<a href="https://github.com/tengel/AndroidPlanisphere">https://github.com/tengel/AndroidPlanisphere</a>
+<br/>
+
+<h3>Политика приватности</h3>
+Приложение может получать доступ к вашему местоположению. Полученная позиция
+используется для расчёта карты неба. Информация о местоположении не собирается и
+не хранится на вашем устройстве, а также никому не передаётся. Настройки
+отображаемых элементов - единственная информация, которая хранится локально на
+вашем устройстве. Никакая информация не покидает ваше устройство. Это приложение
+не подключается к интернету.
+
+<h3>Лицензия</h3>
+Copyright (C) 2020 Timo Engel
+<br/><br/>
+Эта программа является свободным программным обеспечением: вы можете
+распространять ее и/или изменять на условиях Стандартной общественной лицензии
+GNU, опубликованной Фондом Свободного Программного обеспечения, либо версии 3
+этой лицензии, либо (по вашему выбору) любой более поздней версии.
+<br/><br/>
+Эта программа распространяется в надежде, что она окажется полезной,
+но БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ; даже без подразумеваемых гарантий
+ТОВАРНОСТИ или ПРИГОДНОСТИ ДЛЯ ОПРЕДЕЛЁННОЙ ЦЕЛИ. См.
+Общественная Лицензия GNU для получения более подробной информации.
+<br/><br/>
+Вы должны были получить копию Общественная Лицензия GNU
+вместе с этой программой. Если нет, см.
+<a href="http://www.gnu.org/licenses/">http://www.gnu.org/licenses</a>
+
+<h3>Источники</h3>
+Это программное обеспечение включает в себя следующие компоненты сторонних организаций:
+<dl>
+<dt>bs_catalog.txt, bs_notes, bs_readme</dt>
+<dd>The Bright Star Catalogue, 5th Revised Ed. (Preliminary Version), Hoffleit D., Warren Jr W.H.
+    (Astronomical Data Center, NSSDC/ADC, 1991)
+    <a href="http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50">http://cdsarc.u-strasbg.fr/viz-bin/Cat?V/50</a>
+</dd>
+<dt>constellation_lines.dat</dt>
+<dd>Copyright (c) 2005-2020, Marc van der Sluys, <a href="http://hemel.waarnemen.com">http://hemel.waarnemen.com</a>,
+    CC BY-SA 4.0,
+    <a href="https://github.com/hemel-waarnemen-com/Constellation-lines">https://github.com/hemel-waarnemen-com/Constellation-lines</a>
+</dd>
+<dt>constellation_names.txt</dt>
+<dd>The Constellations, International Astronomical Union,
+    <a href="https://www.iau.org/public/themes/constellations/">https://www.iau.org/public/themes/constellations/</a><br/>
+    Wikipedia, Liste der Sternbilder,
+    <a href="https://de.wikipedia.org/wiki/Liste_der_Sternbilder">https://de.wikipedia.org/wiki/Liste_der_Sternbilder</a>
+</dd>
+<dt>star_names.txt</dt>
+<dd>Naming Stars, International Astronomical Union,
+    <a href="https://www.iau.org/public/themes/naming_stars/">https://www.iau.org/public/themes/naming_stars/</a>
+</dd>
+<dt>horizons_jupiter.csv, horizons_neptune.csv, horizons_saturn.csv, horizons_uranus.csv</dt>
+<dd>Jet Propulsion Laboratory, HORIZONS System,
+    <a href="https://ssd.jpl.nasa.gov/?horizons">https://ssd.jpl.nasa.gov/?horizons</a>
+</dd>
+<dt>Расчёты основаны на</dt>
+<dd>Montenbruck O.; Grundlagen der Ephemeridenrechnung; Spektrum Akademischer Verlag, München, 7. Auflage (2005)
+</dd>
+<dt>Переводы</dt>
+<dd>sguinetti (es), milouse (fr), FTno (nb), marssi (zh-TW), polito, bonetti (it) and detorxis (ru)</dd>
+</dl>
+    ]]></string>
+
+</resources>

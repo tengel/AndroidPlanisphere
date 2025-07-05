@@ -61,7 +61,7 @@ public class Settings
     private boolean mAdjustTimeVolume;
     private int mViewDirection;
     private static final int LANG_SYSDEFAULT_INTERNAL = 9999; // stored in SharedPreferences
-    private static final int LANG_SYSDEFAULT_IDX = 9;
+    private static final int LANG_SYSDEFAULT_IDX = 10;
 
     public static Settings instance() throws NullPointerException
     {
