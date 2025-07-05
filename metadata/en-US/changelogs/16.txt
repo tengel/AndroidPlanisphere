@@ -1,0 +1,2 @@
+- Russian translation.
+- Update dependencies and fix build warnings.

@@ -104,7 +104,6 @@
     <string name="brightStarCatalogue">Каталог ярких звёзд</string>
     <string name="bayerFlamsteed">Байер/Флемстид</string>
     <string name="starNames">Названия звезд</string>
-    <string name="textScalingHint" translatable="false">1.0</string>
     <string name="previousFullMoon">Предыдущее полнолуние</string>
     <string name="previousNewMoon">Предыдущее новолуние</string>
     <string name="nextFullMoon">Следующее полнолуние</string>
